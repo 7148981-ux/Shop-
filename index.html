@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Витрина</title>
+<style>
+:root{--bg:#fff;--card:#f4f4f6;--text:#1c1c1e;--muted:#6e6e73;--accent:#d9480f;--tab:#e9e9ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17171a;--card:#232328;--text:#f2f2f5;--muted:#9a9aa3;--accent:#ff8a4c;--tab:#2c2c33}}
+:root[data-theme="dark"]{--bg:#17171a;--card:#232328;--text:#f2f2f5;--muted:#9a9aa3;--accent:#ff8a4c;--tab:#2c2c33}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{padding:16px 16px 8px}
+h1{margin:0;font-size:22px}
+.tabs{display:flex;gap:8px;padding:8px 16px;overflow-x:auto;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg)}
+.tab{flex:0 0 auto;border:0;border-radius:20px;padding:9px 16px;background:var(--tab);color:var(--text);font-size:15px;cursor:pointer}
+.tab.active{background:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:8px 16px 24px}
+.card{background:var(--card);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.pic{font-size:44px;text-align:center;padding:8px 0}
+.name{font-weight:600;font-size:15px}
+.meta{color:var(--muted);font-size:13px}
+.price{color:var(--accent);font-weight:700;font-size:16px;margin-top:auto}
+@media (min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header><h1>Витрина</h1></header>
+<nav class="tabs" id="tabs"></nav>
+<main class="grid" id="grid"></main>
+<script>
+var DATA = {
+  "Бутылки": [
+    ["Коллекционная бутылка №1","🍾","пустая, 0.7 л",0],
+    ["Коллекционная бутылка №2","🍾","пустая, 0.7 л",0],
+    ["Коллекционная бутылка №3","🍾","пустая, 1 л",0],
+    ["Коллекционная бутылка №4","🍾","пустая, 0.5 л",0]
+  ],
+  "Одежда": [
+    ["Футболки","👕","S-XXL",0],
+    ["Штаны","👖","S-XXL",0],
+    ["Майки","🎽","S-XXL",0]
+  ],
+  "Информация": "<div class='name' style='font-size:18px;margin-bottom:8px'>О магазине 888.shop</div><p style='margin:0 0 10px;line-height:1.5'>Магазин был придуман и основан в 2026 году.</p><p style='margin:0 0 10px;line-height:1.5'>У нас вы найдёте интересные товары и коллекционные предметы, которые не встретишь в обычных магазинах.</p><p style='margin:0;line-height:1.5'>🎁 Мы часто проводим розыгрыши от магазина и готовим другие приятные сюрпризы для покупателей. Следите за обновлениями!</p>"
+};
+var tabsEl = document.getElementById("tabs");
+var gridEl = document.getElementById("grid");
+var keys = Object.keys(DATA);
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function show(k){
+  Array.prototype.forEach.call(tabsEl.children,function(b){b.classList.toggle("active",b.textContent===k)});
+  if(typeof DATA[k]==="string"){gridEl.innerHTML='<div class="card" style="grid-column:1/-1">'+DATA[k]+'</div>';return;}
+  gridEl.innerHTML = DATA[k].map(function(p){
+    return '<div class="card"><div class="pic">'+p[1]+'</div><div class="name">'+esc(p[0])+'</div><div class="meta">'+esc(p[2])+'</div><div class="price">'+(p[3]?p[3]+' ₽':'цена по запросу')+'</div></div>';
+  }).join("");
+}
+keys.forEach(function(k){
+  var b = document.createElement("button");
+  b.className = "tab"; b.textContent = k;
+  b.onclick = function(){show(k)};
+  tabsEl.appendChild(b);
+});
+try{ if(window.Telegram&&window.Telegram.WebApp){window.Telegram.WebApp.ready();window.Telegram.WebApp.expand();} }catch(e){}
+show(keys[0]);
+</script>
+</body>
+</html>
