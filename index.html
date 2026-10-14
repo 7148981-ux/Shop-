@@ -167,6 +167,27 @@ button.tile{display:flex;flex-direction:row;align-items:center;gap:14px;grid-col
 .typing i:nth-child(2){animation-delay:.15s}
 .typing i:nth-child(3){animation-delay:.3s}
 @keyframes blink{50%{opacity:.25;transform:translateY(-3px)}}
+.mines5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px}
+.mines5 .cell{font-size:22px}
+.fld{margin-bottom:10px}
+.fld input{width:100%;min-height:48px;padding:0 16px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:500 16px Manrope,sans-serif}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);margin:4px 0 14px;line-height:1.4}
+.chk input{width:20px;height:20px;margin:0;flex:none}
+.ihero{grid-column:1/-1;border-radius:22px;padding:24px 18px;background:var(--btn);color:var(--accent-ink)}
+.ihero h2{margin:0 0 8px;font:800 26px Unbounded,Manrope,sans-serif}
+.ihero p{margin:0;opacity:.85;line-height:1.5}
+.feat{flex-direction:row;align-items:flex-start;gap:12px}
+.feat .ti{width:44px;height:44px;font-size:22px}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:12px;align-items:center;line-height:1.4}
+.step b{width:30px;height:30px;border-radius:10px;background:var(--btn);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;flex:none}
+details.cg{display:block;padding:14px 16px}
+.cg summary{display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;font-weight:700;list-style:none}
+.cg summary::-webkit-details-marker{display:none}
+.cg summary b{color:var(--accent);font-size:13px;white-space:nowrap}
+.cg .cr{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.cg .cr:first-of-type{margin-top:12px}
+.cg .cr b{color:var(--accent);white-space:nowrap}
 @media (min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media (prefers-reduced-motion:reduce){#wheel{transition:none!important}.tile:active,.btn:active,.tab:active{transform:none}}
 </style>
@@ -223,13 +244,6 @@ var DATA = {
     ["Смартфон","📱","демо-товар",100],
     ["Ноутбук","💻","демо-товар",100]
   ],
-  "Игрушки": [
-    ["Игрушечный бластер","🔫","игрушка, мягкие пули, 8+",100],
-    ["Водный пистолет","💦","игрушка, 6+",100],
-    ["Пенный меч","🗡️","мягкая игрушка, 6+",100],
-    ["Лук с присосками","🏹","игрушка, 6+",100],
-    ["Набор мягких стрел","🎯","игрушка, 8+",100]
-  ],
   "Вкусняшки": [
     ["Набор конфет","🍬","демо-товар",100],
     ["Печенье","🍪","демо-товар",100],
@@ -245,7 +259,6 @@ var ACTIONS = {
     ["Массаж спины и шеи","🧘","Описание и цена по запросу","Записаться","Здравствуйте! Хочу записаться на массаж спины и шеи."]
   ]},
   "Табак": {intro:"Витрина для лиц 18+. Заказ и оплата через сайт не принимаются: наличие и цены уточняйте у продавца, покупка в торговой точке. Курение вредит вашему здоровью.", items:[
-    ["Сигареты","🚬","Цена по запросу","Уточнить наличие","Здравствуйте! Хочу уточнить наличие сигарет."],
     ["Табак для кальяна","💨","Цена по запросу","Уточнить наличие","Здравствуйте! Хочу уточнить наличие табака для кальяна."],
     ["Электронные сигареты","⚡","Цена по запросу","Уточнить наличие","Здравствуйте! Хочу уточнить наличие электронных сигарет."],
     ["Жидкости и картриджи","🧪","Цена по запросу","Уточнить наличие","Здравствуйте! Хочу уточнить наличие жидкостей и картриджей."],
@@ -258,6 +271,13 @@ var ACTIONS = {
     ["Коньяк","🥃","Цена по запросу","Уточнить наличие","Здравствуйте! Хочу уточнить наличие коньяка."],
     ["Ром и текила","🍹","Цена по запросу","Уточнить наличие","Здравствуйте! Хочу уточнить наличие рома и текилы."],
     ["Пиво и сидр","🍺","Цена по запросу","Уточнить наличие","Здравствуйте! Хочу уточнить наличие пива."]
+  ]},
+  "Номера": {intro:"Красивые мобильные номера. Подбор и условия уточняйте у продавца.", items:[
+    ["Красивые мобильные номера","📱","Золотые и серебряные комбинации, цена по запросу","Подобрать","Здравствуйте! Хочу подобрать красивый мобильный номер."],
+    ["Номер по вашей маске","🔢","Опишите нужную комбинацию цифр","Заказать подбор","Здравствуйте! Хочу заказать подбор номера по маске."]
+  ]},
+  "Крипто": {intro:"Раздел в разработке. Курсы и условия появятся после запуска.", items:[
+    ["Крипто-обменник","🪙","В разработке: запуск скоро","Узнать о запуске","Здравствуйте! Хочу узнать, когда запустится крипто-обменник."]
   ]},
   "Клубы": {intro:"Бронь столиков и проходы в клубы. Дату и клуб уточните у продавца.", items:[
     ["Бронь столика","🥂","Дата, клуб и число гостей по запросу","Забронировать","Здравствуйте! Хочу забронировать столик в клубе."],
@@ -283,7 +303,7 @@ var ACTIONS = {
   delete DATA["Бутылки"];
 })();
 
-var TABS = [["Главная","🏠 Главная"],["|"],["Электроника","🎧 Электроника"],["Одежда","👕 Одежда"],["Вкусняшки","🍬 Вкусняшки"],["Игрушки","🎯 Игрушки"],["|"],["Табак","🔞 Табак 18+"],["Алкоголь","🍷 Алкоголь 18+"],["|"],["Массаж","💆 Массаж"],["Клубы","🥂 Клубы"],["Работа","💼 Работа"],["|"],["Розыгрыши","🎁 Розыгрыши"],["Удача","🎰 Игровой зал"],["|"],["Корзина","🛒 Корзина"],["Бонусы","⭐ Бонусы"],["Информация","ℹ️ Инфо"]];
+var TABS = [["Главная","🏠 Главная"],["|"],["Электроника","🎧 Электроника"],["Одежда","👕 Одежда"],["|"],["Табак","🔞 Табак 18+"],["Алкоголь","🍷 Алкоголь 18+"],["Вкусняшки","🍬 Сладости 18+"],["|"],["Массаж","💆 Массаж"],["Клубы","🥂 Клубы"],["Номера","📱 Красивые номера"],["Крипто","🪙 Крипто-обмен"],["Работа","💼 Работа"],["|"],["Розыгрыши","🎁 Розыгрыши"],["Удача","🎰 Игровой зал"],["|"],["Корзина","🛒 Корзина"],["Бонусы","⭐ Бонусы"],["Профиль","👤 Профиль"],["Информация","ℹ️ Инфо"]];
 
 var INFO = "<div class='name' style='font-size:18px;margin-bottom:8px'>О магазине 888.shop</div>"
  + "<p style='margin:0 0 10px;line-height:1.5'>888.shop — многоцелевой магазин: в одном месте собраны разные товары и услуги. Магазин был придуман и основан в 2026 году.</p>"
@@ -328,12 +348,21 @@ function renderProducts(k){
   }).join("");
 }
 
+var CIGP=170;
+var CIG=[["Bond Street","Bond Compact Красный/Синий|Bond Str Compact Premium 20|Bond Str Compact Premium Green|Bond Str Compact Premium ароматный|Bond Str Special Silver SSL|Bond Street Blue Selection|Bond Street Compact Blue|Bond Street Compact Premium|Bond Street Compact Red|Bond Street Premium|Bond Street Red Selection|Bond Street Silver Selection|Bond Street Special Blue|Bond Street Special Blue Selection|Bond Street Special Silver|Bond Street SS Blue|Bond Street Супер Микс"],["Camel","Camel Activate Dual|Camel Blue/Filters|Camel Compact Blue"],["Chapman","Chapman King Size Blue|Chapman King Size Brown|Chapman King Size Green|Chapman King Size Purple|Chapman King Size Red|Chapman Nano Violet|Chapman Super Slim Blue|Chapman Super Slim Brown|Chapman Super Slim Classic|Chapman Super Slim Green|Chapman Super Slim Purple"],["Chesterfield","Chesterfield Blue|Chesterfield Crown Black|Chesterfield Crown Blue|Chesterfield Red|Chesterfield Silver"],["Davidoff","Davidoff Classic|Davidoff Gold|Davidoff Reach Blue|Davidoff Refine Black"],["Glamour","Glamour Amber|Glamour Azure|Glamour Lilac|Glamour Menthol Superslims|Glamour Violet (Impulse)"],["Kent","Kent 4/6/8|Kent Nanotek 4 Neo"],["Kiss","Kiss клубника|Kiss ментол|Kiss мохито|Kiss яблоко"],["L&M","L&M Blue Label|L&M Compact|L&M Compact 100's Black|L&M Compact 2 IN 1|L&M Green Label|L&M Lounge Blue|L&M Mix Loft|L&M Motion Blue|L&M Red Label"],["LD","LD Красный/Синий|LD Auto Blue|LD Auto Club Comp Lounge|LD Auto Club Gold|LD Auto Impu|LD Auto Impul Comp 100s|LD Auto Impul Comp Breezy|LD Auto Impul Comp Sunny|LD Autograph Compact Blue|LD Autograph красный/синий|LD Blue Superslims|LD Club Compact Blue"],["Marlboro","Marlboro Compact|Marlboro Micro|Marlboro Gold|Marlboro Red"],["Maxim","Maxim by P&S красный/синий|Maxim Classic 100mm Red|Maxim Compact красный/синий|Maxim Premium красный/синий|Maxim Premium серый"],["Parker & Simpson / PS","Parker & Simpson Black|Parker & Simpson Blue|Parker & Simpson Compact Blue|Parker & Simpson Compact Silver|Parker & Simpson Duo Purple|Parker & Simpson Red|Parker & Simpson Red 100's|Parker & Simpson Intense Blue|PS Compact Blue|PS Duo Purple|PS Intense Blue"],["Parliament","Parliament Aqua Blue|Parliament Carat|Parliament Night Blue|Parliament Silver Blue"],["Philip Morris","Philip Morris Compact Premium|Philip Morris Dark / Blue|Philip Morris Gold|Philip Morris Red / Blue|Philip Morris Ultra Blue|Philip Morris Compact Солнечный"],["Portal","Portal Gold|Portal Silver|Portal SS Gold|Portal SS Silver"],["Rothmans","Rothmans Blue|Rothmans Demi|Rothmans Demi Click|Rothmans Demi Click Aero Blue|Rothmans Demi Click Amber|Rothmans Double Click|Rothmans Super Slim Blue Click"],["Winston","Winston Blue|Winston Classic|Winston Compact Blue|Winston Compact Blue Jumbo|Winston Compact Plus Impulse|Winston Compact Plus Silver|Winston Dual|Winston Silver|Winston Super Slim Blue|Winston Super Slim Fresh Menthol|Winston Super Slim Silver|Winston XS Blue|Winston XS Impulse|Winston XS Silver|Winston XSlims Blue (Impulse)|Winston XSlims Impulse|Winston Xspression / XS Impulse|Winston XStyle Blue|Winston XStyle Dual|Winston XStyle Plus Duo|Winston XStyle Silver"],["Другие марки","Credo|Dontabak Compact Южный|Dontabak Red / Blue|Fast Красный|Минск Capital|Минск Capital MS|Минск Capital QS|Минск Citi QS|Минск City|Минск City MS|Беломорканал|БТ|Довер Черный|Донской Табак Светлый|Донской Табак Темный|Корона|Корона 100|Корона 24 Желтая|Корона Слим Серая|Корона Стиль|Корона Элит|Космос|Кресты|Магнат|Максим Класс 100мм Красный|Максим классич. белая|Максим классический красный|Максим Красный/синий|Максим Особый Красный/синий|Милана Син/Кр|Опал|Оптима Gold|Оптима White|Петр I|Петр I Баланс|Петр I Классика|Петр I Особые синий/черный|Петр I Ультра|Петр I Эталон|Петр I Эталон Компакт|Петр I Эталон Компакт Премиум|Петр I Эталон Особые|Премьер|Престиж Кр/Син|Родопи|Русский стиль 100|Русский Стиль Белые|Русский Стиль Компакт Синий|Русский Стиль Красные/Синие|Столичные|Стюардесса|Тройка|Тройка Золото|Тройка Легкая|ТУ 134|Фэст|Фэст Compact|Ява 100|Ява Золотая Classic|Ява Золотая Original|Ява Легкая"]];
+function cigList(){
+  return '<h3 class="sec">Сигареты · цена за пачку</h3><div class="intro">Пачка 20 шт. Витрина: заказ и оплата через сайт не принимаются, наличие уточняйте у продавца. Цена продажи должна совпадать с ценой на пачке (МРЦ).</div>'
+   +'<button class="btn" style="grid-column:1/-1" data-act="msg" data-msg="Здравствуйте! Хочу уточнить наличие сигарет.">Уточнить наличие</button>'
+   +CIG.map(function(g){var L=g[1].split("|");
+     return '<details class="card wide cg"><summary><span>'+esc(g[0])+'</span><b>'+L.length+' поз. · '+CIGP+' ₽</b></summary>'+L.map(function(n){return '<div class="cr"><span>'+esc(n)+'</span><b>'+CIGP+' ₽</b></div>';}).join("")+'</details>';
+   }).join("");
+}
 function renderActions(k){
   var a=ACTIONS[k];
   gridEl.innerHTML='<div class="intro">'+esc(a.intro)+'</div>'+a.items.map(function(it){
     if(it[0]==="#") return '<h3 class="sec">'+esc(it[1])+'</h3>';
     return '<div class="card"><div class="pic">'+pic(it[1])+'</div><div class="name">'+esc(it[0])+'</div><div class="meta">'+esc(it[2])+'</div><button class="btn" data-act="msg" data-msg="'+esc(it[4])+'">'+esc(it[3])+'</button></div>';
-  }).join("");
+  }).join("")+(k==="Табак"?cigList():"");
 }
 
 function renderCartPage(){
@@ -345,12 +374,12 @@ function renderCartPage(){
   }).join("");
   var maxUse=Math.min(BON.bal,Math.floor(t.s*0.3)), d=bonusDisc(t);
   var bb=BON.bal>0?'<button class="btn alt" style="margin-top:10px" data-act="usebonus">'+(BON.use?'✅ Бонусы списываются: −'+money(d):'⭐ Списать бонусы: до '+money(maxUse)+' (на балансе '+BON.bal+')')+'</button>':'';
-  gridEl.innerHTML='<div class="card wide">'+rows+bb+(d?'<div class="total" style="padding-bottom:0"><span>Скидка бонусами</span><span>−'+money(d)+'</span></div>':'')+'<div class="total"><span>Итого</span><span>'+money(t.s-d)+'</span></div><button class="btn" data-act="pay">Оплатить</button><div class="note">Нажмите на картинку, чтобы рассмотреть её. Бонусы списываются при нажатии «Оплатить». Заказ уйдёт продавцу в Telegram, оплату и доставку вы согласуете с ним.</div></div>';
+  gridEl.innerHTML='<div class="card wide">'+rows+bb+(d?'<div class="total" style="padding-bottom:0"><span>Скидка бонусами</span><span>−'+money(d)+'</span></div>':'')+'<div class="total"><span>Итого</span><span>'+money(t.s-d)+'</span></div><button class="btn" data-act="pay">Оплатить</button><div class="note">Нажмите на картинку, чтобы рассмотреть её. За заказ начислим 5% бонусами после подтверждения продавцом. Бонусы списываются при нажатии «Оплатить». Заказ уйдёт продавцу в Telegram, оплату и доставку вы согласуете с ним.</div></div>';
 }
 
 function stem(w){return w.length>5?w.slice(0,w.length-2):(w.length>3?w.slice(0,w.length-1):w);}
 var SYN={"Dom Pérignon":"шампанское шампань бутылка алкоголь коллекция","Clase Azul":"текила мескаль бутылка алкоголь коллекция"};
-var SECT=[["массаж","Массаж"],["табак","Табак"],["алкогол","Алкоголь"],["шампан","Алкоголь"],["текил","Алкоголь"],["мескал","Алкоголь"],["перин","Алкоголь"],["азул","Алкоголь"],["clase","Алкоголь"],["вино","Алкоголь"],["виски","Алкоголь"],["коньяк","Алкоголь"],["пиво","Алкоголь"],["сигарет","Табак"],["никотин","Табак"],["вейп","Табак"],["кальян","Табак"],["клуб","Клубы"],["слот","Слоты"],["блэкджек","Блэкджек"],["кубик","Кубики"],["кости","Кубики"],["монет","Монетка"],["крестик","Крестики"],["казино","Удача"],["игров","Удача"],["бронь","Клубы"],["столик","Клубы"],["электрон","Электроника"],["гаджет","Электроника"],["игрушк","Игрушки"],["оружи","Игрушки"],["главн","Главная"],["работ","Работа"],["вакан","Работа"],["подработ","Работа"],["розыгр","Розыгрыши"],["конкурс","Розыгрыши"],["удач","Удача"],["колесо","Удача"],["информ","Информация"],["магазин","Информация"],["корзин","Корзина"],["бонус","Бонусы"],["баллы","Бонусы"],["скидк","Бонусы"],["кешбэк","Бонусы"],["рулетк","Рулетка"],["сапер","Сапёр"],["сапёр","Сапёр"],["мины","Сапёр"],["вкусн","Вкусняшки"],["сладк","Вкусняшки"]];
+var SECT=[["массаж","Массаж"],["табак","Табак"],["алкогол","Алкоголь"],["шампан","Алкоголь"],["текил","Алкоголь"],["мескал","Алкоголь"],["перин","Алкоголь"],["азул","Алкоголь"],["clase","Алкоголь"],["вино","Алкоголь"],["виски","Алкоголь"],["коньяк","Алкоголь"],["пиво","Алкоголь"],["сигарет","Табак"],["никотин","Табак"],["вейп","Табак"],["кальян","Табак"],["клуб","Клубы"],["слот","Слоты"],["блэкджек","Блэкджек"],["кубик","Кубики"],["кости","Кубики"],["монет","Монетка"],["крестик","Крестики"],["казино","Удача"],["игров","Удача"],["бронь","Клубы"],["столик","Клубы"],["электрон","Электроника"],["гаджет","Электроника"],["игрушк","Игрушки"],["оружи","Игрушки"],["главн","Главная"],["работ","Работа"],["вакан","Работа"],["подработ","Работа"],["розыгр","Розыгрыши"],["конкурс","Розыгрыши"],["удач","Удача"],["колесо","Удача"],["информ","Информация"],["магазин","Информация"],["корзин","Корзина"],["бонус","Бонусы"],["баллы","Бонусы"],["скидк","Бонусы"],["кешбэк","Бонусы"],["рулетк","Рулетка"],["сапер","Сапёр"],["сапёр","Сапёр"],["мины","Мины"],["номер","Номера"],["крипт","Крипто"],["профил","Профиль"],["регистр","Профиль"],["сладост","Вкусняшки"],["конфет","Вкусняшки"],["вкусн","Вкусняшки"],["сладк","Вкусняшки"]];
 function buildIndex(){
   var out=[];
   Object.keys(DATA).forEach(function(k){
@@ -522,10 +551,10 @@ newGame();
 var CH={n:1000}, ST={g:0,w:0}, lastCH=1000, fxWin=false;
 function fx(n){var c=document.getElementById("fx"); if(!c) return; n=n||30; var cols=["#ffb47c","#ffd27a","#ff5f8f","#7ee0c8","#a99bff"];
   for(var i=0;i<n;i++){var e=document.createElement("i"); e.className="cf"; e.style.left=(Math.random()*100)+"vw"; e.style.background=cols[i%5]; e.style.animationDuration=(1.2+Math.random()*1.3)+"s"; e.style.animationDelay=(Math.random()*.25)+"s"; e.style.transform="rotate("+Math.floor(Math.random()*360)+"deg)"; c.appendChild(e); (function(x){setTimeout(function(){if(x.parentNode) x.parentNode.removeChild(x);},2900);})(e);}}
-function win(w,stake){CH.n+=w; if(w>stake){ST.w++;fxWin=true;fx(w>=stake*5?64:30);}}
-function marquee(){var b=CH.n!==lastCH; lastCH=CH.n; return '<div class="wide marq"><div><div class="mt">🎰 Игровой зал</div><div class="meta">Демо-фишки без денежной ценности</div></div><div class="chipsb'+(b?' bump':'')+'">🪙 '+CH.n+'<small>Игр '+ST.g+' · побед '+ST.w+'</small></div>'+(CH.n<100?'<button class="gchip on" data-act="chips">Пополнить до 1000</button>':'')+'</div>';}
+function win(w,stake){CH.n+=w; if(w>stake){ST.w++;fxWin=true;fx(w>=stake*5?64:30);snd("win");} else if(w===0) snd("lose");}
+function marquee(){var b=CH.n!==lastCH; lastCH=CH.n; return '<div class="wide marq"><div><div class="mt">🎰 Игровой зал</div><div class="meta">Демо-фишки без денежной ценности</div></div><div class="chipsb'+(b?' bump':'')+'">🪙 '+CH.n+'<small>Игр '+ST.g+' · побед '+ST.w+'</small></div><button class="x" data-act="snd" aria-label="Звук">'+(SND.on?"🔊":"🔇")+'</button>'+(CH.n<100?'<button class="gchip on" data-act="chips">Пополнить до 1000</button>':'')+'</div>';}
 function chipBar(){return ''; var _x='<div class="meta" style="margin:4px 0 10px">Демо-фишки: <b>'+CH.n+'</b> · без денежной ценности, вывести и обменять нельзя'+(CH.n<100?' <button class="gchip on" style="min-height:32px;margin-left:6px" data-act="chips">Пополнить до 1000</button>':'')+'</div>';}
-function wager(n){if(CH.n<n) return false; CH.n-=n; ST.g++; return true;}
+function wager(n){if(CH.n<n) return false; CH.n-=n; ST.g++; snd("bet"); return true;}
 function gcard(t,b){var w=fxWin; fxWin=false; gridEl.innerHTML='<div class="card wide'+(w?' win':'')+'"><div class="name" style="font-size:18px">'+t+'</div>'+b+'</div>';}
 function dis(n){return CH.n<n?' disabled':'';}
 
@@ -596,7 +625,51 @@ function tttMove(i){if(ttt.over||ttt.b[i]) return; ttt.b[i]="✕"; var w=tw(ttt.
   if(!w){ttt.b[aiPick()]="○"; w=tw(ttt.b);}
   if(w==="✕") fx(50); if(w){ttt.over=true; ttt.msg=w==="✕"?"Вы победили! 🎉":(w==="○"?"Компьютер победил":"Ничья");}}
 
-var GAMES={"Колесо":renderLuck,"Рулетка":renderRoulette,"Слоты":renderSlots,"Блэкджек":renderBJ,"Кубики":renderDice,"Монетка":renderCoin,"Выше-ниже":renderHL,"Крестики":renderTTT,"Сапёр":renderMines};
+var SND={on:true,ctx:null};
+function snd(t){
+  if(!SND.on) return;
+  try{
+    var C=window.AudioContext||window.webkitAudioContext; if(!C) return;
+    SND.ctx=SND.ctx||new C(); var c=SND.ctx; if(c.state==="suspended") c.resume();
+    var seq=({bet:[[330,.07],[440,.09]],tick:[[660,.05]],win:[[523,.1],[659,.1],[784,.1],[1047,.2]],lose:[[330,.12],[247,.2]]})[t]||[], tm=c.currentTime;
+    seq.forEach(function(n){var o=c.createOscillator(),g=c.createGain(); o.type="triangle"; o.frequency.value=n[0];
+      g.gain.setValueAtTime(.0001,tm); g.gain.exponentialRampToValueAtTime(.16,tm+.01); g.gain.exponentialRampToValueAtTime(.0001,tm+n[1]);
+      o.connect(g); g.connect(c.destination); o.start(tm); o.stop(tm+n[1]+.02); tm+=n[1];});
+  }catch(e){}
+}
+var MN={on:false,over:false,m:3,open:[],bomb:[],msg:"Выберите число мин и начните"};
+function mnMult(k,m){var p=1;for(var i=0;i<k;i++) p*=(25-i)/(25-m-i); return Math.floor(p*0.97*100)/100;}
+function mnStart(){
+  if(MN.on||!wager(50)) return;
+  MN.on=true; MN.over=false; MN.open=[]; MN.msg="Откройте безопасную клетку";
+  var a=[];for(var i=0;i<25;i++) a.push(i);
+  for(var j=a.length-1;j>0;j--){var k=Math.floor(Math.random()*(j+1)),t=a[j];a[j]=a[k];a[k]=t;}
+  MN.bomb=a.slice(0,MN.m);
+}
+function mnPick(i){
+  if(!MN.on||MN.open.indexOf(i)>=0) return;
+  MN.open.push(i);
+  if(MN.bomb.indexOf(i)>=0){MN.on=false;MN.over=true;MN.msg="Мина! Ставка потеряна";snd("lose");return;}
+  snd("tick");
+  if(MN.open.length>=25-MN.m) mnCash(); else MN.msg="Множитель ×"+mnMult(MN.open.length,MN.m);
+}
+function mnCash(){
+  if(!MN.on||!MN.open.length) return;
+  var mu=mnMult(MN.open.length,MN.m),w=Math.floor(50*mu);
+  MN.on=false; MN.over=true; win(w,50); MN.msg="Забрали ×"+mu+": "+(w>=50?"+":"")+(w-50)+" фишек";
+}
+function renderMN(){
+  var cells=[];
+  for(var i=0;i<25;i++){var o=MN.open.indexOf(i)>=0,b=MN.bomb.indexOf(i)>=0,t="";
+    if(MN.over&&b) t="💣"; else if(o) t="💎";
+    cells.push('<button class="cell'+((o||(MN.over&&b))?' open':'')+'" data-act="mn" data-id="'+i+'">'+t+'</button>');}
+  var mu=MN.open.length?mnMult(MN.open.length,MN.m):1;
+  gcard("Мины",'<div class="meta">Открывайте клетки с алмазами и забирайте выигрыш до того, как попадёте на мину. Ставка 50 демо-фишек.</div><div class="gm" style="margin:10px 0">'
+   +[3,5,8].map(function(n){return '<button class="gchip'+(MN.m===n?' on':'')+'" data-act="mnm" data-id="'+n+'"'+(MN.on?' disabled':'')+'>'+n+' мины</button>';}).join("")
+   +'</div><div class="mines5">'+cells.join("")+'</div><div class="rres">'+esc(MN.msg)+'</div>'
+   +(MN.on?'<button class="btn" data-act="mncash"'+(MN.open.length?'':' disabled')+'>Забрать · ×'+mu+' = '+Math.floor(50*mu)+'</button>':'<button class="btn" data-act="mnstart"'+dis(50)+'>Начать · 50</button>'));
+}
+var GAMES={"Колесо":renderLuck,"Рулетка":renderRoulette,"Слоты":renderSlots,"Блэкджек":renderBJ,"Кубики":renderDice,"Монетка":renderCoin,"Выше-ниже":renderHL,"Крестики":renderTTT,"Сапёр":renderMines,"Мины":renderMN};
 
 var luckSub="Колесо";
 function gamesMenu(){return '<div class="wide gm">'+Object.keys(GAMES).map(function(n){return '<button class="gchip'+(luckSub===n?' on':'')+'" data-act="sub" data-id="'+n+'">'+n+'</button>';}).join("")+'</div>';}
@@ -605,9 +678,9 @@ function renderGames(){
   gridEl.innerHTML=marquee()+gamesMenu()+gridEl.innerHTML;
 }
 
-var BON={bal:0,last:"",welcome:false,use:false};
-function loadBonus(){try{var o=JSON.parse(localStorage.getItem("b888")||"{}");BON.bal=+o.bal||0;BON.last=o.last||"";BON.welcome=!!o.welcome;}catch(e){}}
-function saveBonus(){try{localStorage.setItem("b888",JSON.stringify({bal:BON.bal,last:BON.last,welcome:BON.welcome}));}catch(e){} try{renderBar();}catch(e){}}
+var BON={bal:0,pend:0,last:"",welcome:false,use:false};
+function loadBonus(){try{var o=JSON.parse(localStorage.getItem("b888")||"{}");BON.bal=+o.bal||0;BON.last=o.last||"";BON.welcome=!!o.welcome;BON.pend=+o.pend||0;}catch(e){}}
+function saveBonus(){try{localStorage.setItem("b888",JSON.stringify({bal:BON.bal,pend:BON.pend,last:BON.last,welcome:BON.welcome}));}catch(e){} try{renderBar();}catch(e){}}
 function today(){return new Date().toISOString().slice(0,10);}
 function bonusDisc(t){return BON.use?Math.min(BON.bal,Math.floor(t.s*0.3)):0;}
 loadBonus();
@@ -616,18 +689,37 @@ function renderBonus(){
   gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">Бонусы магазина</div>'
    +'<div class="luck" style="min-height:80px;padding:16px 10px">⭐ '+BON.bal+'</div>'
    +'<div class="meta" style="text-align:center">1 бонус = 1 ₽ скидки в корзине</div>'
-   +(BON.welcome?'':'<button class="btn" style="margin-top:12px" data-act="welcome">Забрать приветственный бонус +50</button>')
+   +(BON.pend?'<div class="meta" style="text-align:center;margin-top:8px">Ожидают подтверждения: '+BON.pend+'</div><button class="btn alt" style="margin-top:8px" data-act="claim">Заказ получен, зачислить '+BON.pend+'</button>':'')+(BON.welcome?'':'<button class="btn" style="margin-top:12px" data-act="welcome">Забрать приветственный бонус +50</button>')
    +(canDaily?'<button class="btn" style="margin-top:8px" data-act="daily">Ежедневный бонус +10</button>':'<div class="note">Сегодняшний бонус уже получен. Приходите завтра!</div>')
    +'<div class="note" style="text-align:left;margin-top:14px;line-height:1.5">Как это работает: бонусы можно списать в корзине, до 30% суммы заказа. Они не зависят от игр и хранятся на вашем телефоне, а при заказе их подтверждает продавец.</div></div>';
 }
 
+var REG={ok:false,name:"",contact:""};
+function loadReg(){try{var o=JSON.parse(localStorage.getItem("r888")||"{}");REG.ok=!!o.ok;REG.name=o.name||"";REG.contact=o.contact||"";}catch(e){}}
+function saveReg(){try{localStorage.setItem("r888",JSON.stringify(REG));}catch(e){}}
+loadReg();
+function renderProfile(){
+  if(REG.ok){
+    gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">👤 '+esc(REG.name)+'</div><div class="meta" style="margin:4px 0 12px">Контакт: '+esc(REG.contact)+'</div><div class="meta">Бонусы: '+BON.bal+(BON.pend?' · ожидают подтверждения '+BON.pend:'')+'</div><button class="btn" style="margin-top:14px" data-act="msg" data-msg="'+esc("Здравствуйте! Я зарегистрировался в 888.shop. Имя: "+REG.name+", контакт: "+REG.contact)+'">Сообщить продавцу</button><button class="btn alt" style="margin-top:8px" data-act="unreg">Выйти и удалить данные</button><div class="note">Данные хранятся только на вашем телефоне.</div></div>';
+    return;
+  }
+  gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">Регистрация</div><div class="meta" style="margin:4px 0 14px">Зарегистрируйтесь, чтобы получить приветственные +50 бонусов и копить баллы за покупки.</div><div class="fld"><input id="rn" placeholder="Имя" autocomplete="name"></div><div class="fld"><input id="rc" placeholder="Телефон или @username в Telegram" autocomplete="tel"></div><label class="chk"><input type="checkbox" id="rok"><span>Согласен(на) на обработку введённых данных</span></label><button class="btn" data-act="reg">Зарегистрироваться</button><div id="rerr" class="note"></div><div class="note">Данные сохраняются только на вашем телефоне и уходят продавцу, если вы сами отправите сообщение.</div></div>';
+}
+function renderInfo(){
+  var F=[["🤝","Проверенные байеры и поставщики","Работаем с проверенными байерами и поставщиками одежды по всей Европе."],["🎁","Розыгрыши и бонусы","Часто проводим розыгрыши, а за покупки начисляем бонусы."],["🎰","Игровой зал","Бесплатные игры на демо-фишки: слоты, блэкджек, мины и другие."],["💆","Услуги","Массаж, бронь в клубах, красивые номера и другое."],["🤖","Помощник","Круглая кнопка внизу справа поможет найти нужное."],["🔞","Разделы 18+","Витрина для совершеннолетних, заказ через продавца."]];
+  gridEl.innerHTML='<div class="ihero"><h2>888.shop</h2><p>Многоцелевой магазин: разные товары и услуги в одном месте. Придуман и основан в 2026 году.</p></div>'
+   +'<h3 class="sec">Почему мы</h3>'+F.map(function(f){return '<div class="card wide feat"><span class="ti">'+f[0]+'</span><div><div class="name">'+f[1]+'</div><div class="meta">'+f[2]+'</div></div></div>';}).join("")
+   +'<h3 class="sec">Как заказать</h3><div class="card wide"><div class="steps"><div class="step"><b>1</b><span>Выберите товары и добавьте в корзину</span></div><div class="step"><b>2</b><span>Откройте корзину и нажмите «Оплатить»</span></div><div class="step"><b>3</b><span>Заказ откроется в чате с продавцом: согласуйте оплату и доставку</span></div></div></div>'
+   +'<button class="btn" style="grid-column:1/-1" data-act="msg" data-msg="Здравствуйте! У меня вопрос по магазину.">Написать продавцу</button>';
+}
 var ageOK=false;
+var AGE18=["Табак","Алкоголь","Вкусняшки"];
 var gateFor="Табак";
 function renderGate(){
-  var t=gateFor==="Алкоголь"?"Здесь представлена алкогольная продукция. Нажимая «Мне есть 18», вы подтверждаете свой возраст. Чрезмерное употребление алкоголя вредит вашему здоровью.":"Здесь представлена табачная и никотиновая продукция. Нажимая «Мне есть 18», вы подтверждаете свой возраст. Курение вредит вашему здоровью.";
+  var t=gateFor==="Алкоголь"?"Здесь представлена алкогольная продукция. Нажимая «Мне есть 18», вы подтверждаете свой возраст. Чрезмерное употребление алкоголя вредит вашему здоровью.":(gateFor==="Вкусняшки"?"Здесь могут быть сладости с алкоголем, например конфеты с коньяком. Нажимая «Мне есть 18», вы подтверждаете свой возраст.":"Здесь представлена табачная и никотиновая продукция. Нажимая «Мне есть 18», вы подтверждаете свой возраст. Курение вредит вашему здоровью.");
   gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">🔞 Раздел для лиц старше 18 лет</div><div class="meta" style="margin:6px 0 14px;font-size:14px;line-height:1.5">'+t+'</div><button class="btn" data-act="age">Мне есть 18</button><button class="btn alt" style="margin-top:8px" data-act="tab" data-id="Главная">Вернуться</button></div>';
 }
-var HOME=[["Каталог",[["Электроника","🎧","Электроника","Наушники, часы, техника"],["Одежда","👕","Одежда","Футболки, штаны, майки"],["Вкусняшки","🍬","Вкусняшки","Сладости и чай"],["Игрушки","🎯","Игрушечное оружие","Бластеры и мечи"]]],["Услуги",[["Массаж","💆","Массаж","Запись к мастеру"],["Клубы","🥂","Клубы","Бронь и проходы"],["Работа","💼","Работа","Вакансии"]]],["Только 18+",[["Табак","🔞","Табак и никотин","Витрина для лиц 18+"],["Алкоголь","🍷","Алкоголь","Витрина для лиц 18+"]]],["Развлечения",[["Розыгрыши","🎁","Розыгрыши","Призы от магазина"],["Удача","🎰","Игровой зал","9 игр: слоты, блэкджек, рулетка"]]],["Мой аккаунт",[["Корзина","🛒","Корзина","Ваши покупки"],["Бонусы","⭐","Бонусы","Баллы и скидки"],["Информация","ℹ️","О магазине","Кто мы и как заказать"]]]];
+var HOME=[["Каталог",[["Электроника","🎧","Электроника","Наушники, часы, техника"],["Одежда","👕","Одежда","Футболки, штаны, майки"]]],["Только 18+",[["Табак","🔞","Табак и никотин","Витрина для лиц 18+"],["Алкоголь","🍷","Алкоголь","Витрина для лиц 18+"],["Вкусняшки","🍬","Сладости 18+","Конфеты, в том числе с алкоголем"]]],["Услуги",[["Массаж","💆","Массаж","Запись к мастеру"],["Клубы","🥂","Клубы","Бронь и проходы"],["Номера","📱","Красивые номера","Подбор мобильных номеров"],["Крипто","🪙","Крипто-обмен","В разработке"],["Работа","💼","Работа","Вакансии"]]],["Развлечения",[["Розыгрыши","🎁","Розыгрыши","Призы от магазина"],["Удача","🎰","Игровой зал","10 игр: слоты, блэкджек, мины"]]],["Мой аккаунт",[["Корзина","🛒","Корзина","Ваши покупки"],["Бонусы","⭐","Бонусы","Баллы за покупки"],["Профиль","👤","Профиль","Регистрация и данные"],["Информация","ℹ️","О магазине","Кто мы и как заказать"]]]];
 function renderHome(){
   var b='<div class="card wide banner"><div><div class="name" style="font-size:16px">⭐ Бонусы: '+BON.bal+'</div><div class="meta">1 бонус = 1 ₽ скидки в корзине</div></div>'
    +(BON.last!==today()?'<button class="btn" style="width:auto" data-act="daily">+10 сегодня</button>':'<button class="btn alt" style="width:auto" data-act="tab" data-id="Бонусы">Открыть</button>')+'</div>';
@@ -642,14 +734,16 @@ function show(k){
   if(GAMES[k]){luckSub=k;k="Удача";}
   cur=k;
   Array.prototype.forEach.call(tabsEl.children,function(b){b.classList.toggle("active",b.dataset.id===k)});
-  if(k==="Главная") renderHome();
+  if(AGE18.indexOf(k)>=0&&!ageOK){gateFor=k;renderGate();}
+  else if(k==="Главная") renderHome();
   else if(DATA[k]) renderProducts(k);
   else if((k==="Табак"||k==="Алкоголь")&&!ageOK){gateFor=k;renderGate();}
   else if(ACTIONS[k]) renderActions(k);
+  else if(k==="Профиль") renderProfile();
   else if(k==="Корзина") renderCartPage();
   else if(k==="Удача") renderGames();
   else if(k==="Бонусы") renderBonus();
-  else gridEl.innerHTML='<div class="card wide">'+INFO+'</div>';
+  else renderInfo();
   renderBar();
 }
 function renderBar(){
@@ -667,9 +761,9 @@ function checkout(){
   var t=totals(); if(!t.n) return;
   var lines=Object.keys(cart).map(function(id){var p=find(id);return "• "+p[0]+" × "+cart[id]+" — "+money(cart[id]*p[3]);});
   var d=bonusDisc(t);
-  if(d){BON.bal-=d;BON.use=false;saveBonus();}
+  if(d){BON.bal-=d;BON.use=false;} BON.pend+=Math.floor((t.s-d)*0.05); saveBonus();
   openSeller("Здравствуйте! Хочу заказать:\n"+lines.join("\n")+(d?"\nСписать бонусами: "+money(d):"")+"\nИтого: "+money(t.s-d));
-  if(d) refresh();
+  refresh();
 }
 
 document.addEventListener("click",function(e){
@@ -703,9 +797,18 @@ document.addEventListener("click",function(e){
   else if(a==="ttt"){tttMove(+id);renderGames();}
   else if(a==="tttnew"){ttt=tNew();renderGames();}
   else if(a==="chips"){CH.n=1000;renderGames();}
+  else if(a==="claim"){BON.bal+=BON.pend;BON.pend=0;saveBonus();show(cur);}
+  else if(a==="reg"){var n1=document.getElementById("rn").value.trim(),c1=document.getElementById("rc").value.trim(),ok1=document.getElementById("rok").checked,er=document.getElementById("rerr");
+    if(n1.length<2||c1.length<5||!ok1){er.textContent="Заполните имя и контакт и поставьте галочку согласия";} else {REG.ok=true;REG.name=n1;REG.contact=c1;saveReg();show("Профиль");}}
+  else if(a==="unreg"){REG.ok=false;REG.name="";REG.contact="";saveReg();show("Профиль");}
+  else if(a==="snd"){SND.on=!SND.on;if(SND.on) snd("tick");renderGames();}
+  else if(a==="mn"){mnPick(+id);renderGames();}
+  else if(a==="mnm"){if(!MN.on){MN.m=+id;} renderGames();}
+  else if(a==="mnstart"){mnStart();renderGames();}
+  else if(a==="mncash"){mnCash();renderGames();}
   else if(a==="sub"){luckSub=id;renderGames();}
   else if(a==="usebonus"){BON.use=!BON.use;renderCartPage();}
-  else if(a==="welcome"){if(!BON.welcome){BON.welcome=true;BON.bal+=50;saveBonus();show(cur);}}
+  else if(a==="welcome"){if(!REG.ok){show("Профиль");return;} if(!BON.welcome){BON.welcome=true;BON.bal+=50;saveBonus();show(cur);}}
   else if(a==="daily"){if(BON.last!==today()){BON.last=today();BON.bal+=10;saveBonus();show(cur);}}
   else if(a==="cell") mineClick(+id);
   else if(a==="flag"){game.flag=!game.flag;renderGames();}
