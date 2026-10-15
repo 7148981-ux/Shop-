@@ -4,38 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>888.shop</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
-:root{--bg:#f1f5ee;--card:#fff;--text:#14200f;--muted:#5b6b54;--accent:#3d6b00;--accent-ink:#fff;--btn:linear-gradient(135deg,#3d6b00,#557f12);--line:rgba(20,32,15,.12);--tab:#e4ecdd;--g1:rgba(61,107,0,.1);--g2:rgba(40,150,140,.07);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b100d;--card:rgba(255,255,255,.055);--text:#edf3ea;--muted:#98a794;--accent:#c4f26c;--accent-ink:#11200a;--btn:linear-gradient(135deg,#a8ea62,#e3f58a);--line:rgba(255,255,255,.1);--tab:rgba(255,255,255,.08);--g1:rgba(160,230,90,.15);--g2:rgba(80,200,180,.1)}}
-:root[data-theme="dark"]{--bg:#0b100d;--card:rgba(255,255,255,.055);--text:#edf3ea;--muted:#98a794;--accent:#c4f26c;--accent-ink:#11200a;--btn:linear-gradient(135deg,#a8ea62,#e3f58a);--line:rgba(255,255,255,.1);--tab:rgba(255,255,255,.08);--g1:rgba(160,230,90,.15);--g2:rgba(80,200,180,.1)}
+:root{--bg:#faf2f2;--card:#fff;--text:#2a1318;--muted:#7a5f66;--accent:#8e2442;--accent-ink:#fff;--btn:#8e2442;--line:rgba(42,19,24,.12);--tab:#f2e4e5;--g1:rgba(142,36,66,.1);--g2:rgba(200,120,90,.08);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12080c;--card:rgba(255,255,255,.055);--text:#f6ecee;--muted:#ac98a0;--accent:#f3b9a6;--accent-ink:#2a0d12;--btn:#f3b9a6;--line:rgba(255,255,255,.1);--tab:rgba(255,255,255,.08);--g1:rgba(240,120,130,.16);--g2:rgba(250,190,150,.1)}}
+:root[data-theme="dark"]{--bg:#12080c;--card:rgba(255,255,255,.055);--text:#f6ecee;--muted:#ac98a0;--accent:#f3b9a6;--accent-ink:#2a0d12;--btn:#f3b9a6;--line:rgba(255,255,255,.1);--tab:rgba(255,255,255,.08);--g1:rgba(240,120,130,.16);--g2:rgba(250,190,150,.1)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:15px;padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;font-size:15px;padding-bottom:calc(150px + env(safe-area-inset-bottom,0px))}
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 38% at 8% 0%,var(--g1),transparent 72%),radial-gradient(50% 34% at 100% 18%,var(--g2),transparent 72%)}
 .hero{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 16px 8px}
 .brand{display:flex;align-items:baseline}
-.b8{font:800 46px/1 Unbounded,Manrope,sans-serif;letter-spacing:-.03em;color:var(--accent);background:var(--btn);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.bn{font:600 17px Unbounded,Manrope,sans-serif;margin-left:3px}
+.b8{font:800 46px/1 -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;letter-spacing:-.03em;color:var(--accent);background:var(--btn);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.bn{font:600 17px -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;margin-left:3px}
 .tag{font-size:13px;line-height:1.4;color:var(--muted);margin-top:8px;max-width:240px}
-.chip{min-height:40px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:0 14px;font:700 14px Manrope,sans-serif;cursor:pointer;white-space:nowrap}
+.chip{min-height:40px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:0 14px;font:700 14px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;cursor:pointer;white-space:nowrap}
 .tabs{display:flex;align-items:center;gap:8px;padding:10px 16px;overflow-x:auto;position:sticky;top:env(safe-area-inset-top,0px);background:linear-gradient(var(--bg) 78%,transparent);z-index:5;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;min-height:42px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--muted);padding:0 15px;font:700 14px Manrope,sans-serif;cursor:pointer;white-space:nowrap}
+.tab{flex:0 0 auto;min-height:42px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--muted);padding:0 15px;font:700 14px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;cursor:pointer;white-space:nowrap}
 .tab.active{background:var(--btn);color:var(--accent-ink);border-color:transparent;box-shadow:0 6px 20px var(--g1)}
 .sep{flex:0 0 1px;align-self:stretch;margin:8px 2px;background:var(--line)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 16px 24px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:10px;display:flex;flex-direction:column;gap:6px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
 .wide{grid-column:1/-1;padding:16px}
 .banner{flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
-.sec{grid-column:1/-1;display:flex;align-items:center;gap:10px;margin:14px 0 0;font:600 15px Unbounded,Manrope,sans-serif}
+.sec{grid-column:1/-1;display:flex;align-items:center;gap:10px;margin:14px 0 0;font:600 15px -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif}
 .sec::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--accent);box-shadow:0 0 10px var(--accent)}
 .sec::after{content:"";flex:1;height:1px;background:var(--line)}
 button.tile{display:flex;flex-direction:row;align-items:center;gap:14px;grid-column:1/-1;min-height:74px;padding:12px 14px;border-radius:18px;background:var(--card);border:1px solid var(--line);color:var(--text);cursor:pointer;text-align:left;font-family:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
 .ti{width:50px;height:50px;border-radius:14px;background:var(--tab);display:flex;align-items:center;justify-content:center;font-size:26px;flex:none}
 .tx{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
-.tn{font:700 15.5px Manrope,sans-serif}
+.tn{font:700 15.5px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif}
 .td{color:var(--muted);font-size:12.5px;line-height:1.35}
 .chev{color:var(--accent);font-size:26px;line-height:1;flex:none}
 .tile:active,.btn:active,.tab:active{transform:scale(.97)}
@@ -46,7 +44,7 @@ button.tile{display:flex;flex-direction:row;align-items:center;gap:14px;grid-col
 .name{font-weight:700;font-size:14.5px;line-height:1.3}
 .meta{color:var(--muted);font-size:12.5px;line-height:1.35}
 .price{color:var(--accent);font-weight:800;font-size:16px;margin-top:auto;letter-spacing:-.01em}
-.btn{min-height:46px;border:0;border-radius:14px;padding:0 16px;background:var(--btn);color:var(--accent-ink);font:700 14.5px Manrope,sans-serif;cursor:pointer;width:100%}
+.btn{min-height:46px;border:0;border-radius:14px;padding:0 16px;background:var(--btn);color:var(--accent-ink);font:700 14.5px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;cursor:pointer;width:100%}
 .btn.alt{background:transparent;color:var(--text);border:1px solid var(--line)}
 .btn:disabled{opacity:.55}
 .btn:focus-visible,.tab:focus-visible,.chip:focus-visible,.cell:focus-visible,.tile:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -62,7 +60,7 @@ button.tile{display:flex;flex-direction:row;align-items:center;gap:14px;grid-col
 .thumb img{width:84px;height:116px;object-fit:contain;background:#fff;border-radius:12px;cursor:zoom-in;display:block}
 .ct{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
 .ct .qty{width:142px}
-.total{display:flex;justify-content:space-between;align-items:baseline;font:600 17px Unbounded,Manrope,sans-serif;padding:16px 0}
+.total{display:flex;justify-content:space-between;align-items:baseline;font:600 17px -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;padding:16px 0}
 .empty{color:var(--muted);padding:22px 0;text-align:center}
 .note{color:var(--muted);font-size:12px;line-height:1.45;text-align:center;margin-top:10px}
 .msg{padding:10px 14px;border-radius:18px;max-width:92%;line-height:1.4;font-size:15px;white-space:pre-wrap}
@@ -75,17 +73,17 @@ button.tile{display:flex;flex-direction:row;align-items:center;gap:14px;grid-col
 .res .b{display:flex;flex-direction:column;gap:6px;width:108px}
 .res .b button{min-height:38px;padding:0 8px;font-size:13px}
 .inp{display:flex;gap:8px;margin-top:12px}
-.inp input{flex:1;min-height:46px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:500 16px Manrope,sans-serif;min-width:0}
+.inp input{flex:1;min-height:46px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:500 16px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;min-width:0}
 .inp .btn{width:auto}
 .x{border:0;background:var(--tab);color:var(--text);border-radius:50%;width:38px;height:38px;font-size:16px;cursor:pointer}
 #chat{position:fixed;inset:0;z-index:25;background:rgba(2,6,12,.62);display:none;align-items:flex-end}
 #chat.open{display:flex}
 .cpanel{background:var(--bg);width:100%;height:82%;border-radius:26px 26px 0 0;display:flex;flex-direction:column;overflow:hidden;border-top:1px solid var(--line)}
-.chead{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);font:600 16px Unbounded,Manrope,sans-serif}
+.chead{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);font:600 16px -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif}
 .cmsgs{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
 .cin{padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
 .cin .inp{margin-top:0}
-.luck{font:600 20px/1.3 Unbounded,Manrope,sans-serif;text-align:center;padding:28px 10px;min-height:110px;display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.luck{font:600 20px/1.3 -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;text-align:center;padding:28px 10px;min-height:110px;display:flex;align-items:center;justify-content:center;color:var(--accent)}
 .rwrap{position:relative;width:min(280px,80vw);margin:16px auto 0}
 .rwrap .ptr{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:26px;color:var(--accent);z-index:2;line-height:1}
 #wheel svg{width:100%;height:auto;display:block}
@@ -104,20 +102,20 @@ button.tile{display:flex;flex-direction:row;align-items:center;gap:14px;grid-col
 #lb img{max-width:100%;max-height:90%;background:#fff;border-radius:16px}
 .gm{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:0 0 2px}
 .gm::-webkit-scrollbar{display:none}
-.gchip{flex:0 0 auto;min-height:40px;border-radius:14px;padding:0 14px;border:1px solid var(--line);background:var(--card);color:var(--muted);font:700 14px Manrope,sans-serif;cursor:pointer}
+.gchip{flex:0 0 auto;min-height:40px;border-radius:14px;padding:0 14px;border:1px solid var(--line);background:var(--card);color:var(--muted);font:700 14px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;cursor:pointer}
 .gchip.on{background:var(--btn);color:var(--accent-ink);border-color:transparent}
 .cards{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
-.pc{min-width:46px;padding:10px 8px;text-align:center;border-radius:10px;background:#fff;color:#111;font:800 18px Manrope,sans-serif}
+.pc{min-width:46px;padding:10px 8px;text-align:center;border-radius:10px;background:#fff;color:#111;font:800 18px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif}
 .pc.red{color:#c0392b}
 .ttt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
 .tc{font-size:34px;border-radius:14px}
 @property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
 @keyframes spinA{to{--a:360deg}}
 .marq{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;position:relative;border-radius:22px;padding:16px;background:var(--card)}
-.marq::before{content:"";position:absolute;inset:0;padding:2px;border-radius:inherit;background:conic-gradient(from var(--a),#a8ea62,#e3f58a,#59d6c0,#8f9bff,#a8ea62);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);animation:spinA 7s linear infinite;pointer-events:none}
-.mt{font:700 18px Unbounded,Manrope,sans-serif}
-.chipsb{display:flex;flex-direction:column;align-items:flex-end;font:800 22px Manrope,sans-serif;color:var(--accent)}
-.chipsb small{font:600 11px Manrope,sans-serif;color:var(--muted)}
+.marq::before{content:"";position:absolute;inset:0;padding:2px;border-radius:inherit;background:conic-gradient(from var(--a),#f0a58f,#f7d6b0,#e06c8a,#9d7bff,#f0a58f);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);animation:spinA 7s linear infinite;pointer-events:none}
+.mt{font:700 18px -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif}
+.chipsb{display:flex;flex-direction:column;align-items:flex-end;font:800 22px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;color:var(--accent)}
+.chipsb small{font:600 11px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;color:var(--muted)}
 .chipsb.bump{animation:bump .55s}
 @keyframes bump{40%{transform:scale(1.2);text-shadow:0 0 16px var(--accent)}}
 .reels{display:flex;gap:10px;justify-content:center;margin:16px 0 8px}
@@ -155,8 +153,8 @@ button.tile{display:flex;flex-direction:row;align-items:center;gap:14px;grid-col
 @keyframes cup{from{transform:translateY(70px);opacity:.3}}
 .av{width:42px;height:42px;border-radius:14px;background:var(--btn);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;flex:none}
 .hx{flex:1;min-width:0;margin-left:12px}
-.h1{font:600 15px Unbounded,Manrope,sans-serif}
-.h2{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-top:3px;font-family:Manrope,sans-serif;font-weight:500}
+.h1{font:600 15px -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif}
+.h2{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-top:3px;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;font-weight:500}
 .dot{width:7px;height:7px;border-radius:50%;background:#59d68a;box-shadow:0 0 8px #59d68a}
 .qk{display:flex;gap:8px;overflow-x:auto;padding:8px 16px 0;scrollbar-width:none}
 .qk::-webkit-scrollbar{display:none}
@@ -170,11 +168,11 @@ button.tile{display:flex;flex-direction:row;align-items:center;gap:14px;grid-col
 .mines5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px}
 .mines5 .cell{font-size:22px}
 .fld{margin-bottom:10px}
-.fld input{width:100%;min-height:48px;padding:0 16px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:500 16px Manrope,sans-serif}
+.fld input{width:100%;min-height:48px;padding:0 16px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:500 16px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif}
 .chk{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);margin:4px 0 14px;line-height:1.4}
 .chk input{width:20px;height:20px;margin:0;flex:none}
 .ihero{grid-column:1/-1;border-radius:22px;padding:24px 18px;background:var(--btn);color:var(--accent-ink)}
-.ihero h2{margin:0 0 8px;font:800 26px Unbounded,Manrope,sans-serif}
+.ihero h2{margin:0 0 8px;font:800 26px -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif}
 .ihero p{margin:0;opacity:.85;line-height:1.5}
 .feat{flex-direction:row;align-items:flex-start;gap:12px}
 .feat .ti{width:44px;height:44px;font-size:22px}
@@ -188,6 +186,95 @@ details.cg{display:block;padding:14px 16px}
 .cg .cr{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
 .cg .cr:first-of-type{margin-top:12px}
 .cg .cr b{color:var(--accent);white-space:nowrap}
+.bar{display:none!important}
+body .fab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.bnav{position:fixed;left:0;right:0;bottom:0;z-index:11;display:flex;padding:8px 8px calc(6px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line)}
+.bnav button{flex:1;position:relative;border:0;background:none;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;font:700 11px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;cursor:pointer;border-radius:12px}
+.bnav button span{font-size:21px;line-height:1}
+.bnav button.on{color:var(--accent)}
+.bnav button.on::before{content:"";position:absolute;top:-9px;width:30px;height:3px;border-radius:3px;background:var(--btn)}
+.bd{position:absolute;top:0;left:54%;min-width:18px;height:18px;border-radius:9px;background:var(--btn);color:var(--accent-ink);font:800 11px/18px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;text-align:center;padding:0 5px;font-style:normal}
+.grid.in{animation:rise .3s ease}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+/* ---- Apple-style polish ---- */
+body{-webkit-font-smoothing:antialiased;letter-spacing:-.011em}
+.tabs{background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--line)}
+.bnav{background:color-mix(in srgb,var(--bg) 78%,transparent);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px)}
+.tab{border-radius:999px;font-weight:600}
+.btn{border-radius:12px;font-weight:600;letter-spacing:-.01em}
+.btn:active{opacity:.85}
+.card{border-radius:18px;box-shadow:none}
+.sec{display:block;margin:24px 4px 0;font:700 22px/1.2 -apple-system,"SF Pro Display","Helvetica Neue",Arial,sans-serif;letter-spacing:-.022em}
+.sec::before,.sec::after{display:none}
+.gh{grid-column:1/-1;margin:20px 6px -4px;font:600 13px -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.grp{grid-column:1/-1;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.grp button.tile{width:100%;min-height:62px;border:0;border-radius:0;background:none;box-shadow:none;padding:9px 14px}
+.grp button.tile+button.tile{border-top:1px solid var(--line)}
+.grp button.tile:active{background:var(--tab);transform:none}
+.grp .ti{width:38px;height:38px;border-radius:9px;font-size:20px}
+.grp .tn{font-size:16px;font-weight:600}
+.chev{color:var(--muted);font-size:24px;font-weight:300}
+.b8{letter-spacing:-.04em}
+.hero{padding-top:22px}
+.ihero{border-radius:20px}
+.pic{border-radius:14px}
+.inp input,.fld input{border-radius:12px}
+/* ---- motion + catalog + cabinet ---- */
+.rv{animation:rise2 .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*40ms)}
+@keyframes rise2{from{opacity:0;transform:translateY(14px) scale(.985)}}
+.grid.in{animation:none}
+.card,.grp,.tile,.vc,.btn,.gchip,.tab,.bnav button,.sc{transition:transform .2s ease,background-color .25s ease,border-color .25s ease,opacity .2s ease,box-shadow .25s ease,color .2s ease}
+.card:active,.sc:active{transform:scale(.992)}
+.b8{background:linear-gradient(110deg,var(--accent) 35%,color-mix(in srgb,var(--accent) 45%,#fff) 50%,var(--accent) 65%);background-size:240% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:-240% 0}}
+.bnav button.on span{animation:bounce .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes bounce{from{transform:scale(.7)}}
+.bd.bump{animation:bump2 .45s}
+@keyframes bump2{40%{transform:scale(1.45)}}
+#toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);opacity:0;background:var(--text);color:var(--bg);padding:11px 18px;border-radius:999px;font:600 14px -apple-system,BlinkMacSystemFont,"SF Pro Text",Arial,sans-serif;z-index:35;pointer-events:none;transition:opacity .25s ease,transform .25s ease;white-space:nowrap}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details[open]>*:not(summary){animation:rise2 .35s ease both}
+.mdl .mh{display:flex;gap:12px;align-items:center}
+.mdl .mt2{min-width:0}
+.mdl .ti{width:46px;height:46px;border-radius:12px;background:var(--tab);display:flex;align-items:center;justify-content:center;font-size:24px;flex:none}
+.vr{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.vc{border:1px solid var(--line);background:var(--tab);color:var(--text);border-radius:10px;padding:8px 12px;font:600 13px -apple-system,BlinkMacSystemFont,"SF Pro Text",Arial,sans-serif;cursor:pointer;text-align:left;line-height:1.25}
+.vc.on{background:var(--btn);color:var(--accent-ink);border-color:transparent}
+.mp{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.mp .price{font-size:22px;margin:0;letter-spacing:-.02em}
+.mb{width:150px}
+.pf{flex-direction:row;align-items:center;gap:14px}
+.av2{width:58px;height:58px;border-radius:50%;background:var(--btn);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font:700 26px -apple-system,"SF Pro Display",Arial,sans-serif;flex:none}
+.sg,.stats{grid-column:1/-1;display:grid;gap:10px}
+.sg{grid-template-columns:1fr 1fr}
+.stats{grid-template-columns:repeat(4,1fr);gap:8px}
+.sc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.sc b{display:block;font:700 26px/1.1 -apple-system,"SF Pro Display",Arial,sans-serif;margin-bottom:2px;letter-spacing:-.02em;color:var(--accent)}
+.stats .sc{padding:12px 6px;text-align:center}
+.stats .sc b{font-size:22px}
+.stats .sc .meta{font-size:11px}
+.nw .nh{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.nw .nh small{margin-left:auto;color:var(--muted);font-size:12px}
+.tg{font:700 11px -apple-system,Arial,sans-serif;padding:3px 9px;border-radius:999px;background:var(--tab);color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
+.dotn{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+.te{position:relative;padding:8px 0 8px 18px;border-left:2px solid var(--line);margin-left:6px;font-size:14px}
+.te::before{content:"";position:absolute;left:-6px;top:14px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.te small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.faq details{border-top:1px solid var(--line);padding:14px 16px}
+.faq details:first-child{border-top:0}
+.faq summary{font-weight:600;font-size:15px;display:flex;justify-content:space-between;gap:10px}
+.faq summary::after{content:"+";color:var(--accent);font-size:20px;line-height:1;transition:transform .25s ease}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{margin:10px 0 0;color:var(--muted);line-height:1.5;font-size:14px}
+details.ofr{display:block;padding:16px}
+details.ofr summary{font-weight:700;font-size:15px}
+.ofr h4{margin:16px 0 4px;font-size:14px}
+.ofr p{margin:0;color:var(--muted);line-height:1.55;font-size:13.5px}
+.sw{position:relative;margin:12px 0}
+.sw::after{content:"⌄";position:absolute;right:16px;top:9px;color:var(--accent);pointer-events:none;font-size:20px}
+.vsel{width:100%;min-height:46px;padding:0 40px 0 14px;border-radius:12px;border:1px solid var(--line);background:var(--tab);color:var(--text);font:600 14px -apple-system,BlinkMacSystemFont,"SF Pro Text",Arial,sans-serif;-webkit-appearance:none;appearance:none;text-overflow:ellipsis}
 @media (min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media (prefers-reduced-motion:reduce){#wheel{transition:none!important}.tile:active,.btn:active,.tab:active{transform:none}}
 </style>
@@ -197,6 +284,8 @@ details.cg{display:block;padding:14px 16px}
 <nav class="tabs" id="tabs"></nav>
 <main class="grid" id="grid"></main>
 <div class="bar hidden" id="bar"><button class="btn" data-act="tab" data-id="Корзина"><span id="bcount"></span><span id="bsum"></span></button></div>
+<nav class="bnav" id="bnav"><button data-act="tab" data-id="Главная"><span>🏠</span>Главная</button><button data-act="tab" data-id="Удача"><span>🎰</span>Игры</button><button data-act="tab" data-id="Корзина"><span>🛒</span>Корзина<i class="bd" id="bd" style="display:none">0</i></button><button data-act="tab" data-id="Бонусы"><span>⭐</span>Бонусы</button><button data-act="tab" data-id="Профиль"><span>👤</span>Профиль<i class="bd" id="bdp" style="display:none">0</i></button></nav>
+<div id="toast"></div>
 <div id="fx"></div>
 <button class="fab" id="fab" data-act="chat" aria-label="Помощник"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M11 2l2.3 6.7L20 11l-6.7 2.3L11 20l-2.3-6.7L2 11l6.7-2.3z"/><path d="M19 14l1 2.7 2.7 1-2.7 1-1 2.7-1-2.7-2.7-1 2.7-1z" opacity=".75"/></svg></button>
 <div id="chat" data-act="chatbg"><div class="cpanel">
@@ -235,14 +324,6 @@ var DATA = {
     ["Футболки","👕","S-XXL",100],
     ["Штаны","👖","S-XXL",100],
     ["Майки","🎽","S-XXL",100]
-  ],
-  "Электроника": [
-    ["Беспроводные наушники","🎧","демо-товар",100],
-    ["Умные часы","⌚","демо-товар",100],
-    ["Повербанк","🔋","демо-товар",100],
-    ["Bluetooth-колонка","🔊","демо-товар",100],
-    ["Смартфон","📱","демо-товар",100],
-    ["Ноутбук","💻","демо-товар",100]
   ],
   "Вкусняшки": [
     ["Набор конфет","🍬","демо-товар",100],
@@ -303,7 +384,7 @@ var ACTIONS = {
   delete DATA["Бутылки"];
 })();
 
-var TABS = [["Главная","🏠 Главная"],["|"],["Электроника","🎧 Электроника"],["Одежда","👕 Одежда"],["|"],["Табак","🔞 Табак 18+"],["Алкоголь","🍷 Алкоголь 18+"],["Вкусняшки","🍬 Сладости 18+"],["|"],["Массаж","💆 Массаж"],["Клубы","🥂 Клубы"],["Номера","📱 Красивые номера"],["Крипто","🪙 Крипто-обмен"],["Работа","💼 Работа"],["|"],["Розыгрыши","🎁 Розыгрыши"],["Удача","🎰 Игровой зал"],["|"],["Корзина","🛒 Корзина"],["Бонусы","⭐ Бонусы"],["Профиль","👤 Профиль"],["Информация","ℹ️ Инфо"]];
+var TABS = [["Главная","🏠 Главная"],["|"],["Электроника","📱 Электроника"],["Одежда","👕 Одежда"],["|"],["Табак","🔞 Табак 18+"],["Алкоголь","🍷 Алкоголь 18+"],["Вкусняшки","🍬 Сладости 18+"],["|"],["Массаж","💆 Массаж"],["Клубы","🥂 Клубы"],["Номера","📱 Красивые номера"],["Крипто","🪙 Крипто-обмен"],["Работа","💼 Работа"],["|"],["Розыгрыши","🎁 Розыгрыши"],["Удача","🎰 Игровой зал"],["|"],["Корзина","🛒 Корзина"],["Бонусы","⭐ Бонусы"],["Профиль","👤 Профиль"],["Информация","ℹ️ Инфо"]];
 
 var INFO = "<div class='name' style='font-size:18px;margin-bottom:8px'>О магазине 888.shop</div>"
  + "<p style='margin:0 0 10px;line-height:1.5'>888.shop — многоцелевой магазин: в одном месте собраны разные товары и услуги. Магазин был придуман и основан в 2026 году.</p>"
@@ -329,7 +410,7 @@ function money(n){return Number(n).toLocaleString("ru-RU")+" ₽";}
 function pic(v){return String(v).indexOf("data:")===0?'<img alt="" src="'+v+'">':v;}
 function find(id){var p=id.split("|");return DATA[p[0]][+p[1]];}
 function qtyOf(id){return cart[id]||0;}
-function setQty(id,q){ if(q<=0) delete cart[id]; else cart[id]=q; refresh(); }
+function setQty(id,q){ var old=cart[id]||0; if(q<=0) delete cart[id]; else cart[id]=q; if(q>old){ACT.cart++; logEv("В корзину: "+find(id)[0]); toast("Добавлено в корзину");} refresh(); }
 function totals(){var n=0,s=0;for(var id in cart){n+=cart[id];s+=cart[id]*find(id)[3];}return {n:n,s:s};}
 function sellerUrl(text){return "https://t.me/"+SELLER+"?text="+encodeURIComponent(text);}
 function openSeller(text){var url=sellerUrl(text); if(tg && tg.openTelegramLink){tg.openTelegramLink(url);} else {window.location.href=url;}}
@@ -353,6 +434,7 @@ var CIG=[["Bond Street","Bond Compact Красный/Синий|Bond Str Compact
 function cigList(){
   return '<h3 class="sec">Сигареты · цена за пачку</h3><div class="intro">Пачка 20 шт. Витрина: заказ и оплата через сайт не принимаются, наличие уточняйте у продавца. Цена продажи должна совпадать с ценой на пачке (МРЦ).</div>'
    +'<button class="btn" style="grid-column:1/-1" data-act="msg" data-msg="Здравствуйте! Хочу уточнить наличие сигарет.">Уточнить наличие</button>'
+   +'<div class="fld" style="grid-column:1/-1;margin:0"><input id="cs" placeholder="Поиск по маркам" autocomplete="off"></div>'
    +CIG.map(function(g){var L=g[1].split("|");
      return '<details class="card wide cg"><summary><span>'+esc(g[0])+'</span><b>'+L.length+' поз. · '+CIGP+' ₽</b></summary>'+L.map(function(n){return '<div class="cr"><span>'+esc(n)+'</span><b>'+CIGP+' ₽</b></div>';}).join("")+'</details>';
    }).join("");
@@ -386,7 +468,7 @@ function buildIndex(){
     var brand="";
     DATA[k].forEach(function(p,i){
       if(p[0]==="#"){brand=p[1];return;}
-      out.push({id:k+"|"+i,tab:k,p:p,text:(p[0]+" "+p[2]+" "+brand+" "+k+" "+(SYN[brand]||"")).toLowerCase()});
+      out.push({id:k+"|"+i,tab:k,p:p,text:(p[0]+" "+p[2]+" "+brand+" "+k+" "+(SYN[brand]||"")+(k==="_el"?" электроника телефон смартфон планшет ноутбук консоль":"")).toLowerCase()});
     });
   });
   return out;
@@ -418,7 +500,7 @@ function renderChat(){
     var s='<div class="msg '+m.who+'">'+esc(m.text);
     (m.items||[]).forEach(function(id){
       var p=find(id),q=qtyOf(id);
-      s+='<div class="res"><div class="thumb">'+pic(p[1])+'</div><div class="t"><div class="name">'+esc(p[0])+'</div><div class="price">'+money(p[3])+'</div></div><div class="b"><button class="btn alt" data-act="tab" data-id="'+esc(id.split("|")[0])+'">Открыть</button><button class="btn" data-act="add" data-id="'+esc(id)+'">'+(q?'В корзине: '+q:'В корзину')+'</button></div></div>';
+      s+='<div class="res"><div class="thumb">'+pic(p[1])+'</div><div class="t"><div class="name">'+esc(p[0])+'</div><div class="price">'+money(p[3])+'</div></div><div class="b"><button class="btn alt" data-act="tab" data-id="'+esc(id.split("|")[0]==="_el"?"Электроника":id.split("|")[0])+'">Открыть</button><button class="btn" data-act="add" data-id="'+esc(id)+'">'+(q?'В корзине: '+q:'В корзину')+'</button></div></div>';
     });
     (m.tabs||[]).forEach(function(k){
       s+='<div class="res"><div class="t"><div class="name">Раздел «'+esc(k)+'»</div></div><div class="b"><button class="btn alt" data-act="tab" data-id="'+esc(k)+'">Открыть</button></div></div>';
@@ -554,7 +636,7 @@ function fx(n){var c=document.getElementById("fx"); if(!c) return; n=n||30; var 
 function win(w,stake){CH.n+=w; if(w>stake){ST.w++;fxWin=true;fx(w>=stake*5?64:30);snd("win");} else if(w===0) snd("lose");}
 function marquee(){var b=CH.n!==lastCH; lastCH=CH.n; return '<div class="wide marq"><div><div class="mt">🎰 Игровой зал</div><div class="meta">Демо-фишки без денежной ценности</div></div><div class="chipsb'+(b?' bump':'')+'">🪙 '+CH.n+'<small>Игр '+ST.g+' · побед '+ST.w+'</small></div><button class="x" data-act="snd" aria-label="Звук">'+(SND.on?"🔊":"🔇")+'</button>'+(CH.n<100?'<button class="gchip on" data-act="chips">Пополнить до 1000</button>':'')+'</div>';}
 function chipBar(){return ''; var _x='<div class="meta" style="margin:4px 0 10px">Демо-фишки: <b>'+CH.n+'</b> · без денежной ценности, вывести и обменять нельзя'+(CH.n<100?' <button class="gchip on" style="min-height:32px;margin-left:6px" data-act="chips">Пополнить до 1000</button>':'')+'</div>';}
-function wager(n){if(CH.n<n) return false; CH.n-=n; ST.g++; snd("bet"); return true;}
+function wager(n){if(CH.n<n) return false; CH.n-=n; ST.g++; ACT.g++; saveAct(); snd("bet"); return true;}
 function gcard(t,b){var w=fxWin; fxWin=false; gridEl.innerHTML='<div class="card wide'+(w?' win':'')+'"><div class="name" style="font-size:18px">'+t+'</div>'+b+'</div>';}
 function dis(n){return CH.n<n?' disabled':'';}
 
@@ -699,43 +781,99 @@ function loadReg(){try{var o=JSON.parse(localStorage.getItem("r888")||"{}");REG.
 function saveReg(){try{localStorage.setItem("r888",JSON.stringify(REG));}catch(e){}}
 loadReg();
 function renderProfile(){
-  if(REG.ok){
-    gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">👤 '+esc(REG.name)+'</div><div class="meta" style="margin:4px 0 12px">Контакт: '+esc(REG.contact)+'</div><div class="meta">Бонусы: '+BON.bal+(BON.pend?' · ожидают подтверждения '+BON.pend:'')+'</div><button class="btn" style="margin-top:14px" data-act="msg" data-msg="'+esc("Здравствуйте! Я зарегистрировался в 888.shop. Имя: "+REG.name+", контакт: "+REG.contact)+'">Сообщить продавцу</button><button class="btn alt" style="margin-top:8px" data-act="unreg">Выйти и удалить данные</button><div class="note">Данные хранятся только на вашем телефоне.</div></div>';
-    return;
-  }
+  if(REG.ok){renderCabinet();return;}
   gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">Регистрация</div><div class="meta" style="margin:4px 0 14px">Зарегистрируйтесь, чтобы получить приветственные +50 бонусов и копить баллы за покупки.</div><div class="fld"><input id="rn" placeholder="Имя" autocomplete="name"></div><div class="fld"><input id="rc" placeholder="Телефон или @username в Telegram" autocomplete="tel"></div><label class="chk"><input type="checkbox" id="rok"><span>Согласен(на) на обработку введённых данных</span></label><button class="btn" data-act="reg">Зарегистрироваться</button><div id="rerr" class="note"></div><div class="note">Данные сохраняются только на вашем телефоне и уходят продавцу, если вы сами отправите сообщение.</div></div>';
 }
+var ageOK=false;
+
+var EL_CAT=[{"c":"iPhone","e":"📱","m":[{"n":"Apple iPhone 18 Pro Max","s":"","col":"Burgundy / Silver / Glacier / Black","v":[["256Gb · Только eSIM · A3716 (UAE)",129400],["512Gb · Только eSIM · A3716 (UAE)",149300],["1Tb · Только eSIM · A3716 (UAE)",191000],["2Tb · Только eSIM · A3716 (UAE)",239500],["256Gb · NanoSim + eSim · A3717 (Global/International)",131600],["512Gb · NanoSim + eSim · A3717 (Global/International)",151600],["1Tb · NanoSim + eSim · A3717 (Global/International)",193300],["2Tb · NanoSim + eSim · A3717 (Global/International)",241700],["256Gb · 2× nano-SIM · A3718 · Китай · под заказ",147800],["512Gb · 2× nano-SIM · A3718 · Китай · под заказ",175300],["1Tb · 2× nano-SIM · A3718 · Китай · под заказ",216900],["2Tb · 2× nano-SIM · A3718 · Китай · под заказ",248100]]},{"n":"Apple iPhone 18 Pro","s":"","col":"Burgundy / Silver / Glacier / Black","v":[["256Gb · Только eSIM · A3713 (UAE)",117100],["512Gb · Только eSIM · A3713 (UAE)",142100],["1Tb · Только eSIM · A3713 (UAE)",184000],["2Tb · Только eSIM · A3713 (UAE)",233100],["256Gb · NanoSim + eSim · A3714 (Global/International)",119300],["512Gb · NanoSim + eSim · A3714 (Global/International)",144300],["1Tb · NanoSim + eSim · A3714 (Global/International)",186200],["2Tb · NanoSim + eSim · A3714 (Global/International)",235400],["256Gb · 2× nano-SIM · A3715 · Китай · под заказ",134700],["512Gb · 2× nano-SIM · A3715 · Китай · под заказ",153600],["1Tb · 2× nano-SIM · A3715 · Китай · под заказ",204200],["2Tb · 2× nano-SIM · A3715 · Китай · под заказ",235500]]},{"n":"Apple iPhone 17 Pro Max","s":"","col":"Cosmic Orange / Silver / Deep Blue","v":[["256Gb · Только eSIM (FaceTime работает) · A3525 (UAE)",88500],["512Gb · Только eSIM (FaceTime работает) · A3525 (UAE)",105000],["1Tb · Только eSIM (FaceTime работает) · A3525 (UAE)",120000],["2Tb · Только eSIM (FaceTime работает) · A3525 (UAE)",140300],["256Gb · NanoSim + eSim · A3526 (Global/Internetional)",91300],["512Gb · NanoSim + eSim · A3526 (Global/Internetional)",108700],["1Tb · NanoSim + eSim · A3526 (Global/Internetional)",122800],["2Tb · NanoSim + eSim · A3526 (Global/Internetional)",143500]]},{"n":"Apple iPhone 17 Pro","s":"","col":"Cosmic Orange / Silver / Deep Blue","v":[["256Gb · Только eSIM (FaceTime работает) · A3522 (UAE)",82600],["512Gb · Только eSIM (FaceTime работает) · A3522 (UAE)",96800],["1Tb · Только eSIM (FaceTime работает) · A3522 (UAE)",113700],["256Gb · NanoSim + eSim · A3523 (Global/Internetional)",86400],["512Gb · NanoSim + eSim · A3523 (Global/Internetional)",100600],["1Tb · NanoSim + eSim · A3523 (Global/Internetional)",117400]]},{"n":"Apple iPhone Air","s":"Моделей с Nano не существует","col":"Sky Blue / Light Gold / Cloud White / Space Black","v":[["256Gb · eSim (FaceTime работает) · A3517 (Global/Internetional)",66200],["512Gb · eSim (FaceTime работает) · A3517 (Global/Internetional)",71500],["1Tb · eSim (FaceTime работает) · A3517 (Global/Internetional)",86900]]},{"n":"Apple iPhone 17","s":"","col":"Lavender / Sage / Mist Blue / White / Black","v":[["256Gb · Только eSIM (FaceTime работает) · А3519 (UAE)",57800],["512Gb · Только eSIM (FaceTime работает) · А3519 (UAE)",63900],["256Gb · NanoSim + eSim · A3520 (Global/Internetional)",60800],["512Gb · NanoSim + eSim · A3520 (Global/Internetional)",66900]]},{"n":"Apple iPhone 16 Pro Max","s":"A18 Pro Bionic; 6.9\" · 6.9\" Super Retina XDR (120Hz)","col":"Desert Titanium / Natural Titanium / White Titanium / Black Titanium","v":[["256Gb · Nano + eSim",88500],["512Gb · Nano + eSim",101900],["1Tb · Nano + eSim",118800]]},{"n":"Apple iPhone 16 Pro","s":"A18 Pro Bionic; · 6.3\" Super Retina XDR (120Hz)","col":"Desert Titanium / Natural Titanium / White Titanium / Black Titanium","v":[["128Gb · Nano + eSim",71800],["256Gb · Nano + eSim",78800],["512Gb · Nano + eSim",95700],["1Tb · Nano + eSim",110400]]},{"n":"Apple iPhone 16 Plus","s":"A18 Bionic; · 6.7\" OLED (60Hz)","col":"Черный / Белый / Розовый / Бирюзовый / Ультрамарин","v":[["128Gb · Nano + eSim",55900],["256Gb · Nano + eSim",67800],["512Gb · Nano + eSim",88400]]},{"n":"Apple iPhone 16e","s":"A18 Bionic · 6.1\" OLED (60Hz)","col":"Черный / Белый","v":[["128Gb · Nano + eSim",47100],["256Gb · Nano + eSim",57200],["512Gb · Nano + eSim",63700]]},{"n":"Apple iPhone 16","s":"A18 Bionic; · 6.1\" OLED (60Hz)","col":"Черный / Белый / Розовый / Бирюзовый / Ультрамарин","v":[["128Gb · Nano + eSim",51600],["256Gb · Nano + eSim",60300],["512Gb · Nano + eSim",78300]]}]},{"c":"iPad","e":"📲","m":[{"n":"iPad Pro 13 M4 Wi-Fi + Cellular (2024)","s":"13\" OLED - 2064 x 2752 · Apple M4 (iPad)","col":"Silver / Space Gray","v":[["256Gb · SIM + ESIM · 2024",96900],["512Gb · SIM + ESIM · 2024",110700],["1Tb · SIM + ESIM · 2024",156000],["2Tb · SIM + ESIM · 2024",170600]]},{"n":"iPad Pro 13 M4 Wi-Fi (2024)","s":"13\" OLED - 2064 x 2752 · Apple M4 (iPad)","col":"Silver / Space Gray","v":[["256Gb · No Sim · 2024",111900],["512Gb · No Sim · 2024",122800],["1Tb · No Sim · 2024",148100],["2Tb · No Sim · 2024",160800]]},{"n":"iPad Pro 11 M4 Wi-Fi + Cellular (2024)","s":"11\" OLED - 1668 x 2420 · Apple M4 (iPad)","col":"Silver / Space Gray","v":[["256Gb · Sim + eSim · 2024",96900],["512Gb · Sim + eSim · 2024",110700],["1Tb · Sim + eSim · 2024",150400],["2Tb · Sim + eSim · 2024",167700]]},{"n":"iPad Pro 11 M4 Wi-Fi (2024)","s":"11\" OLED - 1668 x 2420 · Apple M4 (iPad)","col":"Silver / Space Gray","v":[["256Gb · No Sim · 2024",80400],["512Gb · No Sim · 2024",93700],["1Tb · No Sim · 2024",133900],["2Tb · No Sim · 2024",152700]]}]},{"c":"MacBook","e":"💻","m":[{"n":"MacBook Air 13 M4","s":"13.6″ · 60 Гц · Apple M4","col":"Sky Blue / Silver / Midnight / Starlight","v":[["256 ГБ / 16 ГБ",78000],["512 ГБ / 16 ГБ",92600],["512 ГБ / 24 ГБ",108900],["512 ГБ / 32 ГБ",139700],["1 ТБ / 24 ГБ",160100]]},{"n":"MacBook Pro 14 M4","s":"14.2″ · 120 Гц · Apple M4","col":"Space Gray / Silver","v":[["512 ГБ / 16 ГБ",134600],["1 ТБ / 16 ГБ",141400],["512 ГБ / 24 ГБ",172400]]},{"n":"MacBook NEO","s":"13″ · 60 Гц · A18 Pro","col":"Silver / Blush / Citrus / Indigo","v":[["256 ГБ / 8 ГБ",55500],["512 ГБ / 8 ГБ",64600]]}]},{"c":"Samsung","e":"📱","m":[{"n":"Samsung Galaxy S25 ULTRA","s":"6.9\" Dynamic AMOLED 2x Quad HD+(3120х1440) · 12Gb","col":"Titanium Black / Titanium Silver Blue / Titanium Gray / Titanium White Silver","v":[["256Gb · Nano + eSim",64200],["512Gb · Nano + eSim",72600],["1Tb · Nano + eSim",82300]]},{"n":"Samsung Galaxy S25 Plus","s":"6.7\" Dynamic AMOLED 2x Quad HD+(3120х1440) · 12Gb","col":"Navy (Темно-Синий) / Mint ( Мятный) / Icy Blue (Ледяной Синий) / Silver Shadow (Серый)","v":[["256Gb · Nano + eSim",52000],["512Gb · Nano + eSim",61100]]},{"n":"Samsung Galaxy S25","s":"6.2\"AMOLED Dynamic 2x FHD+ (2340x1080) · 12GB","col":"Navy (Темно-Синий) / Mint ( Мятный) / Icy Blue (Ледяной Синий) / Silver Shadow (Серый)","v":[["128Gb · Nano + eSim",46100],["256Gb · Nano + eSim",53900],["512Gb · Nano + eSim",57200]]},{"n":"Samsung Galaxy S26 Ultra","s":"6.8\" Dynamic AMOLED 2x 120Гц (3120х1440) · 12Gb","col":"Cobalt Violet (Фиолетовый) / Sky Blue (Голубой) / Black (Черный) / White (Белый)","v":[["256Gb · Nano + eSim",74300],["512Gb · Nano + eSim",90000],["1Tb · Nano + eSim",100300]]},{"n":"Samsung Galaxy S26 Plus","s":"6.7\" Dynamic AMOLED 2x 120Гц (3120х1440) · 12Gb","col":"Cobalt Violet (Фиолетовый) / Sky Blue (Голубой) / Black (Черный) / White (Белый)","v":[["256Gb · Nano + eSim",62200],["512Gb · Nano + eSim",71200]]},{"n":"Samsung Galaxy S26","s":"6.2\"AMOLED Dynamic 2x FHD+ (2340x1080) · 8GB","col":"Sky Blue (Голубой) / Black (Черный)","v":[["256Gb",51700],["512Gb",64500]]}]},{"c":"Xiaomi","e":"📱","m":[{"n":"Xiaomi 17 Ultra","s":"6.9\" AMOLED - 1200 x 2608 · Qualcomm Snapdragon 8 Elite Gen 5","col":"Black / White / Starlit Green","v":[["16/512Gb · 2 SIM",88100],["16/1024Gb · 2 SIM",103800]]},{"n":"Xiaomi 15 Pro","s":"6.73\" AMOLED - 1440 x 3200 · Qualcomm Snapdragon 8 Elite","col":"White / Black / Green / Liquid Silver","v":[["12/256Gb · 2 SIM",56500],["16/512Gb · 2 SIM",72200],["16/1024Gb · 2 SIM",83300]]},{"n":"Xiaomi 15","s":"6.36\" AMOLED - 1200 x 2670 · Qualcomm Snapdragon 8 Elite","col":"White / Black / Green / Liquid Silver","v":[["12/256Gb · 2 SIM",44700],["512Gb · 2 SIM",58500]]},{"n":"Xiaomi 14 Ultra","s":"6.73\" AMOLED - 1440 x 3200 · Qualcomm Snapdragon 8 Gen 3","col":"Black / Blue / White / Titanium gray","v":[["12/256Gb · 2 SIM",62200],["16/512Gb · 2 SIM",76000],["16/1024Gb · 2 SIM",84800]]},{"n":"Xiaomi 14T Pro","s":"6.67\" AMOLED - 1220 x 2712 · MediaTek Dimensity 9300 Plus","col":"Titan Black / Titan Blue / Titan Gray","v":[["12/256Gb · 2 SIM",41400],["12/512Gb · 2 SIM",43800],["12/1024Gb · 2 SIM",49800]]},{"n":"Xiaomi 14","s":"6.36\" AMOLED - 1200 x 2670 · Qualcomm Snapdragon 8 Gen 3","col":"Black / White / Jade Green","v":[["12/256Gb · 2 SIM",47800],["12/512Gb · 2 SIM",55300]]}]},{"c":"OnePlus","e":"📱","m":[{"n":"OnePlus 13","s":"6.82\" AMOLED - 1440 x 3168 · Qualcomm Snapdragon 8 Elite","col":"Midnight Ocean / Arctic Dawn / Black Eclipse","v":[["12/256Gb · SIM + eSIM",58500],["12/512Gb · SIM + eSIM",62300],["16/512Gb · SIM + eSIM",64800],["24/1024Gb · SIM + eSIM",68900]]},{"n":"OnePlus 13R","s":"6.78\" AMOLED - 1264 x 2780 · Qualcomm Snapdragon 8 Gen 3","col":"Midnight Ocean / Arctic Dawn / Black Eclipse","v":[["12/256Gb · SIM + eSIM",40900],["16/512Gb · SIM + eSIM",43200]]},{"n":"OnePlus 12","s":"6.82\" AMOLED - 1440 x 3168 · Qualcomm Snapdragon 8 Gen 3","col":"Silky Black / Flowy Emerald / Glacial white","v":[["12/256Gb · 2SIM",49800],["12/512Gb · 2SIM",53400],["16/512Gb · 2SIM",58200],["24/1024Gb · 2SIM",70400]]}]},{"c":"Консоли","e":"🎮","m":[{"n":"Sony PlayStation 5","s":"","col":"","v":[["1 TB · Slim · Без дисковода",46800],["1 TB · Slim · Без дисковода + джойстик",52100],["1 TB · Slim · С дисководом",51700],["1 TB · Slim · С дисководом + джойстик",56700]]}]}];
+DATA["_el"]=[];
+EL_CAT.forEach(function(g){g.m.forEach(function(m){m.v=m.v.map(function(v){var i=DATA["_el"].length; DATA["_el"].push([m.n+" · "+v[0],g.e,m.s||"",v[1]]); return {l:v[0],p:v[1],id:"_el|"+i};});});});
+var EL_COUNT=EL_CAT.reduce(function(a,g){return a+g.m.length;},0);
+var ELS={c:0,sel:{}};
+function renderElectronics(){
+  var g=EL_CAT[ELS.c];
+  var chips='<div class="wide gm">'+EL_CAT.map(function(x,i){return '<button class="gchip'+(i===ELS.c?' on':'')+'" data-act="elc" data-id="'+i+'">'+esc(x.c)+'</button>';}).join("")+'</div>';
+  var note='<div class="intro">Цены ориентировочные и зависят от курса. Версию и комплектацию выбирайте кнопками, сроки доставки уточняйте у продавца.</div>';
+  gridEl.innerHTML=chips+note+g.m.map(function(m,mi){
+    var key=g.c+mi, si=ELS.sel[key]||0, v=m.v[si];
+    return '<div class="card wide mdl"><div class="mh"><span class="ti">'+g.e+'</span><div class="mt2"><div class="name">'+esc(m.n)+'</div>'+(m.s?'<div class="meta">'+esc(m.s)+'</div>':'')+'</div></div>'
+     +(m.col?'<div class="meta" style="margin-top:8px">Цвета: '+esc(m.col)+'</div>':'')
+     +'<div class="sw"><select class="vsel" data-key="'+key+'" aria-label="Версия">'+m.v.map(function(x,j){return '<option value="'+j+'"'+(j===si?' selected':'')+'>'+esc(x.l)+'</option>';}).join("")+'</select></div>'
+     +'<div class="mp"><span class="price">'+money(v.p)+'</span><div class="mb">'+ctrl(v.id)+'</div></div></div>';
+  }).join("");
+}
+
+var ACT={v:{},cart:0,orders:0,g:0,ev:[],read:{}};
+function loadAct(){try{var o=JSON.parse(localStorage.getItem("a888")||"{}");ACT.v=o.v||{};ACT.cart=o.cart||0;ACT.orders=o.orders||0;ACT.g=o.g||0;ACT.ev=o.ev||[];ACT.read=o.read||{};}catch(e){}}
+function saveAct(){try{localStorage.setItem("a888",JSON.stringify(ACT));}catch(e){}}
+loadAct();
+function logEv(x){ACT.ev.push({t:Date.now(),x:x}); if(ACT.ev.length>25) ACT.ev.shift(); saveAct();}
+function track(k){ACT.v[k]=(ACT.v[k]||0)+1; saveAct();}
+function ago(t){var m=Math.floor((Date.now()-t)/60000); if(m<1) return "только что"; if(m<60) return m+" мин назад"; var h=Math.floor(m/60); if(h<24) return h+" ч назад"; return Math.floor(h/24)+" дн назад";}
+var toastT=null;
+function toast(x){var e=document.getElementById("toast"); if(!e) return; e.textContent=x; e.classList.add("show"); clearTimeout(toastT); toastT=setTimeout(function(){e.classList.remove("show");},1600);}
+function countUp(el,to){var t0=null; function f(ts){if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/900); el.textContent=Math.round(to*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(f);} requestAnimationFrame(f);}
+/* Новости: добавляйте записи сюда (id должен быть уникальным) */
+var NEWS=[
+  {id:"n1",d:"15.10.2026",tag:"Магазин",t:"Добро пожаловать в 888.shop",x:"Здесь будут новости магазина: изменения цен, скидки и новые поступления."},
+  {id:"n2",d:"15.10.2026",tag:"Каталог",t:"В «Электронике» появились телефоны, планшеты и ноутбуки",x:"iPhone, iPad, MacBook, Samsung, Xiaomi, OnePlus и PlayStation. Цены зависят от курса, окончательную цену подтверждает продавец."}
+];
+function unreadNews(){return NEWS.filter(function(n){return !ACT.read[n.id];}).length;}
+
+function renderCabinet(){
+  var init=esc((REG.name.charAt(0)||"?").toUpperCase());
+  var LBL={"Удача":"Игровой зал"}, hide=["Главная","Профиль","Корзина","Бонусы","Информация","Табак","Алкоголь","Вкусняшки"];
+  var it=Object.keys(ACT.v).filter(function(k){return hide.indexOf(k)<0;}).map(function(k){return [k.indexOf("el:")===0?k.slice(3):(LBL[k]||k),ACT.v[k]];}).sort(function(a,b){return b[1]-a[1];}).slice(0,6);
+  var news=NEWS.slice().reverse().map(function(n){var nw=!ACT.read[n.id]; return '<div class="card wide nw"><div class="nh"><span class="tg">'+esc(n.tag)+'</span>'+(nw?'<i class="dotn"></i>':'')+'<small>'+esc(n.d)+'</small></div><div class="name">'+esc(n.t)+'</div><div class="meta">'+esc(n.x)+'</div></div>';}).join("");
+  var ev=ACT.ev.slice().reverse().slice(0,8).map(function(e){return '<div class="te">'+esc(e.x)+'<small>'+ago(e.t)+'</small></div>';}).join("")||'<div class="meta">Пока пусто: ваши действия появятся здесь.</div>';
+  gridEl.innerHTML='<div class="card wide pf"><div class="av2">'+init+'</div><div class="pi"><div class="name" style="font-size:18px">'+esc(REG.name)+'</div><div class="meta">'+esc(REG.contact)+'</div></div></div>'
+   +'<div class="sg"><div class="sc"><b>'+BON.bal+'</b><span class="meta">бонусов'+(BON.pend?' · ожидают '+BON.pend:'')+'</span></div><div class="sc"><b>'+totals().n+'</b><span class="meta">в корзине</span></div><div class="sc"><b>'+ACT.orders+'</b><span class="meta">заказов отправлено</span></div><div class="sc"><b>'+ACT.g+'</b><span class="meta">игр сыграно</span></div></div>'
+   +'<h3 class="sec">Ваши интересы</h3><div class="card wide"><div class="vr" style="margin:0">'+(it.length?it.map(function(x){return '<span class="vc on" style="cursor:default">'+esc(x[0])+' · '+x[1]+'</span>';}).join(""):'<span class="meta">Пока пусто: загляните в каталог.</span>')+'</div></div>'
+   +'<h3 class="sec">Новости магазина</h3>'+news
+   +'<h3 class="sec">Ваша активность</h3><div class="card wide">'+ev+'</div>'
+   +'<button class="btn" style="grid-column:1/-1;margin-top:8px" data-act="msg" data-msg="'+esc("Здравствуйте! Я зарегистрирован в 888.shop. Имя: "+REG.name+", контакт: "+REG.contact)+'">Сообщить продавцу</button><button class="btn alt" style="grid-column:1/-1" data-act="unreg">Выйти и удалить данные</button><div class="note" style="grid-column:1/-1">Данные и активность хранятся только на вашем телефоне.</div>';
+  NEWS.forEach(function(n){ACT.read[n.id]=1;}); saveAct();
+}
+
+var OFFER=[["1. Общие положения", "Настоящий документ — публичная оферта магазина 888.shop (далее — «Магазин») и адресован неопределённому кругу лиц. Акцептом оферты считается оформление заказа через сайт и чат с продавцом. Продавец: [наименование, ИНН, ОГРН/ОГРНИП и адрес продавца — укажите реквизиты]."], ["2. Предмет", "Магазин продаёт товары дистанционным способом. Ассортимент размещён на сайте. Разделы «Только 18+» работают как витрина: онлайн-заказ и доставка такой продукции через сайт не осуществляются, а информация в них не является офертой."], ["3. Оформление заказа", "Покупатель выбирает товары, добавляет их в корзину и нажимает «Оплатить»: откроется чат с продавцом с готовым списком заказа. Заказ считается принятым после подтверждения продавцом наличия, цены и срока."], ["4. Цены", "Цены указаны в рублях. Цены на электронику зависят от курса валют и поставки и могут меняться до подтверждения заказа. Цена, подтверждённая продавцом в чате, является окончательной."], ["5. Оплата и доставка", "Способ оплаты, стоимость и срок доставки согласуются в чате. Срок доставки электроники зависит от поставки и уточняется у продавца."], ["6. Возврат и обмен", "Права покупателя определяются законодательством РФ о защите прав потребителей. Обращения по качеству, возврату и обмену направляйте продавцу через чат."], ["7. Бонусы", "Бонусы начисляются за заказы после подтверждения продавцом: 5% от суммы. 1 бонус равен 1 ₽ скидки, списать можно до 30% суммы заказа. Бонусы нельзя обменять на деньги, при злоупотреблении они могут быть аннулированы."], ["8. Игровой зал и розыгрыши", "Игры проходят на демо-фишки без денежной ценности, их нельзя вывести или обменять. Игры не являются азартными. Призы розыгрышей выдаются по условиям конкретного розыгрыша."], ["9. Персональные данные", "Имя и контакт, указанные при регистрации, хранятся на устройстве пользователя. Продавцу они передаются только когда пользователь сам отправляет сообщение, и используются для обработки заказов. Данные можно удалить в профиле."], ["10. Ответственность", "Характеристики товаров приведены по данным поставщиков и могут содержать неточности, уточняйте их перед заказом. Магазин не отвечает за сбои сторонних сервисов, включая Telegram."], ["11. Изменение условий", "Магазин вправе изменять условия оферты, актуальная редакция размещена на сайте. Связь с продавцом осуществляется через чат. Редакция от 15.10.2026."]];
 function renderInfo(){
-  var F=[["🤝","Проверенные байеры и поставщики","Работаем с проверенными байерами и поставщиками одежды по всей Европе."],["🎁","Розыгрыши и бонусы","Часто проводим розыгрыши, а за покупки начисляем бонусы."],["🎰","Игровой зал","Бесплатные игры на демо-фишки: слоты, блэкджек, мины и другие."],["💆","Услуги","Массаж, бронь в клубах, красивые номера и другое."],["🤖","Помощник","Круглая кнопка внизу справа поможет найти нужное."],["🔞","Разделы 18+","Витрина для совершеннолетних, заказ через продавца."]];
+  var F=[["🤝","Проверенные байеры и поставщики","Работаем с проверенными байерами и поставщиками одежды по всей Европе."],["🎁","Розыгрыши и бонусы","Часто проводим розыгрыши, а за покупки начисляем бонусы."],["🎰","Игровой зал","Бесплатные игры на демо-фишки: слоты, блэкджек, мины и другие."],["💆","Услуги","Массаж, бронь в клубах, красивые номера и другое."],["📰","Личный кабинет","Новости магазина, ваши интересы и активность в одном месте."],["🔞","Разделы 18+","Витрина для совершеннолетних, заказ через продавца."]];
+  var Q=[["Как оплатить заказ?","Нажмите «Оплатить» в корзине: откроется чат с продавцом, где вы согласуете способ оплаты и доставку."],["Как работают бонусы?","За заказ начисляется 5% бонусами после подтверждения продавцом. 1 бонус = 1 ₽ скидки, списать можно до 30% суммы."],["Что значит «Только 18+»?","Это витрина для совершеннолетних. Заказ и оплата таких товаров через сайт не принимаются: наличие и цены уточняйте у продавца."],["Почему цена на технику меняется?","Цены на электронику зависят от курса и поставки. Окончательную цену и срок продавец подтверждает в чате."],["Есть ли игры на деньги?","Нет. В игровом зале играют на демо-фишки без денежной ценности."]];
   gridEl.innerHTML='<div class="ihero"><h2>888.shop</h2><p>Многоцелевой магазин: разные товары и услуги в одном месте. Придуман и основан в 2026 году.</p></div>'
+   +'<div class="stats"><div class="sc"><b data-cnt="'+EL_COUNT+'">0</b><span class="meta">моделей техники</span></div><div class="sc"><b data-cnt="10">0</b><span class="meta">игр в зале</span></div><div class="sc"><b data-cnt="5">0</b><span class="meta">% бонусами</span></div><div class="sc"><b>2026</b><span class="meta">основан</span></div></div>'
    +'<h3 class="sec">Почему мы</h3>'+F.map(function(f){return '<div class="card wide feat"><span class="ti">'+f[0]+'</span><div><div class="name">'+f[1]+'</div><div class="meta">'+f[2]+'</div></div></div>';}).join("")
    +'<h3 class="sec">Как заказать</h3><div class="card wide"><div class="steps"><div class="step"><b>1</b><span>Выберите товары и добавьте в корзину</span></div><div class="step"><b>2</b><span>Откройте корзину и нажмите «Оплатить»</span></div><div class="step"><b>3</b><span>Заказ откроется в чате с продавцом: согласуйте оплату и доставку</span></div></div></div>'
-   +'<button class="btn" style="grid-column:1/-1" data-act="msg" data-msg="Здравствуйте! У меня вопрос по магазину.">Написать продавцу</button>';
+   +'<h3 class="sec">Вопросы и ответы</h3><div class="grp faq">'+Q.map(function(q){return '<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>';}).join("")+'</div>'
+   +'<h3 class="sec">Документы</h3><details class="card wide ofr"><summary>Публичная оферта · условия покупки</summary>'+OFFER.map(function(o){return '<h4>'+esc(o[0])+'</h4><p>'+esc(o[1])+'</p>';}).join("")+'</details>'
+   +'<button class="btn" style="grid-column:1/-1;margin-top:8px" data-act="msg" data-msg="Здравствуйте! У меня вопрос по магазину.">Написать продавцу</button>';
+  Array.prototype.forEach.call(gridEl.querySelectorAll("[data-cnt]"),function(e){countUp(e,+e.dataset.cnt);});
 }
-var ageOK=false;
 var AGE18=["Табак","Алкоголь","Вкусняшки"];
 var gateFor="Табак";
 function renderGate(){
   var t=gateFor==="Алкоголь"?"Здесь представлена алкогольная продукция. Нажимая «Мне есть 18», вы подтверждаете свой возраст. Чрезмерное употребление алкоголя вредит вашему здоровью.":(gateFor==="Вкусняшки"?"Здесь могут быть сладости с алкоголем, например конфеты с коньяком. Нажимая «Мне есть 18», вы подтверждаете свой возраст.":"Здесь представлена табачная и никотиновая продукция. Нажимая «Мне есть 18», вы подтверждаете свой возраст. Курение вредит вашему здоровью.");
   gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">🔞 Раздел для лиц старше 18 лет</div><div class="meta" style="margin:6px 0 14px;font-size:14px;line-height:1.5">'+t+'</div><button class="btn" data-act="age">Мне есть 18</button><button class="btn alt" style="margin-top:8px" data-act="tab" data-id="Главная">Вернуться</button></div>';
 }
-var HOME=[["Каталог",[["Электроника","🎧","Электроника","Наушники, часы, техника"],["Одежда","👕","Одежда","Футболки, штаны, майки"]]],["Только 18+",[["Табак","🔞","Табак и никотин","Витрина для лиц 18+"],["Алкоголь","🍷","Алкоголь","Витрина для лиц 18+"],["Вкусняшки","🍬","Сладости 18+","Конфеты, в том числе с алкоголем"]]],["Услуги",[["Массаж","💆","Массаж","Запись к мастеру"],["Клубы","🥂","Клубы","Бронь и проходы"],["Номера","📱","Красивые номера","Подбор мобильных номеров"],["Крипто","🪙","Крипто-обмен","В разработке"],["Работа","💼","Работа","Вакансии"]]],["Развлечения",[["Розыгрыши","🎁","Розыгрыши","Призы от магазина"],["Удача","🎰","Игровой зал","10 игр: слоты, блэкджек, мины"]]],["Мой аккаунт",[["Корзина","🛒","Корзина","Ваши покупки"],["Бонусы","⭐","Бонусы","Баллы за покупки"],["Профиль","👤","Профиль","Регистрация и данные"],["Информация","ℹ️","О магазине","Кто мы и как заказать"]]]];
+var HOME=[["Каталог",[["Электроника","📱","Электроника","Телефоны, планшеты, ноутбуки, консоли"],["Одежда","👕","Одежда","Футболки, штаны, майки"]]],["Только 18+",[["Табак","🔞","Табак и никотин","Витрина для лиц 18+"],["Алкоголь","🍷","Алкоголь","Витрина для лиц 18+"],["Вкусняшки","🍬","Сладости 18+","Конфеты, в том числе с алкоголем"]]],["Услуги",[["Массаж","💆","Массаж","Запись к мастеру"],["Клубы","🥂","Клубы","Бронь и проходы"],["Номера","📱","Красивые номера","Подбор мобильных номеров"],["Крипто","🪙","Крипто-обмен","В разработке"],["Работа","💼","Работа","Вакансии"]]],["Развлечения",[["Розыгрыши","🎁","Розыгрыши","Призы от магазина"],["Удача","🎰","Игровой зал","10 игр: слоты, блэкджек, мины"]]],["Мой аккаунт",[["Корзина","🛒","Корзина","Ваши покупки"],["Бонусы","⭐","Бонусы","Баллы за покупки"],["Профиль","👤","Профиль","Регистрация и данные"],["Информация","ℹ️","О магазине","Кто мы и как заказать"]]]];
 function renderHome(){
   var b='<div class="card wide banner"><div><div class="name" style="font-size:16px">⭐ Бонусы: '+BON.bal+'</div><div class="meta">1 бонус = 1 ₽ скидки в корзине</div></div>'
    +(BON.last!==today()?'<button class="btn" style="width:auto" data-act="daily">+10 сегодня</button>':'<button class="btn alt" style="width:auto" data-act="tab" data-id="Бонусы">Открыть</button>')+'</div>';
   gridEl.innerHTML=b+HOME.map(function(g){
-    return '<h3 class="sec">'+g[0]+'</h3>'+g[1].map(function(t){
+    return '<div class="gh">'+g[0]+'</div><div class="grp">'+g[1].map(function(t){
       return '<button class="tile" data-act="tab" data-id="'+t[0]+'"><span class="ti">'+t[1]+'</span><span class="tx"><span class="tn">'+t[2]+'</span><span class="td">'+t[3]+'</span></span><span class="chev">›</span></button>';
-    }).join("");
+    }).join("")+'</div>';
   }).join("");
 }
 
-function show(k){
+function show(k,quiet){
   if(GAMES[k]){luckSub=k;k="Удача";}
   cur=k;
   Array.prototype.forEach.call(tabsEl.children,function(b){b.classList.toggle("active",b.dataset.id===k)});
+  Array.prototype.forEach.call(document.querySelectorAll("#bnav button"),function(b){b.classList.toggle("on",b.dataset.id===k);});
   if(AGE18.indexOf(k)>=0&&!ageOK){gateFor=k;renderGate();}
   else if(k==="Главная") renderHome();
+  else if(k==="Электроника") renderElectronics();
   else if(DATA[k]) renderProducts(k);
   else if((k==="Табак"||k==="Алкоголь")&&!ageOK){gateFor=k;renderGate();}
   else if(ACTIONS[k]) renderActions(k);
@@ -744,6 +882,12 @@ function show(k){
   else if(k==="Удача") renderGames();
   else if(k==="Бонусы") renderBonus();
   else renderInfo();
+  if(!quiet){
+    track(k);
+    Array.prototype.forEach.call(gridEl.children,function(c,i){c.style.setProperty("--i",Math.min(i,10));c.classList.add("rv");});
+    setTimeout(function(){Array.prototype.forEach.call(gridEl.children,function(c){c.classList.remove("rv");});},1000);
+    var at=tabsEl.querySelector(".tab.active"); if(at&&at.scrollIntoView) at.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"});
+  }
   renderBar();
 }
 function renderBar(){
@@ -753,15 +897,17 @@ function renderBar(){
   document.getElementById("bcount").textContent="Корзина · "+t.n+" шт";
   document.getElementById("bsum").textContent=money(t.s);
   var hb=document.getElementById("hbonus"); if(hb) hb.textContent=BON.bal;
+  var bd=document.getElementById("bd"); if(bd){ if(bd.textContent!==String(t.n)){bd.classList.remove("bump");void bd.offsetWidth;bd.classList.add("bump");} bd.textContent=t.n; bd.style.display=t.n?"":"none"; }
+  var bp=document.getElementById("bdp"), ur=REG.ok?unreadNews():0; if(bp){bp.textContent=ur;bp.style.display=ur?"":"none";}
   Array.prototype.forEach.call(tabsEl.children,function(b){ if(b.dataset.id==="Корзина") b.textContent="🛒 Корзина"+(t.n?" ("+t.n+")":""); });
 }
-function refresh(){ var y=window.scrollY; show(cur); window.scrollTo(0,y); if(chatOpen) renderChat(); }
+function refresh(){ var y=window.scrollY; show(cur,true); window.scrollTo(0,y); if(chatOpen) renderChat(); }
 
 function checkout(){
   var t=totals(); if(!t.n) return;
   var lines=Object.keys(cart).map(function(id){var p=find(id);return "• "+p[0]+" × "+cart[id]+" — "+money(cart[id]*p[3]);});
   var d=bonusDisc(t);
-  if(d){BON.bal-=d;BON.use=false;} BON.pend+=Math.floor((t.s-d)*0.05); saveBonus();
+  if(d){BON.bal-=d;BON.use=false;} BON.pend+=Math.floor((t.s-d)*0.05); saveBonus(); ACT.orders++; logEv("Заказ отправлен продавцу на "+money(t.s-d));
   openSeller("Здравствуйте! Хочу заказать:\n"+lines.join("\n")+(d?"\nСписать бонусами: "+money(d):"")+"\nИтого: "+money(t.s-d));
   refresh();
 }
@@ -797,10 +943,12 @@ document.addEventListener("click",function(e){
   else if(a==="ttt"){tttMove(+id);renderGames();}
   else if(a==="tttnew"){ttt=tNew();renderGames();}
   else if(a==="chips"){CH.n=1000;renderGames();}
+  else if(a==="elc"){ELS.c=+id;track("el:"+EL_CAT[ELS.c].c);renderElectronics();}
+  else if(a==="elv"){var ix=id.lastIndexOf("|");ELS.sel[id.slice(0,ix)]=+id.slice(ix+1);var y0=window.scrollY;renderElectronics();window.scrollTo(0,y0);}
   else if(a==="claim"){BON.bal+=BON.pend;BON.pend=0;saveBonus();show(cur);}
   else if(a==="reg"){var n1=document.getElementById("rn").value.trim(),c1=document.getElementById("rc").value.trim(),ok1=document.getElementById("rok").checked,er=document.getElementById("rerr");
-    if(n1.length<2||c1.length<5||!ok1){er.textContent="Заполните имя и контакт и поставьте галочку согласия";} else {REG.ok=true;REG.name=n1;REG.contact=c1;saveReg();show("Профиль");}}
-  else if(a==="unreg"){REG.ok=false;REG.name="";REG.contact="";saveReg();show("Профиль");}
+    if(n1.length<2||c1.length<5||!ok1){er.textContent="Заполните имя и контакт и поставьте галочку согласия";} else {REG.ok=true;REG.name=n1;REG.contact=c1;saveReg();logEv("Регистрация в магазине");show("Профиль");}}
+  else if(a==="unreg"){REG.ok=false;REG.name="";REG.contact="";saveReg();ACT.v={};ACT.cart=0;ACT.orders=0;ACT.g=0;ACT.ev=[];ACT.read={};saveAct();show("Профиль");}
   else if(a==="snd"){SND.on=!SND.on;if(SND.on) snd("tick");renderGames();}
   else if(a==="mn"){mnPick(+id);renderGames();}
   else if(a==="mnm"){if(!MN.on){MN.m=+id;} renderGames();}
@@ -808,8 +956,8 @@ document.addEventListener("click",function(e){
   else if(a==="mncash"){mnCash();renderGames();}
   else if(a==="sub"){luckSub=id;renderGames();}
   else if(a==="usebonus"){BON.use=!BON.use;renderCartPage();}
-  else if(a==="welcome"){if(!REG.ok){show("Профиль");return;} if(!BON.welcome){BON.welcome=true;BON.bal+=50;saveBonus();show(cur);}}
-  else if(a==="daily"){if(BON.last!==today()){BON.last=today();BON.bal+=10;saveBonus();show(cur);}}
+  else if(a==="welcome"){if(!REG.ok){show("Профиль");return;} if(!BON.welcome){BON.welcome=true;BON.bal+=50;logEv("Приветственный бонус +50");saveBonus();show(cur);}}
+  else if(a==="daily"){if(BON.last!==today()){BON.last=today();BON.bal+=10;logEv("Ежедневный бонус +10");saveBonus();show(cur);}}
   else if(a==="cell") mineClick(+id);
   else if(a==="flag"){game.flag=!game.flag;renderGames();}
   else if(a==="newgame"){newGame();renderGames();}
@@ -825,6 +973,16 @@ TABS.forEach(function(x){
   b.className="tab"; b.textContent=x[1]||x[0]; b.dataset.act="tab"; b.dataset.id=x[0];
   tabsEl.appendChild(b);
 });
+function cigFilter(v){
+  v=v.trim().toLowerCase();
+  Array.prototype.forEach.call(document.querySelectorAll("details.cg"),function(d){
+    var hit=0;
+    Array.prototype.forEach.call(d.querySelectorAll(".cr"),function(r){var m=!v||r.textContent.toLowerCase().indexOf(v)>=0; r.style.display=m?"":"none"; if(m) hit++;});
+    d.style.display=hit?"":"none"; d.open=!!v&&hit>0;
+  });
+}
+document.addEventListener("input",function(e){ if(e.target&&e.target.id==="cs") cigFilter(e.target.value); });
+document.addEventListener("change",function(e){var t=e.target; if(t&&t.classList&&t.classList.contains("vsel")){ELS.sel[t.dataset.key]=+t.value;var y=window.scrollY;renderElectronics();window.scrollTo(0,y);}});
 show("Главная");
 </script>
 </body>
