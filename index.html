@@ -275,6 +275,28 @@ details.ofr summary{font-weight:700;font-size:15px}
 .sw{position:relative;margin:12px 0}
 .sw::after{content:"⌄";position:absolute;right:16px;top:9px;color:var(--accent);pointer-events:none;font-size:20px}
 .vsel{width:100%;min-height:46px;padding:0 40px 0 14px;border-radius:12px;border:1px solid var(--line);background:var(--tab);color:var(--text);font:600 14px -apple-system,BlinkMacSystemFont,"SF Pro Text",Arial,sans-serif;-webkit-appearance:none;appearance:none;text-overflow:ellipsis}
+/* ---- numbers, nicotine, effects ---- */
+.nrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-top:1px solid var(--line)}
+.nrow:first-child{border-top:0}
+.nl{min-width:0}
+.nn{font:700 17px/1.2 ui-monospace,"SF Mono",Menlo,Consolas,monospace;letter-spacing:.01em;white-space:nowrap}
+.nn em{font-style:normal;color:var(--accent)}
+.np{margin-top:3px;font-weight:600;font-size:13px;color:var(--muted)}
+.nb{border:0;background:var(--btn);color:var(--accent-ink);border-radius:10px;padding:0 14px;min-height:38px;font:700 13px -apple-system,BlinkMacSystemFont,"SF Pro Text",Arial,sans-serif;cursor:pointer;white-space:nowrap}
+.nb.on{background:var(--tab);color:var(--accent)}
+.nhero{grid-column:1/-1;display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:18px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent)}
+.n18{flex:none;width:46px;height:46px;border-radius:50%;background:var(--btn);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font:800 16px -apple-system,"SF Pro Display",Arial,sans-serif}
+.btn,.tile,.gchip,.nb,.tab,.qty button,.cell,.chip,.vc{position:relative;overflow:hidden}
+.rpl{position:absolute;border-radius:50%;background:currentColor;opacity:.2;transform:scale(0);animation:rpl .6s ease-out forwards;pointer-events:none}
+@keyframes rpl{to{transform:scale(1);opacity:0}}
+.fly{position:fixed;width:18px;height:18px;border-radius:50%;background:var(--btn);z-index:50;pointer-events:none;box-shadow:0 0 16px var(--accent)}
+body::before{inset:-12%;animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(5%,4%,0) scale(1.1)}}
+.card{box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 10px 26px -16px rgba(0,0,0,.55)}
+.bnav button.on{background:color-mix(in srgb,var(--accent) 13%,transparent)}
+.tab.active{animation:glow 2.8s ease-in-out infinite alternate}
+@keyframes glow{from{box-shadow:0 4px 16px var(--g1)}to{box-shadow:0 6px 26px var(--g1),0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}}
+.price{letter-spacing:-.02em}
 @media (min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media (prefers-reduced-motion:reduce){#wheel{transition:none!important}.tile:active,.btn:active,.tab:active{transform:none}}
 </style>
@@ -384,7 +406,7 @@ var ACTIONS = {
   delete DATA["Бутылки"];
 })();
 
-var TABS = [["Главная","🏠 Главная"],["|"],["Электроника","📱 Электроника"],["Одежда","👕 Одежда"],["|"],["Табак","🔞 Табак 18+"],["Алкоголь","🍷 Алкоголь 18+"],["Вкусняшки","🍬 Сладости 18+"],["|"],["Массаж","💆 Массаж"],["Клубы","🥂 Клубы"],["Номера","📱 Красивые номера"],["Крипто","🪙 Крипто-обмен"],["Работа","💼 Работа"],["|"],["Розыгрыши","🎁 Розыгрыши"],["Удача","🎰 Игровой зал"],["|"],["Корзина","🛒 Корзина"],["Бонусы","⭐ Бонусы"],["Профиль","👤 Профиль"],["Информация","ℹ️ Инфо"]];
+var TABS = [["Главная","🏠 Главная"],["|"],["Электроника","📱 Электроника"],["Одежда","👕 Одежда"],["|"],["Табак","🔞 Никотин 18+"],["Алкоголь","🍷 Алкоголь 18+"],["Вкусняшки","🍬 Сладости 18+"],["|"],["Массаж","💆 Массаж"],["Клубы","🥂 Клубы"],["Номера","📱 Красивые номера"],["Крипто","🪙 Крипто-обмен"],["Работа","💼 Работа"],["|"],["Розыгрыши","🎁 Розыгрыши"],["Удача","🎰 Игровой зал"],["|"],["Корзина","🛒 Корзина"],["Бонусы","⭐ Бонусы"],["Профиль","👤 Профиль"],["Информация","ℹ️ Инфо"]];
 
 var INFO = "<div class='name' style='font-size:18px;margin-bottom:8px'>О магазине 888.shop</div>"
  + "<p style='margin:0 0 10px;line-height:1.5'>888.shop — многоцелевой магазин: в одном месте собраны разные товары и услуги. Магазин был придуман и основан в 2026 году.</p>"
@@ -468,7 +490,7 @@ function buildIndex(){
     var brand="";
     DATA[k].forEach(function(p,i){
       if(p[0]==="#"){brand=p[1];return;}
-      out.push({id:k+"|"+i,tab:k,p:p,text:(p[0]+" "+p[2]+" "+brand+" "+k+" "+(SYN[brand]||"")+(k==="_el"?" электроника телефон смартфон планшет ноутбук консоль":"")).toLowerCase()});
+      out.push({id:k+"|"+i,tab:k,p:p,text:(p[0]+" "+p[2]+" "+brand+" "+k+" "+(SYN[brand]||"")+(k==="_el"?" электроника телефон смартфон планшет ноутбук консоль":(k==="_num"?" номер телефона красивый золотой мегафон":""))).toLowerCase()});
     });
   });
   return out;
@@ -500,7 +522,7 @@ function renderChat(){
     var s='<div class="msg '+m.who+'">'+esc(m.text);
     (m.items||[]).forEach(function(id){
       var p=find(id),q=qtyOf(id);
-      s+='<div class="res"><div class="thumb">'+pic(p[1])+'</div><div class="t"><div class="name">'+esc(p[0])+'</div><div class="price">'+money(p[3])+'</div></div><div class="b"><button class="btn alt" data-act="tab" data-id="'+esc(id.split("|")[0]==="_el"?"Электроника":id.split("|")[0])+'">Открыть</button><button class="btn" data-act="add" data-id="'+esc(id)+'">'+(q?'В корзине: '+q:'В корзину')+'</button></div></div>';
+      s+='<div class="res"><div class="thumb">'+pic(p[1])+'</div><div class="t"><div class="name">'+esc(p[0])+'</div><div class="price">'+money(p[3])+'</div></div><div class="b"><button class="btn alt" data-act="tab" data-id="'+esc(({"_el":"Электроника","_num":"Номера"})[id.split("|")[0]]||id.split("|")[0])+'">Открыть</button><button class="btn" data-act="add" data-id="'+esc(id)+'">'+(q?'В корзине: '+q:'В корзину')+'</button></div></div>';
     });
     (m.tabs||[]).forEach(function(k){
       s+='<div class="res"><div class="t"><div class="name">Раздел «'+esc(k)+'»</div></div><div class="b"><button class="btn alt" data-act="tab" data-id="'+esc(k)+'">Открыть</button></div></div>';
@@ -828,11 +850,12 @@ function renderCabinet(){
   var news=NEWS.slice().reverse().map(function(n){var nw=!ACT.read[n.id]; return '<div class="card wide nw"><div class="nh"><span class="tg">'+esc(n.tag)+'</span>'+(nw?'<i class="dotn"></i>':'')+'<small>'+esc(n.d)+'</small></div><div class="name">'+esc(n.t)+'</div><div class="meta">'+esc(n.x)+'</div></div>';}).join("");
   var ev=ACT.ev.slice().reverse().slice(0,8).map(function(e){return '<div class="te">'+esc(e.x)+'<small>'+ago(e.t)+'</small></div>';}).join("")||'<div class="meta">Пока пусто: ваши действия появятся здесь.</div>';
   gridEl.innerHTML='<div class="card wide pf"><div class="av2">'+init+'</div><div class="pi"><div class="name" style="font-size:18px">'+esc(REG.name)+'</div><div class="meta">'+esc(REG.contact)+'</div></div></div>'
-   +'<div class="sg"><div class="sc"><b>'+BON.bal+'</b><span class="meta">бонусов'+(BON.pend?' · ожидают '+BON.pend:'')+'</span></div><div class="sc"><b>'+totals().n+'</b><span class="meta">в корзине</span></div><div class="sc"><b>'+ACT.orders+'</b><span class="meta">заказов отправлено</span></div><div class="sc"><b>'+ACT.g+'</b><span class="meta">игр сыграно</span></div></div>'
+   +'<div class="sg"><div class="sc"><b data-cnt="'+BON.bal+'">0</b><span class="meta">бонусов'+(BON.pend?' · ожидают '+BON.pend:'')+'</span></div><div class="sc"><b data-cnt="'+totals().n+'">0</b><span class="meta">в корзине</span></div><div class="sc"><b data-cnt="'+ACT.orders+'">0</b><span class="meta">заказов отправлено</span></div><div class="sc"><b data-cnt="'+ACT.g+'">0</b><span class="meta">игр сыграно</span></div></div>'
    +'<h3 class="sec">Ваши интересы</h3><div class="card wide"><div class="vr" style="margin:0">'+(it.length?it.map(function(x){return '<span class="vc on" style="cursor:default">'+esc(x[0])+' · '+x[1]+'</span>';}).join(""):'<span class="meta">Пока пусто: загляните в каталог.</span>')+'</div></div>'
    +'<h3 class="sec">Новости магазина</h3>'+news
    +'<h3 class="sec">Ваша активность</h3><div class="card wide">'+ev+'</div>'
    +'<button class="btn" style="grid-column:1/-1;margin-top:8px" data-act="msg" data-msg="'+esc("Здравствуйте! Я зарегистрирован в 888.shop. Имя: "+REG.name+", контакт: "+REG.contact)+'">Сообщить продавцу</button><button class="btn alt" style="grid-column:1/-1" data-act="unreg">Выйти и удалить данные</button><div class="note" style="grid-column:1/-1">Данные и активность хранятся только на вашем телефоне.</div>';
+  Array.prototype.forEach.call(gridEl.querySelectorAll("[data-cnt]"),function(e){countUp(e,+e.dataset.cnt);});
   NEWS.forEach(function(n){ACT.read[n.id]=1;}); saveAct();
 }
 
@@ -849,13 +872,65 @@ function renderInfo(){
    +'<button class="btn" style="grid-column:1/-1;margin-top:8px" data-act="msg" data-msg="Здравствуйте! У меня вопрос по магазину.">Написать продавцу</button>';
   Array.prototype.forEach.call(gridEl.querySelectorAll("[data-cnt]"),function(e){countUp(e,+e.dataset.cnt);});
 }
+
+var NUM_G=["Золото МегаФон · 7777","Все номера"];
+var NUMS=[["+7 901 808-77-77",99000,0,"9018087777"],["+7 905 595-77-77",75000,0,"9055957777"],["+7 923 012-77-77",40000,0,"9230127777"],["+7 925 114-77-77",60000,0,"9251147777"],["+7 925 244-77-77",70000,0,"9252447777"],["+7 925 279-77-77",45000,0,"9252797777"],["+7 925 299-77-77",80000,0,"9252997777"],["+7 925 755-77-77",120000,0,"9257557777"],["+7 925 839-77-77",40000,0,"9258397777"],["+7 926 359-77-77",35000,0,"9263597777"],["+7 926 524-77-77",35000,0,"9265247777"],["+7 926 635-77-77",40000,0,"9266357777"],["+7 926 661-77-77",99000,0,"9266617777"],["+7 926 846-77-77",40000,0,"9268467777"],["+7 926 851-77-77",35000,0,"9268517777"],["+7 926 991-77-77",99000,0,"9269917777"],["+7 926 998-77-77",50000,0,"9269987777"],["+7 929 570-77-77",100000,0,"9295707777"],["+7 929 614-77-77",40000,0,"9296147777"],["+7 929 991-77-77",155000,0,"9299917777"],["+7 930 026-77-77",55000,0,"9300267777"],["+7 999 999-99-10",10000000,1,"9999999910"],["+7 919 333-33-33",5000000,1,"9193333333"],["+7 900 888-88-80",2600000,1,"9008888880"],["+7 999 999-99-27",3500000,1,"9999999927"],["+7 900 808-88-88",2000000,1,"9008088888"],["+7 900 800-80-80",2000000,1,"9008008080"],["+7 900 800-08-08",2000000,1,"9008000808"],["+7 900 800-80-08",2000000,1,"9008008008"],["+7 900 899-99-99",1600000,1,"9008999999"],["+7 900 880-00-00",1600000,1,"9008800000"],["+7 900 800-80-00",600000,1,"9008008000"],["+7 900 800-00-07",600000,1,"9008000007"],["+7 900 888-08-08",2000000,1,"9008880808"],["+7 900 888-88-08",800000,1,"9008888808"],["+7 900 888-80-88",600000,1,"9008888088"],["+7 900 888-08-88",1000000,1,"9008880888"],["+7 900 888-77-77",1000000,1,"9008887777"],["+7 900 888-99-99",1000000,1,"9008889999"],["+7 900 878-88-88",1000000,1,"9008788888"],["+7 900 880-88-88",1000000,1,"9008808888"],["+7 900 887-77-77",1000000,1,"9008877777"],["+7 900 889-99-99",1000000,1,"9008899999"],["+7 960 966-66-66",650000,1,"9609666666"],["+7 900 888-80-80",600000,1,"9008888080"],["+7 900 888-80-08",500000,1,"9008888008"],["+7 900 888-80-00",500000,1,"9008888000"],["8 800 555-33-66",450000,1,"8005553366"],["+7 900 888-00-08",500000,1,"9008880008"],["+7 900 888-00-88",300000,1,"9008880088"],["+7 900 800-00-88",300000,1,"9008000088"],["+7 900 800-08-88",300000,1,"9008000888"],["+7 900 880-08-00",300000,1,"9008800800"],["+7 900 880-08-08",300000,1,"9008800808"],["+7 902 220-20-20",220000,1,"9022202020"],["+7 906 000-06-66",210000,1,"9060000666"],["+7 999 009-99-06",60000,1,"9990099906"],["+7 999 050-66-66",50000,1,"9990506666"],["+7 999 006-33-33",50000,1,"9990063333"],["+7 969 969-23-23",50000,1,"9699692323"],["+7 969 969-20-20",50000,1,"9699692020"],["+7 969 969-80-80",50000,1,"9699698080"],["+7 969 969-79-79",50000,1,"9699697979"],["+7 969 969-64-64",50000,1,"9699696464"],["+7 969 969-46-46",50000,1,"9699694646"],["+7 969 969-45-45",50000,1,"9699694545"],["+7 921 555-50-05",50000,1,"9215555005"],["+7 999 052-66-66",45000,1,"9990526666"],["+7 920 333-35-55",45000,1,"9203333555"],["+7 999 069-55-55",40000,1,"9990695555"],["+7 999 052-11-11",40000,1,"9990521111"],["+7 999 038-33-33",35000,1,"9990383333"],["+7 999 025-66-66",35000,1,"9990256666"],["+7 999 031-44-44",35000,1,"9990314444"],["+7 999 031-66-66",35000,1,"9990316666"],["+7 999 034-22-22",35000,1,"9990342222"],["+7 999 035-22-22",35000,1,"9990352222"],["+7 999 035-44-44",35000,1,"9990354444"],["+7 999 035-66-66",35000,1,"9990356666"],["+7 999 036-22-22",35000,1,"9990362222"],["+7 999 036-44-44",35000,1,"9990364444"],["+7 999 036-55-55",35000,1,"9990365555"],["+7 999 037-44-44",35000,1,"9990374444"],["+7 999 061-33-33",35000,1,"9990613333"],["+7 999 062-33-33",35000,1,"9990623333"],["+7 999 062-55-55",35000,1,"9990625555"],["+7 999 064-33-33",35000,1,"9990643333"],["+7 999 067-33-33",35000,1,"9990673333"],["+7 999 197-22-22",35000,1,"9991972222"],["+7 999 197-33-33",35000,1,"9991973333"],["+7 999 197-55-55",35000,1,"9991975555"],["+7 999 198-11-11",35000,1,"9991981111"],["+7 999 198-22-22",35000,1,"9991982222"],["+7 999 198-33-33",35000,1,"9991983333"],["+7 999 198-44-44",35000,1,"9991984444"],["+7 999 198-55-55",35000,1,"9991985555"],["+7 931 626-88-88",30000,1,"9316268888"],["+7 929 111-16-16",30000,1,"9291111616"],["+7 929 111-41-41",30000,1,"9291114141"],["+7 929 111-61-61",30000,1,"9291116161"],["+7 929 111-81-81",30000,1,"9291118181"],["+7 929 111-91-91",30000,1,"9291119191"],["+7 931 222-24-24",30000,1,"9312222424"],["+7 931 222-27-27",30000,1,"9312222727"],["+7 931 222-32-32",30000,1,"9312223232"],["+7 931 332-00-00",30000,1,"9313320000"],["+7 931 999-29-29",30000,1,"9319992929"],["+7 931 999-59-59",30000,1,"9319995959"],["+7 932 262-99-99",30000,1,"9322629999"],["+7 933 565-99-99",30000,1,"9335659999"],["+7 980 411-11-18",25000,1,"9804111118"],["+7 921 111-14-14",25000,1,"9211111414"],["+7 921 111-41-41",25000,1,"9211114141"],["+7 921 111-61-61",25000,1,"9211116161"],["+7 920 666-26-26",22500,1,"9206662626"],["+7 969 893-11-11",20000,1,"9698931111"],["+7 969 895-11-11",20000,1,"9698951111"],["+7 920 667-77-66",20000,1,"9206677766"],["+7 966 999-23-23",20000,1,"9669992323"],["+7 939 999-52-52",17500,1,"9399995252"],["+7 977 000-45-45",17500,1,"9770004545"],["+7 977 000-42-42",17500,1,"9770004242"],["+7 977 000-59-59",17500,1,"9770005959"],["+7 939 111-26-26",17500,1,"9391112626"],["+7 995 459-22-22",17500,1,"9954592222"],["+7 999 069-79-79",15000,1,"9990697979"],["+7 999 009-99-84",15000,1,"9990099984"],["+7 999 009-99-78",15000,1,"9990099978"],["+7 999 009-99-61",15000,1,"9990099961"],["+7 999 009-99-54",15000,1,"9990099954"],["+7 999 009-99-25",15000,1,"9990099925"],["+7 938 080-03-03",15000,1,"9380800303"],["+7 931 377-73-77",15000,1,"9313777377"],["+7 999 009-09-53",13000,1,"9990090953"],["+7 999 009-09-85",13000,1,"9990090985"],["+7 999 091-30-09",13000,1,"9990913009"],["+7 920 333-13-31",13000,1,"9203331331"],["+7 920 311-13-31",13000,1,"9203111331"]];
+DATA["_num"]=NUMS.map(function(n){return [n[0],"📞",NUM_G[n[2]],n[1]];});
+var NUM={f:"all",q:"",s:"desc"};
+function fmtNum(x){return esc(x.slice(0,-5))+'<em>'+esc(x.slice(-5))+'</em>';}
+function nbtn(id){return qtyOf(id)?'<button class="nb on" data-act="dec" data-id="'+esc(id)+'">✓ В корзине</button>':'<button class="nb" data-act="add" data-id="'+esc(id)+'">В корзину</button>';}
+function renderNumList(){
+  var q=NUM.q.replace(/\D/g,""), f=NUM.f;
+  function ok(n){ if(q&&n[3].indexOf(q)<0) return false; var p=n[1]; if(f==="lo") return p<=50000; if(f==="mid") return p>50000&&p<=200000; if(f==="hi") return p>200000; return true; }
+  var out="";
+  NUM_G.forEach(function(g,gi){
+    var L=NUMS.map(function(n,i){return [n[0],n[1],n[2],n[3],i];}).filter(function(n){return n[2]===gi&&ok(n);});
+    L.sort(function(a,b){return NUM.s==="asc"?a[1]-b[1]:b[1]-a[1];});
+    if(!L.length) return;
+    out+='<div class="gh">'+esc(g)+' · '+L.length+'</div><div class="grp">'+L.map(function(n){return '<div class="nrow"><div class="nl"><div class="nn">'+fmtNum(n[0])+'</div><div class="np">'+money(n[1])+'</div></div>'+nbtn("_num|"+n[4])+'</div>';}).join("")+'</div>';
+  });
+  var el=document.getElementById("nlist"); if(el) el.innerHTML=out||'<div class="empty">Ничего не найдено. Закажите подбор, мы найдём номер под вас.</div>';
+}
+function renderNumbers(){
+  var F=[["all","Все"],["lo","до 50 т"],["mid","50–200 т"],["hi","от 200 т"]];
+  gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">📱 Красивые мобильные номера</div><div class="meta" style="margin:4px 0 12px;line-height:1.5">Выберите номер из списка или закажите подбор: похожий на ваш, под гос. номер автомобиля, под значимую дату, с любимыми цифрами, с любой комбинацией или просто классный.</div><button class="btn" data-act="msg" data-msg="Здравствуйте! Хочу подобрать красивый номер телефона.">Заказать подбор</button></div>'
+   +'<div class="wide gm">'+F.map(function(x){return '<button class="gchip'+(NUM.f===x[0]?' on':'')+'" data-act="nf" data-id="'+x[0]+'">'+x[1]+'</button>';}).join("")+'<button class="gchip" data-act="nsort">'+(NUM.s==="asc"?"↑ Дешевле":"↓ Дороже")+'</button></div>'
+   +'<div class="fld" style="grid-column:1/-1;margin:0"><input id="ns" placeholder="Поиск по цифрам" inputmode="numeric" autocomplete="off" value="'+esc(NUM.q)+'"></div>'
+   +'<div id="nlist" style="grid-column:1/-1"></div>'
+   +'<div class="card wide"><div class="name">Что мы подбираем</div><div class="vr" style="margin:10px 0 0"><span class="vc on" style="cursor:default">✅ Похожий на ваш</span><span class="vc on" style="cursor:default">✅ Под гос. номер</span><span class="vc on" style="cursor:default">✅ Под значимую дату</span><span class="vc on" style="cursor:default">✅ С любимыми цифрами</span><span class="vc on" style="cursor:default">✅ Любая комбинация</span><span class="vc on" style="cursor:default">✅ Просто классный</span></div></div>';
+  renderNumList();
+}
+
+var NIC=[["🚬","Сигареты","Список марок и цен ниже","Здравствуйте! Хочу уточнить наличие сигарет."],["💨","Кальянный табак","Уточнить наличие","Здравствуйте! Хочу уточнить наличие кальянного табака."],["🔥","Кальяны и угли","Уточнить наличие","Здравствуйте! Хочу уточнить наличие кальянов и углей."],["🟫","Сигары и трубочный табак","Уточнить наличие","Здравствуйте! Хочу уточнить наличие сигар и трубочного табака."],["⚡","Электронные сигареты","Уточнить наличие","Здравствуйте! Хочу уточнить наличие электронных сигарет."],["🧪","Жидкости и картриджи","Уточнить наличие","Здравствуйте! Хочу уточнить наличие жидкостей и картриджей."],["🧰","Зажигалки и аксессуары","Уточнить наличие","Здравствуйте! Хочу уточнить наличие аксессуаров."]];
+function renderNicotine(){
+  gridEl.innerHTML='<div class="nhero"><div class="n18">18+</div><div><div class="name" style="font-size:18px">Никотин и курительные</div><div class="meta" style="margin-top:4px;line-height:1.45">Витрина для совершеннолетних. Заказ и оплата через сайт не принимаются: наличие и цены уточняйте у продавца. Курение вредит вашему здоровью.</div></div></div>'
+   +'<div class="gh">Категории</div><div class="grp">'+NIC.map(function(c){return '<button class="tile" data-act="msg" data-msg="'+esc(c[3])+'"><span class="ti">'+c[0]+'</span><span class="tx"><span class="tn">'+esc(c[1])+'</span><span class="td">'+esc(c[2])+'</span></span><span class="chev">›</span></button>';}).join("")+'</div>'
+   +cigList();
+}
+
+function ripple(b,e){
+  if(!b||b.tagName!=="BUTTON"||b.closest("#bnav")||b.classList.contains("fab")) return;
+  if(getComputedStyle(b).position==="static") return;
+  var r=b.getBoundingClientRect(), d=Math.max(r.width,r.height)*1.3, s=document.createElement("span");
+  s.className="rpl"; s.style.cssText="width:"+d+"px;height:"+d+"px;left:"+((e.clientX||r.left+r.width/2)-r.left-d/2)+"px;top:"+((e.clientY||r.top+r.height/2)-r.top-d/2)+"px";
+  b.appendChild(s); setTimeout(function(){if(s.parentNode) s.parentNode.removeChild(s);},650);
+}
+function flyTo(src){
+  var tg2=document.querySelector('#bnav [data-id="Корзина"] span');
+  if(!src||!tg2||!src.getBoundingClientRect||!src.animate) return;
+  var a=src.getBoundingClientRect(), b=tg2.getBoundingClientRect(), d=document.createElement("i"); d.className="fly";
+  d.style.left=(a.left+a.width/2-9)+"px"; d.style.top=(a.top+a.height/2-9)+"px"; document.body.appendChild(d);
+  var dx=b.left+b.width/2-(a.left+a.width/2), dy=b.top+b.height/2-(a.top+a.height/2);
+  var an=d.animate([{transform:"translate(0,0) scale(1)",opacity:1},{transform:"translate("+dx*0.55+"px,"+(dy*0.55-70)+"px) scale(.9)",opacity:1,offset:.55},{transform:"translate("+dx+"px,"+dy+"px) scale(.3)",opacity:.25}],{duration:650,easing:"cubic-bezier(.4,.1,.3,1)"});
+  an.onfinish=function(){if(d.parentNode) d.parentNode.removeChild(d);};
+}
 var AGE18=["Табак","Алкоголь","Вкусняшки"];
 var gateFor="Табак";
 function renderGate(){
   var t=gateFor==="Алкоголь"?"Здесь представлена алкогольная продукция. Нажимая «Мне есть 18», вы подтверждаете свой возраст. Чрезмерное употребление алкоголя вредит вашему здоровью.":(gateFor==="Вкусняшки"?"Здесь могут быть сладости с алкоголем, например конфеты с коньяком. Нажимая «Мне есть 18», вы подтверждаете свой возраст.":"Здесь представлена табачная и никотиновая продукция. Нажимая «Мне есть 18», вы подтверждаете свой возраст. Курение вредит вашему здоровью.");
   gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">🔞 Раздел для лиц старше 18 лет</div><div class="meta" style="margin:6px 0 14px;font-size:14px;line-height:1.5">'+t+'</div><button class="btn" data-act="age">Мне есть 18</button><button class="btn alt" style="margin-top:8px" data-act="tab" data-id="Главная">Вернуться</button></div>';
 }
-var HOME=[["Каталог",[["Электроника","📱","Электроника","Телефоны, планшеты, ноутбуки, консоли"],["Одежда","👕","Одежда","Футболки, штаны, майки"]]],["Только 18+",[["Табак","🔞","Табак и никотин","Витрина для лиц 18+"],["Алкоголь","🍷","Алкоголь","Витрина для лиц 18+"],["Вкусняшки","🍬","Сладости 18+","Конфеты, в том числе с алкоголем"]]],["Услуги",[["Массаж","💆","Массаж","Запись к мастеру"],["Клубы","🥂","Клубы","Бронь и проходы"],["Номера","📱","Красивые номера","Подбор мобильных номеров"],["Крипто","🪙","Крипто-обмен","В разработке"],["Работа","💼","Работа","Вакансии"]]],["Развлечения",[["Розыгрыши","🎁","Розыгрыши","Призы от магазина"],["Удача","🎰","Игровой зал","10 игр: слоты, блэкджек, мины"]]],["Мой аккаунт",[["Корзина","🛒","Корзина","Ваши покупки"],["Бонусы","⭐","Бонусы","Баллы за покупки"],["Профиль","👤","Профиль","Регистрация и данные"],["Информация","ℹ️","О магазине","Кто мы и как заказать"]]]];
+var HOME=[["Каталог",[["Электроника","📱","Электроника","Телефоны, планшеты, ноутбуки, консоли"],["Одежда","👕","Одежда","Футболки, штаны, майки"]]],["Только 18+",[["Табак","🔞","Никотин и курительные","Витрина для лиц 18+"],["Алкоголь","🍷","Алкоголь","Витрина для лиц 18+"],["Вкусняшки","🍬","Сладости 18+","Конфеты, в том числе с алкоголем"]]],["Услуги",[["Массаж","💆","Массаж","Запись к мастеру"],["Клубы","🥂","Клубы","Бронь и проходы"],["Номера","📱","Красивые номера","Подбор мобильных номеров"],["Крипто","🪙","Крипто-обмен","В разработке"],["Работа","💼","Работа","Вакансии"]]],["Развлечения",[["Розыгрыши","🎁","Розыгрыши","Призы от магазина"],["Удача","🎰","Игровой зал","10 игр: слоты, блэкджек, мины"]]],["Мой аккаунт",[["Корзина","🛒","Корзина","Ваши покупки"],["Бонусы","⭐","Бонусы","Баллы за покупки"],["Профиль","👤","Профиль","Регистрация и данные"],["Информация","ℹ️","О магазине","Кто мы и как заказать"]]]];
 function renderHome(){
   var b='<div class="card wide banner"><div><div class="name" style="font-size:16px">⭐ Бонусы: '+BON.bal+'</div><div class="meta">1 бонус = 1 ₽ скидки в корзине</div></div>'
    +(BON.last!==today()?'<button class="btn" style="width:auto" data-act="daily">+10 сегодня</button>':'<button class="btn alt" style="width:auto" data-act="tab" data-id="Бонусы">Открыть</button>')+'</div>';
@@ -874,6 +949,8 @@ function show(k,quiet){
   if(AGE18.indexOf(k)>=0&&!ageOK){gateFor=k;renderGate();}
   else if(k==="Главная") renderHome();
   else if(k==="Электроника") renderElectronics();
+  else if(k==="Номера") renderNumbers();
+  else if(k==="Табак") renderNicotine();
   else if(DATA[k]) renderProducts(k);
   else if((k==="Табак"||k==="Алкоголь")&&!ageOK){gateFor=k;renderGate();}
   else if(ACTIONS[k]) renderActions(k);
@@ -919,6 +996,8 @@ document.addEventListener("click",function(e){
   }
   var t=el.closest("[data-act]"); if(!t) return;
   var a=t.dataset.act, id=t.dataset.id;
+  try{ripple(t,e);}catch(x){}
+  try{if(tg&&tg.HapticFeedback){if(a==="add"||a==="inc") tg.HapticFeedback.impactOccurred("light"); else if(a==="tab") tg.HapticFeedback.selectionChanged();}}catch(x){}
   if(a==="unzoom") document.getElementById("lb").classList.remove("open");
   else if(a==="age"){ageOK=true;show(gateFor);}
   else if(a==="quick") ask(t.dataset.q);
@@ -926,7 +1005,7 @@ document.addEventListener("click",function(e){
   else if(a==="chatclose") closeChat();
   else if(a==="chatbg"){if(el===t) closeChat();}
   else if(a==="tab"){closeChat();show(id);window.scrollTo(0,0);}
-  else if(a==="add"||a==="inc") setQty(id,qtyOf(id)+1);
+  else if(a==="add"||a==="inc"){flyTo(t);setQty(id,qtyOf(id)+1);}
   else if(a==="dec") setQty(id,qtyOf(id)-1);
   else if(a==="pay") checkout();
   else if(a==="msg") openSeller(t.dataset.msg);
@@ -943,6 +1022,8 @@ document.addEventListener("click",function(e){
   else if(a==="ttt"){tttMove(+id);renderGames();}
   else if(a==="tttnew"){ttt=tNew();renderGames();}
   else if(a==="chips"){CH.n=1000;renderGames();}
+  else if(a==="nf"){NUM.f=id;renderNumbers();}
+  else if(a==="nsort"){NUM.s=NUM.s==="asc"?"desc":"asc";renderNumbers();}
   else if(a==="elc"){ELS.c=+id;track("el:"+EL_CAT[ELS.c].c);renderElectronics();}
   else if(a==="elv"){var ix=id.lastIndexOf("|");ELS.sel[id.slice(0,ix)]=+id.slice(ix+1);var y0=window.scrollY;renderElectronics();window.scrollTo(0,y0);}
   else if(a==="claim"){BON.bal+=BON.pend;BON.pend=0;saveBonus();show(cur);}
@@ -981,7 +1062,7 @@ function cigFilter(v){
     d.style.display=hit?"":"none"; d.open=!!v&&hit>0;
   });
 }
-document.addEventListener("input",function(e){ if(e.target&&e.target.id==="cs") cigFilter(e.target.value); });
+document.addEventListener("input",function(e){ if(e.target&&e.target.id==="cs") cigFilter(e.target.value); if(e.target&&e.target.id==="ns"){NUM.q=e.target.value;renderNumList();} });
 document.addEventListener("change",function(e){var t=e.target; if(t&&t.classList&&t.classList.contains("vsel")){ELS.sel[t.dataset.key]=+t.value;var y=window.scrollY;renderElectronics();window.scrollTo(0,y);}});
 show("Главная");
 </script>
