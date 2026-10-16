@@ -318,6 +318,29 @@ body::before{inset:-12%;animation:drift 22s ease-in-out infinite alternate}
 #bind b{width:30px;height:3px;border-radius:3px;background:var(--btn)}
 .bnav button.on::before{display:none}
 @media (prefers-reduced-motion:reduce){#grid{transition:none}#bind{transition:none}}
+/* ---- request sheet + richer motion ---- */
+html{scroll-behavior:smooth}
+#req{position:fixed;inset:0;z-index:26;background:rgba(2,6,12,.6);display:none;align-items:flex-end}
+#req.open{display:flex;animation:cfade .25s ease}
+.rpanel{background:var(--bg);width:100%;border-radius:26px 26px 0 0;padding:6px 16px calc(18px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+#req.open .rpanel{animation:cup .5s cubic-bezier(.22,1,.36,1)}
+.rpanel .chead{padding:14px 0;border-bottom:0}
+.rpanel textarea{width:100%;min-height:112px;resize:none;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--text);font:500 16px/1.4 -apple-system,BlinkMacSystemFont,"SF Pro Text",Arial,sans-serif;transition:border-color .25s ease,box-shadow .25s ease}
+.rpanel textarea:focus,.fld input:focus,.inp input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.fld input,.inp input{transition:border-color .25s ease,box-shadow .25s ease}
+.rv .grp>*,.rv .nrow,.rv .arow{animation:rise3 .6s cubic-bezier(.22,1,.36,1) both}
+.rv .grp>*:nth-child(1){animation-delay:.08s}.rv .grp>*:nth-child(2){animation-delay:.14s}.rv .grp>*:nth-child(3){animation-delay:.2s}.rv .grp>*:nth-child(4){animation-delay:.26s}.rv .grp>*:nth-child(5){animation-delay:.32s}.rv .grp>*:nth-child(6){animation-delay:.38s}.rv .grp>*:nth-child(7){animation-delay:.44s}.rv .grp>*:nth-child(n+8){animation-delay:.5s}
+[data-act=pay]{animation:cta 2.8s ease-in-out infinite}
+@keyframes cta{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 22%,transparent)}}
+.ihero,.nhero{position:relative;overflow:hidden}
+.ihero::after,.nhero::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);transform:translateX(-100%);animation:sheen 5s ease-in-out infinite;pointer-events:none}
+@keyframes sheen{60%,100%{transform:translateX(100%)}}
+.tile .ti,.mdl .ti,.feat .ti{animation:floaty 5s ease-in-out infinite}
+.grp .tile:nth-child(2) .ti{animation-delay:-1.2s}.grp .tile:nth-child(3) .ti{animation-delay:-2.4s}.grp .tile:nth-child(4) .ti{animation-delay:-3.6s}
+@keyframes floaty{50%{transform:translateY(-3px)}}
+.mp .price{animation:pricepop .45s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pricepop{from{opacity:.3;transform:scale(.88)}}
+#toast{transition:opacity .3s ease,transform .45s cubic-bezier(.34,1.56,.64,1)}
 @media (min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media (prefers-reduced-motion:reduce){#wheel{transition:none!important}.tile:active,.btn:active,.tab:active{transform:none}}
 </style>
@@ -328,6 +351,13 @@ body::before{inset:-12%;animation:drift 22s ease-in-out infinite alternate}
 <main class="grid" id="grid"></main>
 <div class="bar hidden" id="bar"><button class="btn" data-act="tab" data-id="Корзина"><span id="bcount"></span><span id="bsum"></span></button></div>
 <nav class="bnav" id="bnav"><i id="bind"><b></b></i><button data-act="tab" data-id="Главная"><span>🏠</span>Главная</button><button data-act="tab" data-id="Удача"><span>🎰</span>Игры</button><button data-act="tab" data-id="Корзина"><span>🛒</span>Корзина<i class="bd" id="bd" style="display:none">0</i></button><button data-act="tab" data-id="Бонусы"><span>⭐</span>Бонусы</button><button data-act="tab" data-id="Профиль"><span>👤</span>Профиль<i class="bd" id="bdp" style="display:none">0</i></button></nav>
+<div id="req" data-act="reqbg"><div class="rpanel">
+<div class="chead"><div class="hx" style="margin-left:0"><div class="h1" id="rqt">Запрос</div><div class="h2">Напишите, что хотите найти, и мы подберём</div></div><button class="x" data-act="reqclose" aria-label="Закрыть">✕</button></div>
+<textarea id="rq" placeholder="Например: название духов, объём, нотки аромата или ссылка на фото" rows="4"></textarea>
+<div class="fld" style="margin:10px 0 0"><input id="rb" placeholder="Бюджет, если важно (необязательно)" autocomplete="off"></div>
+<div id="rqe" class="note" style="color:var(--accent);min-height:16px"></div>
+<button class="btn" data-act="reqsend">Отправить продавцу</button>
+</div></div>
 <div id="toast"></div>
 <div id="fx"></div>
 <button class="fab" id="fab" data-act="chat" aria-label="Помощник"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M11 2l2.3 6.7L20 11l-6.7 2.3L11 20l-2.3-6.7L2 11l6.7-2.3z"/><path d="M19 14l1 2.7 2.7 1-2.7 1-1 2.7-1-2.7-2.7-1 2.7-1z" opacity=".75"/></svg></button>
@@ -396,14 +426,14 @@ var ACTIONS = {
     ["Ром и текила","🍹","Цена по запросу","Уточнить наличие","Здравствуйте! Хочу уточнить наличие рома и текилы."],
     ["Пиво и сидр","🍺","Цена по запросу","Уточнить наличие","Здравствуйте! Хочу уточнить наличие пива."]
   ]},
-  "Косметика": {intro:"Косметика и парфюм. Подбор и наличие уточняйте у продавца, список товаров будет пополняться.", items:[
-    ["Женская парфюмерия","🌸","Духи и туалетная вода","Подобрать","Здравствуйте! Хочу подобрать женский парфюм."],
-    ["Мужская парфюмерия","🧴","Духи и туалетная вода","Подобрать","Здравствуйте! Хочу подобрать мужской парфюм."],
-    ["Унисекс и нишевая парфюмерия","✨","Редкие и авторские ароматы","Подобрать","Здравствуйте! Интересует нишевая парфюмерия."],
-    ["Уход за лицом и телом","🧖","Кремы, сыворотки, маски","Подобрать","Здравствуйте! Хочу подобрать уходовую косметику."],
-    ["Декоративная косметика","💄","Макияж на каждый день и на выход","Подобрать","Здравствуйте! Интересует декоративная косметика."],
-    ["Волосы","🧼","Шампуни, маски, стайлинг","Подобрать","Здравствуйте! Хочу подобрать средства для волос."],
-    ["Подарочные наборы","🎁","Парфюм и уход в подарок","Подобрать","Здравствуйте! Хочу подобрать подарочный набор."]
+  "Косметика": {req:true, intro:"Вся косметика и парфюм идут по запросу клиента. Нажмите на категорию и напишите, что именно хотите, мы найдём и пришлём варианты.", items:[
+    ["Женская парфюмерия","🌸","По запросу клиента: напишите, какие духи хотите","Написать запрос","Запрос на подбор: женский парфюм"],
+    ["Мужская парфюмерия","🧴","По запросу клиента: напишите, какие духи хотите","Написать запрос","Запрос на подбор: мужской парфюм"],
+    ["Унисекс и нишевая парфюмерия","✨","По запросу клиента: редкие и авторские ароматы","Написать запрос","Запрос на подбор: нишевая парфюмерия"],
+    ["Уход за лицом и телом","🧖","По запросу клиента: кремы, сыворотки, маски","Написать запрос","Запрос на подбор: уходовая косметика"],
+    ["Декоративная косметика","💄","По запросу клиента: макияж на каждый день и на выход","Написать запрос","Запрос на подбор: декоративная косметика"],
+    ["Волосы","🧼","По запросу клиента: шампуни, маски, стайлинг","Написать запрос","Запрос на подбор: средства для волос"],
+    ["Подарочные наборы","🎁","По запросу клиента: парфюм и уход в подарок","Написать запрос","Запрос на подбор: подарочный набор"]
   ]},
   "Номера": {intro:"Красивые мобильные номера. Подбор и условия уточняйте у продавца.", items:[
     ["Красивые мобильные номера","📱","Золотые и серебряные комбинации, цена по запросу","Подобрать","Здравствуйте! Хочу подобрать красивый мобильный номер."],
@@ -495,7 +525,7 @@ function renderActions(k){
   var a=ACTIONS[k];
   gridEl.innerHTML='<div class="intro">'+esc(a.intro)+'</div>'+a.items.map(function(it){
     if(it[0]==="#") return (k==="Алкоголь"&&it[1]==="Другие категории"?alcBlock():"")+'<h3 class="sec">'+esc(it[1])+'</h3>';
-    return '<div class="card"><div class="pic">'+pic(it[1])+'</div><div class="name">'+esc(it[0])+'</div><div class="meta">'+esc(it[2])+'</div><button class="btn" data-act="msg" data-msg="'+esc(it[4])+'">'+esc(it[3])+'</button></div>';
+    return '<div class="card"><div class="pic">'+pic(it[1])+'</div><div class="name">'+esc(it[0])+'</div><div class="meta">'+esc(it[2])+'</div><button class="btn" data-act="'+(a.req?'req':'msg')+'" data-msg="'+esc(it[4])+'" data-t="'+esc(it[0])+'">'+esc(it[3])+'</button></div>';
   }).join("")+(k==="Табак"?cigList():"");
   if(k==="Алкоголь") renderAlcList();
 }
@@ -980,6 +1010,23 @@ function go(id){
   gridEl.classList.add("lv");
   setTimeout(function(){show(id);window.scrollTo(0,0);gridEl.classList.remove("lv");},140);
 }
+
+var reqCat="";
+function openReq(t){
+  reqCat=t||"Подбор";
+  document.getElementById("rqt").textContent=reqCat;
+  document.getElementById("rq").value=""; document.getElementById("rb").value=""; document.getElementById("rqe").textContent="";
+  document.getElementById("req").classList.add("open");
+  setTimeout(function(){var q=document.getElementById("rq"); if(q) q.focus();},380);
+}
+function closeReq(){document.getElementById("req").classList.remove("open");}
+function sendReq(){
+  var v=document.getElementById("rq").value.trim(), b=document.getElementById("rb").value.trim();
+  if(v.length<2){document.getElementById("rqe").textContent="Напишите, что хотите найти"; return;}
+  logEv("Запрос на подбор: "+reqCat);
+  closeReq(); toast("Открываем чат с продавцом");
+  openSeller("Здравствуйте! Запрос на подбор: "+reqCat+".\nЧто ищу: "+v+(b?"\nБюджет: "+b:""));
+}
 var AGE18=["Табак","Алкоголь","Вкусняшки"];
 var gateFor="Табак";
 function renderGate(){
@@ -1019,7 +1066,7 @@ function show(k,quiet){
   if(!quiet){
     track(k);
     Array.prototype.forEach.call(gridEl.children,function(c,i){c.style.setProperty("--i",Math.min(i,10));c.classList.add("rv");});
-    setTimeout(function(){Array.prototype.forEach.call(gridEl.children,function(c){c.classList.remove("rv");});},1000);
+    setTimeout(function(){Array.prototype.forEach.call(gridEl.children,function(c){c.classList.remove("rv");});},1600);
     var at=tabsEl.querySelector(".tab.active"); if(at&&at.scrollIntoView) at.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"});
   }
   renderBar();
@@ -1059,6 +1106,10 @@ document.addEventListener("click",function(e){
   else if(a==="age"){ageOK=true;show(gateFor);}
   else if(a==="quick") ask(t.dataset.q);
   else if(a==="chat") openChat();
+  else if(a==="req") openReq(t.dataset.t);
+  else if(a==="reqclose") closeReq();
+  else if(a==="reqbg"){if(el===t) closeReq();}
+  else if(a==="reqsend") sendReq();
   else if(a==="chatclose") closeChat();
   else if(a==="chatbg"){if(el===t) closeChat();}
   else if(a==="tab"){closeChat();go(id);}
