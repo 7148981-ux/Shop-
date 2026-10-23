@@ -726,6 +726,18 @@ body.lite .abg[open] .arow2{animation:none}
 .sim b{font:800 12.5px/1.1 ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
 .sim span{font:700 12px -apple-system,Arial,sans-serif;opacity:.85}
 .sim::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 36%,rgba(255,255,255,.34) 48%,transparent 60%);pointer-events:none}
+/* ---- official badge ---- */
+.offc{display:flex;align-items:center;gap:14px;margin:6px 16px calc(92px + env(safe-area-inset-bottom,0px));padding:14px 16px;border-radius:20px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(243,185,166,.12),rgba(120,36,66,.2));box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 3px 0 rgba(0,0,0,.28),0 16px 26px -16px rgba(0,0,0,.7)}
+.offc .seal{flex:none;width:52px;height:52px;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))}
+.offc .seal svg{width:100%;height:100%;display:block;animation:sealturn 22s linear infinite}
+.offc .seal svg circle:first-of-type{transform-origin:26px 26px}
+@keyframes sealturn{to{transform:rotate(360deg)}}
+.offc .seal path{transform-origin:26px 26px}
+.offc .ot{display:flex;flex-direction:column;gap:3px;min-width:0}
+.offc b{font-size:14px;color:var(--text)}
+.offc span{font-size:11.5px;line-height:1.35;color:var(--muted)}
+.offc .ol{align-self:flex-start;margin-top:4px;border:0;background:none;padding:2px 0;color:var(--accent);font:700 12px -apple-system,Arial,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+body.lite .offc .seal svg{animation:none}
 @media (min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media (prefers-reduced-motion:reduce){#wheel{transition:none!important}.tile:active,.btn:active,.tab:active{transform:none}}
 </style>
@@ -737,6 +749,7 @@ body.lite .abg[open] .arow2{animation:none}
 <header class="hero"><div><div class="brand"><span class="b8">888</span><span class="bn">.shop</span></div><div class="tag">Товары, услуги и развлечения в одном месте</div></div><button class="chip" data-act="tab" data-id="Бонусы">⭐ <span id="hbonus">0</span></button></header>
 <nav class="tabs" id="tabs"></nav>
 <main class="grid" id="grid"></main>
+<footer class="offc" id="offc"><div class="seal"><svg viewBox="0 0 52 52" aria-hidden="true"><defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbd9cb"/><stop offset="1" stop-color="#d98a76"/></linearGradient></defs><circle cx="26" cy="26" r="24" fill="none" stroke="url(#sg)" stroke-width="1.6" stroke-dasharray="2.5 3.5"/><circle cx="26" cy="26" r="20" fill="url(#sg)"/><path d="M17 26.5l6.5 6.5L36 19.5" fill="none" stroke="#2a0d12" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="ot"><b>Официальный магазин 888.shop</b><span>Telegram-бот @Shopping888_bot · продавец @OQOQQOOO</span><button class="ol" data-act="tab" data-id="Информация">Оферта и условия</button></div></footer>
 <div class="bar hidden" id="bar"><button class="btn" data-act="tab" data-id="Корзина"><span id="bcount"></span><span id="bsum"></span></button></div>
 <nav class="bnav" id="bnav"><i id="bind"><b></b></i><button data-act="tab" data-id="Главная"><span>🏠</span>Главная</button><button data-act="tab" data-id="Удача"><span>🎰</span>Игры</button><button data-act="tab" data-id="Корзина"><span>🛒</span>Корзина<i class="bd" id="bd" style="display:none">0</i></button><button data-act="tab" data-id="Бонусы"><span>⭐</span>Бонусы</button><button data-act="tab" data-id="Профиль"><span>👤</span>Профиль<i class="bd" id="bdp" style="display:none">0</i></button></nav>
 <div id="pd" data-act="pdbg"><div class="ppanel"><div class="chead"><div class="hx" style="margin-left:0"><div class="h1" id="pdt">Товар</div><div class="h2" id="pdb"></div></div><button class="x" data-act="pdclose" aria-label="Закрыть">✕</button></div><div class="pdbody" id="pdbody"></div></div></div>
