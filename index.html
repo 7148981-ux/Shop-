@@ -317,7 +317,7 @@ body::before{inset:-12%;animation:drift 22s ease-in-out infinite alternate}
 .am{font-size:12.5px;color:var(--muted);line-height:1.35}
 .ap{font-weight:700;font-size:14px;color:var(--accent);white-space:nowrap}
 .arow{position:relative;overflow:hidden}
-#bind{position:absolute;top:0;left:8px;width:calc((100% - 16px)/5);height:3px;display:flex;justify-content:center;pointer-events:none;transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .3s ease}
+#bind{position:absolute;top:0;left:8px;width:calc((100% - 16px)/4);height:3px;display:flex;justify-content:center;pointer-events:none;transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .3s ease}
 #bind b{width:30px;height:3px;border-radius:3px;background:var(--btn)}
 .bnav button.on::before{display:none}
 @media (prefers-reduced-motion:reduce){#grid{transition:none}#bind{transition:none}}
@@ -816,6 +816,75 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 /* ---- narrow screens ---- */
 .nrow>div:first-child{min-width:0}
 .nrow .nn{font-size:clamp(13px,4.3vw,18px);letter-spacing:0;white-space:nowrap}
+/* ---- v2: games, profile, stubs, nicotine ---- */
+.lob{display:grid;grid-template-columns:1fr 1fr;gap:12px;grid-column:1/-1}
+.gtile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px 14px 14px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(150deg,var(--card),rgba(120,36,66,.2));color:var(--text);text-align:left;cursor:pointer;overflow:hidden;font:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 4px 0 rgba(0,0,0,.28),0 16px 26px -16px rgba(0,0,0,.7);animation:rise3 .6s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--i)*.05s)}
+.gtile::after{content:"";position:absolute;right:-20px;top:-20px;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle,rgba(243,185,166,.28),transparent 70%);pointer-events:none}
+.gtile .gi{font-size:34px;line-height:1;filter:drop-shadow(0 6px 8px rgba(0,0,0,.4));transition:transform .4s cubic-bezier(.3,1.5,.5,1)}
+.gtile:active .gi{transform:scale(1.28) rotate(-8deg)}
+.gtile .gt{display:flex;flex-direction:column;gap:3px}.gtile b{font-size:15px}.gtile small{font-size:12px;color:var(--muted);line-height:1.3}
+.gtile.big{grid-column:1/-1;flex-direction:row;align-items:center;gap:16px;padding:18px}.gtile.big .gi{font-size:46px}.gtile.big b{font-size:17px}
+.gback{display:flex;align-items:center;gap:12px;grid-column:1/-1}.gback b{font-size:17px}
+.chsel{display:flex;gap:10px;justify-content:center;margin:8px 0 4px}
+.chp{width:48px;height:48px;border-radius:50%;border:3px dashed rgba(255,255,255,.75);color:#fff;font:800 13px -apple-system,Arial,sans-serif;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.35),inset 0 0 0 3px rgba(0,0,0,.12);transition:transform .25s cubic-bezier(.3,1.5,.5,1),box-shadow .25s}
+.chp.c0{background:#2f7fd0}.chp.c1{background:#b3243f}.chp.c2{background:#2a8a55}.chp.c3{background:#6b3fb0}
+.chp.on{transform:translateY(-5px) scale(1.12);box-shadow:0 0 0 3px #ffd27a,0 9px 0 rgba(0,0,0,.35),inset 0 0 0 3px rgba(0,0,0,.12)}
+.rtab{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin-top:10px;transition:opacity .3s}
+.lock{pointer-events:none;opacity:.55}
+.rcell{position:relative;aspect-ratio:1/1.15;border:0;border-radius:6px;font:700 11px -apple-system,Arial,sans-serif;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.rcell.red{background:#b3243f}.rcell.black{background:#26262d}.rcell.green{background:#1d7a4f}
+.rcell.rzero{grid-column:1/-1;aspect-ratio:auto;height:30px;font-size:13px}
+.rcell:active,.rwb:active{transform:scale(.92)}
+.rcell.hit{box-shadow:0 0 0 2px #ffd27a,0 0 14px #ffd27a;animation:rhit .8s ease-in-out 3}
+@keyframes rhit{50%{transform:scale(1.18)}}
+.rchip{position:absolute;right:-3px;bottom:-4px;min-width:16px;height:16px;padding:0 3px;border-radius:99px;background:#ffd27a;color:#2a0d12;font:800 9px/16px Arial,sans-serif;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.45);pointer-events:none;font-style:normal;animation:chipdrop .28s cubic-bezier(.3,1.6,.5,1)}
+@keyframes chipdrop{from{transform:translateY(-14px) scale(.4);opacity:0}}
+.rout{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.rwb{position:relative;height:42px;border:1px solid var(--line);border-radius:12px;background:var(--tab);color:var(--text);font:700 12px -apple-system,Arial,sans-serif;cursor:pointer}
+.rwb.red{background:#b3243f;color:#fff;border-color:transparent}.rwb.black{background:#26262d;color:#fff;border-color:transparent}
+.rinfo{display:flex;justify-content:space-between;margin:12px 2px 6px;font-size:13px;color:var(--muted)}.rinfo b{color:var(--accent);font-size:15px}
+.pcd{display:inline-flex;align-items:center;justify-content:center;width:50px;height:72px;border-radius:9px;background:#fff;color:#1c1c22;font:800 19px -apple-system,Arial,sans-serif;box-shadow:0 6px 12px -4px rgba(0,0,0,.55)}
+.pcd.red{color:#c0243f}
+.pcd.back{background:repeating-linear-gradient(45deg,#8a1f3b 0 6px,#b13a5a 6px 12px);border:3px solid #fff;color:transparent}
+.pcd.dealt{animation:dealin .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes dealin{from{opacity:0;transform:translate(70px,-90px) rotate(20deg) scale(.6)}}
+.pcd.flipin{animation:cflip .55s ease both}
+@keyframes cflip{from{transform:rotateY(90deg)}}
+.bjt{display:inline-block;margin-left:4px;padding:2px 9px;border-radius:99px;background:rgba(255,255,255,.16);font:800 12px Arial,sans-serif}
+.winpop{position:absolute;left:50%;top:34%;font:800 40px -apple-system,Arial,sans-serif;color:#ffd27a;text-shadow:0 2px 0 #b8741a,0 10px 24px rgba(0,0,0,.5);white-space:nowrap;animation:winpop 1.7s ease-out forwards}
+@keyframes winpop{0%{opacity:0;transform:translate(-50%,20px) scale(.6)}18%{opacity:1;transform:translate(-50%,0) scale(1.15)}70%{opacity:1}100%{opacity:0;transform:translate(-50%,-70px) scale(1)}}
+.reel.hit{animation:hitpulse .7s ease-in-out 3;box-shadow:0 0 0 2px #ffd27a,0 0 22px rgba(255,210,122,.7),inset 0 10px 22px rgba(0,0,0,.28)}
+@keyframes hitpulse{50%{transform:scale(1.07)}}
+.stub{grid-column:1/-1;text-align:center;padding:26px 18px 24px;border-radius:26px;border:1px solid var(--line);background:linear-gradient(150deg,var(--card),rgba(120,36,66,.2));box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 4px 0 rgba(0,0,0,.28),0 20px 30px -18px rgba(0,0,0,.7)}
+.stub .sbadge{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:99px;font:800 11px -apple-system,Arial,sans-serif;letter-spacing:.1em;color:var(--orc);background:color-mix(in srgb,var(--orc) 14%,transparent);border:1px solid color-mix(in srgb,var(--orc) 40%,transparent)}
+.stub .sbadge::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+.stub .sico{display:block;font-size:66px;margin:18px 0 6px;animation:floaty 3.2s ease-in-out infinite;filter:drop-shadow(0 12px 14px rgba(0,0,0,.45))}
+@keyframes floaty{50%{transform:translateY(-9px) rotate(-4deg)}}
+.stub .stt{font-size:21px;font-weight:800;color:var(--text)}.stub .std{font-size:14px;color:var(--muted);line-height:1.5;margin:6px auto 18px;max-width:300px}
+body.lite .stub .sico,body.lite .winpop{animation-duration:0s}
+.nic{display:grid;grid-template-columns:1fr 1fr;gap:12px;grid-column:1/-1}
+.nic-c{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px 14px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(150deg,var(--card),rgba(120,36,66,.2));color:var(--text);text-align:left;cursor:pointer;overflow:hidden;font:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 4px 0 rgba(0,0,0,.28),0 16px 26px -16px rgba(0,0,0,.7);animation:rise3 .6s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--i)*.05s)}
+.nic-c:last-child:nth-child(odd){grid-column:1/-1}
+.nic-i{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;background:rgba(243,185,166,.14);border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 3px 0 rgba(0,0,0,.28);transition:transform .35s cubic-bezier(.3,1.5,.5,1)}
+.nic-c:active .nic-i{transform:scale(1.18) rotate(-6deg)}
+.nic-c b{font-size:14.5px;line-height:1.25}.nic-c small{font-size:12px;color:var(--accent);font-weight:700}
+.pf2{position:relative;display:flex;align-items:center;gap:16px;padding:20px 18px;border-radius:26px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(243,185,166,.18),rgba(120,36,66,.28));box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 5px 0 rgba(0,0,0,.28),0 22px 34px -18px rgba(0,0,0,.75);overflow:hidden}
+.pf2::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(243,185,166,.3),transparent 70%);pointer-events:none}
+.pav{flex:none;width:72px;height:72px;border-radius:50%;padding:3px;background:conic-gradient(#f8c9b9,#e06c8a,#9d7bff,#f8c9b9);box-shadow:0 8px 18px -6px rgba(0,0,0,.6)}
+.pav span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:50%;background:var(--bg);font:800 30px -apple-system,Arial,sans-serif;color:var(--accent)}
+.pin{min-width:0}.pnm2{font-size:20px;font-weight:800;color:var(--text);word-break:break-word}.pct{font-size:13px;color:var(--muted);margin-top:2px;word-break:break-word}
+.pbd{display:inline-block;margin-top:8px;padding:4px 10px;border-radius:99px;font:700 11px -apple-system,Arial,sans-serif;background:rgba(243,185,166,.18);color:var(--accent);border:1px solid var(--line)}
+.pst{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.psc{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 4px;border-radius:18px;border:1px solid var(--line);background:var(--card);text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 3px 0 rgba(0,0,0,.25)}
+.psc i{font-style:normal;font-size:18px}.psc b{font-size:20px;color:var(--accent);font-variant-numeric:tabular-nums}.psc span{font-size:10.5px;color:var(--muted);line-height:1.2}
+.pqa{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pq{display:flex;align-items:center;gap:10px;padding:14px;border-radius:18px;border:1px solid var(--line);background:var(--card);color:var(--text);font:700 14px -apple-system,Arial,sans-serif;cursor:pointer;text-align:left;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 3px 0 rgba(0,0,0,.25)}
+.pq span{font-size:22px}
+.pset .prw{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.pset .prw:last-child{border-bottom:0}
+.pset .prw span{display:flex;flex-direction:column;font-weight:700;font-size:14px}
+.pset .prw small{font-weight:400;font-size:12px;color:var(--muted);margin-top:2px}
+.perks{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}.perks span{padding:10px 12px;border-radius:14px;background:rgba(243,185,166,.1);border:1px solid var(--line);font-size:13px}
 @media (min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media (prefers-reduced-motion:reduce){#wheel{transition:none!important}.tile:active,.btn:active,.tab:active{transform:none}}
 </style>
@@ -824,12 +893,12 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 <div id="prog"></div>
 <div id="bg3d"><i></i><i></i><i></i><i></i><i></i><div class="bgc c1"><b></b><b></b><b></b><b></b><b></b><b></b></div><div class="bgc c2"><b></b><b></b><b></b><b></b><b></b><b></b></div><div class="bgc c3"><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
 <div id="splash"><div class="sp-orbs"><i></i><i></i><i></i><i></i><i></i></div><div class="sp-in"><div class="sp-ring"><svg viewBox="0 0 200 200"><circle class="r1" cx="100" cy="100" r="92"/><circle class="r2" cx="100" cy="100" r="76"/></svg><div class="spc"><b></b><b></b><b></b><b></b><b></b><b></b></div><div class="sp-logo"><b>8</b><b>8</b><b>8</b><span>.shop</span></div></div><div class="sp-tag">Товары, услуги и развлечения</div><div class="sp-bar"><i></i></div><div class="sp-pct" id="sppct">0%</div></div></div>
-<header class="hero"><div><div class="brand"><span class="b8">888</span><span class="bn">.shop</span></div><div class="tag">Товары, услуги и развлечения в одном месте</div></div><button class="chip" data-act="tab" data-id="Бонусы">⭐ <span id="hbonus">0</span></button></header>
+<header class="hero"><div><div class="brand"><span class="b8">888</span><span class="bn">.shop</span></div><div class="tag">Товары, услуги и развлечения в одном месте</div></div></header>
 <nav class="tabs" id="tabs"></nav>
 <main class="grid" id="grid"></main>
 <footer class="offc" id="offc"><div class="seal"><svg viewBox="0 0 52 52" aria-hidden="true"><defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbd9cb"/><stop offset="1" stop-color="#d98a76"/></linearGradient></defs><circle cx="26" cy="26" r="24" fill="none" stroke="url(#sg)" stroke-width="1.6" stroke-dasharray="2.5 3.5"/><circle cx="26" cy="26" r="20" fill="url(#sg)"/><path d="M17 26.5l6.5 6.5L36 19.5" fill="none" stroke="#2a0d12" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="ot"><b>Официальный магазин 888.shop</b><span>Telegram-бот @Shopping888_bot · продавец @OQOQQOOO</span><div class="ols"><button class="ol" data-act="tab" data-id="Информация">Оферта и условия</button><button class="ol" data-act="shop">Поделиться магазином ↗</button></div></div></footer>
 <div class="bar hidden" id="bar"><button class="btn" data-act="tab" data-id="Корзина"><span id="bcount"></span><span id="bsum"></span></button></div>
-<nav class="bnav" id="bnav"><i id="bind"><b></b></i><button data-act="tab" data-id="Главная"><span>🏠</span>Главная</button><button data-act="tab" data-id="Удача"><span>🎰</span>Игры</button><button data-act="tab" data-id="Корзина"><span>🛒</span>Корзина<i class="bd" id="bd" style="display:none">0</i></button><button data-act="tab" data-id="Бонусы"><span>⭐</span>Бонусы</button><button data-act="tab" data-id="Профиль"><span>👤</span>Профиль<i class="bd" id="bdp" style="display:none">0</i></button></nav>
+<nav class="bnav" id="bnav"><i id="bind"><b></b></i><button data-act="tab" data-id="Главная"><span>🏠</span>Главная</button><button data-act="tab" data-id="Удача"><span>🎰</span>Игры</button><button data-act="tab" data-id="Корзина"><span>🛒</span>Корзина<i class="bd" id="bd" style="display:none">0</i></button><button data-act="tab" data-id="Профиль"><span>👤</span>Профиль<i class="bd" id="bdp" style="display:none">0</i></button></nav>
 <div id="pd" data-act="pdbg"><div class="ppanel"><div class="chead"><div class="hx" style="margin-left:0"><div class="h1" id="pdt">Товар</div><div class="h2" id="pdb"></div></div><button class="x" data-act="pdclose" aria-label="Закрыть">✕</button></div><div class="pdbody" id="pdbody"></div></div></div>
 <div id="req" data-act="reqbg"><div class="rpanel">
 <div class="chead"><div class="hx" style="margin-left:0"><div class="h1" id="rqt">Запрос</div><div class="h2">Напишите, что хотите найти, и мы подберём</div></div><button class="x" data-act="reqclose" aria-label="Закрыть">✕</button></div>
@@ -845,7 +914,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 <div id="chat" data-act="chatbg"><div class="cpanel">
 <div class="chead"><div class="av"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M11 2l2.3 6.7L20 11l-6.7 2.3L11 20l-2.3-6.7L2 11l6.7-2.3z"/><path d="M19 14l1 2.7 2.7 1-2.7 1-1 2.7-1-2.7-2.7-1 2.7-1z" opacity=".75"/></svg></div><div class="hx"><div class="h1">Помощник 888</div><div class="h2"><i class="dot"></i>онлайн · найду товар или раздел</div></div><button class="x" data-act="chatclose" aria-label="Закрыть">✕</button></div>
 <div class="cmsgs" id="cmsgs"></div>
-<div class="qk"><button class="gchip" data-act="quick" data-q="Электроника">🎧 Электроника</button><button class="gchip" data-act="quick" data-q="Одежда">👕 Одежда</button><button class="gchip" data-act="quick" data-q="Алкоголь">🍷 Алкоголь</button><button class="gchip" data-act="quick" data-q="Массаж">💆 Массаж</button><button class="gchip" data-act="quick" data-q="Клубы">🥂 Клубы</button><button class="gchip" data-act="quick" data-q="Казино">🎰 Игры</button><button class="gchip" data-act="quick" data-q="Бонусы">⭐ Бонусы</button></div>
+<div class="qk"><button class="gchip" data-act="quick" data-q="Электроника">🎧 Электроника</button><button class="gchip" data-act="quick" data-q="Одежда">👕 Одежда</button><button class="gchip" data-act="quick" data-q="Алкоголь">🍷 Алкоголь</button><button class="gchip" data-act="quick" data-q="Массаж">💆 Массаж</button><button class="gchip" data-act="quick" data-q="Клубы">🥂 Клубы</button><button class="gchip" data-act="quick" data-q="Казино">🎰 Игры</button></div>
 <div class="cin"><div class="inp"><input id="q" placeholder="Что ищете?" autocomplete="off"><button class="btn" data-act="ask">Найти</button></div></div>
 </div></div>
 <div id="lb" data-act="unzoom"><img alt="" id="lbimg"></div>
@@ -965,13 +1034,12 @@ ACTIONS["Алкоголь"].items=[["#","Шампанское · в наличи
   ACTIONS["Алкоголь"].items=[["#","Dom Pérignon"]].concat(dpNew,dp.rows,[["#","Moët & Chandon"]],mo,[["#","Clase Azul"]],ca.rows,[["#","Другие категории"]],oth.rows);
 })();
 
-var TABS = [["Главная","🏠 Главная"],["|"],["Электроника","📱 Электроника"],["Одежда","👕 Одежда"],["Косметика","💄 Косметика и парфюм"],["|"],["Табак","🔞 Никотин 18+"],["Алкоголь","🍷 Алкоголь 18+"],["Вкусняшки","🍬 Сладости 18+"],["|"],["Массаж","💆 Массаж"],["Клубы","🥂 Клубы"],["Номера","📱 Красивые номера"],["Крипто","🪙 Крипто-обмен"],["Баеры","🧳 Баеры"],["Работа","💼 Работа"],["|"],["Избранное","♥ Избранное"],["Новости","📰 Новости"],["Мероприятия","🎃 Мероприятия"],["Розыгрыши","🎁 Розыгрыши"],["Удача","🎰 Игровой зал"],["|"],["Корзина","🛒 Корзина"],["Бонусы","⭐ Бонусы"],["Профиль","👤 Профиль"],["Информация","ℹ️ Инфо"]];
+var TABS = [["Главная","🏠 Главная"],["|"],["Электроника","📱 Электроника"],["Одежда","👕 Одежда"],["Косметика","💄 Косметика и парфюм"],["|"],["Табак","🔞 Никотин 18+"],["Алкоголь","🍷 Алкоголь 18+"],["Вкусняшки","🍬 Сладости 18+"],["|"],["Массаж","💆 Массаж"],["Клубы","🥂 Клубы"],["Номера","📱 Красивые номера"],["Крипто","🪙 Крипто-обмен"],["Баеры","🧳 Баеры"],["Работа","💼 Работа"],["|"],["Избранное","♥ Избранное"],["Новости","📰 Новости"],["Мероприятия","🎃 Мероприятия"],["Розыгрыши","🎁 Розыгрыши"],["Удача","🎰 Игровой зал"],["|"],["Корзина","🛒 Корзина"],["Профиль","👤 Профиль"],["Информация","ℹ️ Инфо"]];
 
 var INFO = "<div class='name' style='font-size:18px;margin-bottom:8px'>О магазине 888.shop</div>"
  + "<p style='margin:0 0 10px;line-height:1.5'>888.shop — многоцелевой магазин: в одном месте собраны разные товары и услуги. Магазин был придуман и основан в 2026 году.</p>"
  + "<p style='margin:0 0 10px;line-height:1.5'>У нас есть интересные и коллекционные товары, электроника, одежда, вкусняшки, игрушки, услуги массажа, бронь и проходы в клубы и раздел с работой.</p>"
  + "<p style='margin:0 0 10px;line-height:1.5'>🎁 Мы часто проводим розыгрыши от магазина, а в «Игровом зале» собраны бесплатные игры: колесо призов, рулетка, слоты, блэкджек, кубики, монетка, крестики-нолики и сапёр. Играем на демо-фишки, без денег.</p>"
- + "<p style='margin:0 0 10px;line-height:1.5'>⭐ Копите бонусы: забирайте ежедневный бонус и тратьте его на скидку в корзине.</p><p style='margin:0 0 10px;line-height:1.5'>🤖 Помощник (круглая кнопка внизу справа) поможет быстро найти нужную вещь в нашем магазине.</p>"
  + "<p style='margin:0;line-height:1.5'>Заказ оформляется через продавца в Telegram: выберите товары, откройте корзину и нажмите «Оплатить».</p>";
 
 var PRIZES = [
@@ -1041,12 +1109,12 @@ function renderCartPage(){
   }).join("");
   var maxUse=Math.min(BON.bal,Math.floor(t.s*0.3)), d=bonusDisc(t);
   var bb=BON.bal>0?'<button class="btn alt" style="margin-top:10px" data-act="usebonus">'+(BON.use?'✅ Бонусы списываются: −'+money(d):'⭐ Списать бонусы: до '+money(maxUse)+' (на балансе '+BON.bal+')')+'</button>':'';
-  gridEl.innerHTML='<div class="card wide">'+rows+bb+(d?'<div class="total" style="padding-bottom:0"><span>Скидка бонусами</span><span>−'+money(d)+'</span></div>':'')+'<div class="total"><span>Итого</span><span>'+money(t.s-d)+'</span></div><button class="btn" data-act="pay">Оплатить</button><button class="btn alt" style="margin-top:8px" data-act="clear">Очистить корзину</button><div class="note">Нажмите на картинку, чтобы рассмотреть её. За заказ начислим 5% бонусами после подтверждения продавцом. Бонусы списываются при нажатии «Оплатить». Заказ уйдёт продавцу в Telegram, оплату и доставку вы согласуете с ним.</div></div>';
+  gridEl.innerHTML='<div class="card wide">'+rows+bb+(d?'<div class="total" style="padding-bottom:0"><span>Скидка бонусами</span><span>−'+money(d)+'</span></div>':'')+'<div class="total"><span>Итого</span><span>'+money(t.s-d)+'</span></div><button class="btn" data-act="pay">Оплатить</button><button class="btn alt" style="margin-top:8px" data-act="clear">Очистить корзину</button><div class="note">Нажмите на картинку, чтобы рассмотреть её. Заказ уйдёт продавцу в Telegram, оплату и доставку вы согласуете с ним.</div></div>';
 }
 
 function stem(w){return w.length>5?w.slice(0,w.length-2):(w.length>3?w.slice(0,w.length-1):w);}
 var SYN={"Dom Pérignon":"шампанское шампань бутылка алкоголь коллекция","Clase Azul":"текила мескаль бутылка алкоголь коллекция"};
-var SECT=[["массаж","Массаж"],["табак","Табак"],["алкогол","Алкоголь"],["шампан","Алкоголь"],["текил","Алкоголь"],["мескал","Алкоголь"],["перин","Алкоголь"],["азул","Алкоголь"],["clase","Алкоголь"],["вино","Алкоголь"],["виски","Алкоголь"],["коньяк","Алкоголь"],["пиво","Алкоголь"],["сигарет","Табак"],["никотин","Табак"],["вейп","Табак"],["кальян","Табак"],["клуб","Клубы"],["слот","Слоты"],["блэкджек","Блэкджек"],["кубик","Кубики"],["кости","Кубики"],["монет","Монетка"],["крестик","Крестики"],["казино","Удача"],["игров","Удача"],["бронь","Клубы"],["столик","Клубы"],["электрон","Электроника"],["гаджет","Электроника"],["игрушк","Игрушки"],["оружи","Игрушки"],["главн","Главная"],["работ","Работа"],["вакан","Работа"],["подработ","Работа"],["розыгр","Розыгрыши"],["конкурс","Розыгрыши"],["удач","Удача"],["колесо","Удача"],["информ","Информация"],["магазин","Информация"],["корзин","Корзина"],["бонус","Бонусы"],["баллы","Бонусы"],["скидк","Бонусы"],["кешбэк","Бонусы"],["рулетк","Рулетка"],["сапер","Сапёр"],["сапёр","Сапёр"],["мины","Мины"],["номер","Номера"],["баер","Баеры"],["байер","Баеры"],["кроссов","Одежда"],["одежд","Одежда"],["худи","Одежда"],["кардиган","Одежда"],["очки","Одежда"],["штан","Одежда"],["футбол","Одежда"],["обув","Одежда"],["мероприят","Мероприятия"],["вечерин","Мероприятия"],["билет","Мероприятия"],["хэллоуин","Мероприятия"],["halloween","Мероприятия"],["парфюм","Косметика"],["духи","Косметика"],["косметик","Косметика"],["помад","Косметика"],["крипт","Крипто"],["профил","Профиль"],["регистр","Профиль"],["сладост","Вкусняшки"],["конфет","Вкусняшки"],["вкусн","Вкусняшки"],["сладк","Вкусняшки"]];
+var SECT=[["массаж","Массаж"],["табак","Табак"],["алкогол","Алкоголь"],["шампан","Алкоголь"],["текил","Алкоголь"],["мескал","Алкоголь"],["перин","Алкоголь"],["азул","Алкоголь"],["clase","Алкоголь"],["вино","Алкоголь"],["виски","Алкоголь"],["коньяк","Алкоголь"],["пиво","Алкоголь"],["сигарет","Табак"],["никотин","Табак"],["вейп","Табак"],["кальян","Табак"],["клуб","Клубы"],["слот","Слоты"],["блэкджек","Блэкджек"],["кубик","Кубики"],["кости","Кубики"],["монет","Монетка"],["крестик","Крестики"],["казино","Удача"],["игров","Удача"],["бронь","Клубы"],["столик","Клубы"],["электрон","Электроника"],["гаджет","Электроника"],["игрушк","Игрушки"],["оружи","Игрушки"],["главн","Главная"],["работ","Работа"],["вакан","Работа"],["подработ","Работа"],["розыгр","Розыгрыши"],["конкурс","Розыгрыши"],["удач","Удача"],["колесо","Удача"],["информ","Информация"],["магазин","Информация"],["корзин","Корзина"],["рулетк","Рулетка"],["сапер","Сапёр"],["сапёр","Сапёр"],["мины","Мины"],["номер","Номера"],["баер","Баеры"],["байер","Баеры"],["кроссов","Одежда"],["одежд","Одежда"],["худи","Одежда"],["кардиган","Одежда"],["очки","Одежда"],["штан","Одежда"],["футбол","Одежда"],["обув","Одежда"],["мероприят","Мероприятия"],["вечерин","Мероприятия"],["билет","Мероприятия"],["хэллоуин","Мероприятия"],["halloween","Мероприятия"],["парфюм","Косметика"],["духи","Косметика"],["косметик","Косметика"],["помад","Косметика"],["крипт","Крипто"],["профил","Профиль"],["регистр","Профиль"],["сладост","Вкусняшки"],["конфет","Вкусняшки"],["вкусн","Вкусняшки"],["сладк","Вкусняшки"]];
 function buildIndex(){
   var out=[];
   Object.keys(DATA).forEach(function(k){
@@ -1110,7 +1178,7 @@ function spin(){
 
 var RW=[0,32,15,19,4,21,2,25,17,34,6,27,13,36,11,30,8,23,10,5,24,16,33,1,20,14,31,9,22,18,29,7,28,12,35,3,26];
 var RED=[1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36];
-var rou={rot:0,br:0,spinning:false,res:null,hist:[]};
+var rou={rot:0,br:0,spinning:false,res:null,hist:[],bets:{},ord:[],last:null,msg:"Сделайте ставки и нажмите «Крутить»"};
 function rcolor(n){return n===0?"green":(RED.indexOf(n)>=0?"red":"black");}
 function rname(n){return n===0?"зелёное (зеро)":(RED.indexOf(n)>=0?"красное":"чёрное");}
 function wheelSvg(){
@@ -1125,29 +1193,53 @@ function wheelSvg(){
   }
   return s+'<circle cx="110" cy="110" r="58" fill="#2b2b30"/><circle cx="110" cy="110" r="14" fill="#d4b86a"/></svg>';
 }
+function rTotal(){var t=0,k;for(k in rou.bets) t+=rou.bets[k]; return t;}
+function rpay(n){var w=0,b=rou.bets,k,a,m;
+  for(k in b){a=b[k];m=0;
+    if(k.charAt(0)==="n"){if(+k.slice(1)===n) m=36;}
+    else if(n>0){
+      if(k==="red"&&RED.indexOf(n)>=0) m=2; else if(k==="black"&&RED.indexOf(n)<0) m=2;
+      else if(k==="even"&&n%2===0) m=2; else if(k==="odd"&&n%2===1) m=2;
+      else if(k==="low"&&n<=18) m=2; else if(k==="high"&&n>=19) m=2;
+      else if(k==="d1"&&n<=12) m=3; else if(k==="d2"&&n>=13&&n<=24) m=3; else if(k==="d3"&&n>=25) m=3;
+    }
+    w+=a*m;}
+  return w;}
 function renderRoulette(){
-  var h='<div class="card wide"><div class="name" style="font-size:18px">Рулетка</div><div class="meta">Классическая европейская рулетка, 0–36. Без ставок и денег: просто крутите и смотрите, что выпадет.</div>'
-   +'<div class="rwrap"><div class="ptr">▼</div><div id="wheel" style="transform:rotate('+rou.rot+'deg)">'+wheelSvg()+'</div><div class="ballw" id="ballw" style="transform:rotate('+rou.br+'deg)"><i class="ball"></i></div></div>'
-   +'<div class="rres" id="rres">'+(rou.spinning?"Крутится…":(rou.res===null?"Нажмите «Крутить»":'Выпало: '+rou.res+' <span class="badge c-'+rcolor(rou.res)+'">'+rname(rou.res)+'</span>'))+'</div>'
-   +'<button class="btn" id="rbtn" data-act="rspin"'+(rou.spinning?' disabled':'')+'>Крутить</button>'
+  var tot=rTotal(), b=rou.bets;
+  function chipOf(k){return b[k]?'<i class="rchip">'+sh(b[k])+'</i>':'';}
+  function cell(n){var c=rcolor(n); return '<button class="rcell '+c+(n===0?' rzero':'')+(rou.res===n&&!rou.spinning?' hit':'')+'" data-act="rbet" data-id="n'+n+'">'+n+chipOf("n"+n)+'</button>';}
+  function wb(k,t,cls){return '<button class="rwb '+(cls||"")+'" data-act="rbet" data-id="'+k+'">'+t+chipOf(k)+'</button>';}
+  var nums=cell(0); [3,2,1].forEach(function(r){for(var c=0;c<12;c++) nums+=cell(c*3+r);});
+  gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">Рулетка</div><div class="meta" style="line-height:1.45">Европейская рулетка. Число ×36, дюжина ×3, красное/чёрное, чёт/нечёт и 1–18/19–36 ×2. Демо-фишки.</div>'
+   +'<div class="rwrap" style="width:min(230px,64vw)"><div class="ptr">▼</div><div id="wheel" style="transform:rotate('+rou.rot+'deg)">'+wheelSvg()+'</div><div class="ballw" id="ballw" style="transform:rotate('+rou.br+'deg)"><i class="ball"></i></div></div>'
+   +'<div class="rres" id="rres">'+esc(rou.msg)+'</div>'
    +(rou.hist.length?'<div class="hist">'+rou.hist.map(function(n){return '<span class="c-'+rcolor(n)+'">'+n+'</span>';}).join("")+'</div>':'')
+   +'<div class="meta" style="margin:10px 0 2px">Выберите фишку и нажимайте на поле</div>'+betRow("rou",[10,50,100,500])
+   +'<div class="rtab'+(rou.spinning?' lock':'')+'" id="rtab">'+nums+'</div>'
+   +'<div class="rout">'+wb("d1","1–12")+wb("d2","13–24")+wb("d3","25–36")+wb("low","1–18")+wb("red","Красное","red")+wb("even","Чёт")+wb("high","19–36")+wb("black","Чёрное","black")+wb("odd","Нечёт")+'</div>'
+   +'<div class="rinfo"><span>Ставка: <b>'+tot+'</b></span><span>Баланс: <b>'+CH.n+'</b></span></div>'
+   +'<div class="row2'+(rou.spinning?' lock':'')+'" id="rctl"><button class="btn alt" data-act="rundo"'+(tot?'':' disabled')+'>↶ Отменить</button><button class="btn alt" data-act="rclr"'+(tot?'':' disabled')+'>Очистить</button>'+(!tot&&rou.last?'<button class="btn alt" data-act="rrep">Повторить</button>':'')+'</div>'
+   +'<button class="btn" id="rbtn" style="margin-top:8px" data-act="rspin"'+((!tot||rou.spinning)?' disabled':'')+'>Крутить'+(tot?' · '+tot:'')+'</button>'
    +'<div class="note">Только для развлечения. Призов и денег нет.</div></div>';
-  gridEl.innerHTML=h;
 }
 function rouletteSpin(){
-  if(rou.spinning) return;
-  rou.spinning=true; rou.res=null;
+  if(rou.spinning) return; var total=rTotal(); if(!total||!wager(total)) return;
+  rou.spinning=true; rou.res=null; updChips();
   var i=Math.floor(Math.random()*37), a=360/37;
   var delta=(360-((i*a+rou.rot)%360))%360+(Math.random()-0.5)*a*0.6;
   rou.rot=rou.rot+1800+delta; rou.br-=2160;
-  var w=document.getElementById("wheel");
-  if(w){w.style.transition="transform 4s cubic-bezier(.15,.6,.2,1)";w.style.transform="rotate("+rou.rot+"deg)";}
+  var w=document.getElementById("wheel"); if(w){w.style.transition="transform 4s cubic-bezier(.15,.6,.2,1)";w.style.transform="rotate("+rou.rot+"deg)";}
   var bw=document.getElementById("ballw"); if(bw){bw.style.transition="transform 4s cubic-bezier(.2,.5,.2,1)";bw.style.transform="rotate("+rou.br+"deg)";}
-  var b=document.getElementById("rbtn"); if(b) b.disabled=true;
-  var r=document.getElementById("rres"); if(r) r.textContent="Крутится…";
+  ["rtab","rctl"].forEach(function(id){var e=document.getElementById(id); if(e) e.classList.add("lock");});
+  var bt=document.getElementById("rbtn"); if(bt) bt.disabled=true;
+  var r=document.getElementById("rres"); if(r) r.textContent="Шарик крутится…";
   setTimeout(function(){
-    rou.spinning=false; rou.res=RW[i]; rou.hist.unshift(RW[i]); if(rou.hist.length>10) rou.hist.pop();
-    if(cur==="Удача") renderGames();
+    var n=RW[i], pay=rpay(n), net=pay-total;
+    rou.spinning=false; rou.res=n; rou.hist.unshift(n); if(rou.hist.length>12) rou.hist.pop();
+    rou.last=JSON.parse(JSON.stringify(rou.bets)); rou.bets={}; rou.ord=[];
+    rou.msg="Выпало "+n+" · "+rname(n)+". "+(net>0?"Выигрыш +"+net:(net===0?"Ставка возвращена":"Итог −"+(-net)));
+    win(pay,total); if(cur==="Удача"&&luckSub==="Рулетка") renderGames();
   },4200);
 }
 
@@ -1218,7 +1310,12 @@ newGame();
 var CH={n:1000}, ST={g:0,w:0}, lastCH=1000, fxWin=false;
 function fx(n){var c=document.getElementById("fx"); if(!c) return; n=n||30; var cols=["#ffb47c","#ffd27a","#ff5f8f","#7ee0c8","#a99bff"];
   for(var i=0;i<n;i++){var e=document.createElement("i"); e.className="cf"; e.style.left=(Math.random()*100)+"vw"; e.style.background=cols[i%5]; e.style.animationDuration=(1.2+Math.random()*1.3)+"s"; e.style.animationDelay=(Math.random()*.25)+"s"; e.style.transform="rotate("+Math.floor(Math.random()*360)+"deg)"; c.appendChild(e); (function(x){setTimeout(function(){if(x.parentNode) x.parentNode.removeChild(x);},2900);})(e);}}
-function win(w,stake){CH.n+=w; if(w>stake){ST.w++;fxWin=true;fx(w>=stake*5?64:30);snd("win");} else if(w===0) snd("lose");}
+function win(w,stake){CH.n+=w; if(w>stake){ST.w++;fxWin=true;fx(w>=stake*5?64:30);popWin("+"+(w-stake)+" 🪙");snd("win");} else if(w===0) snd("lose"); updChips();}
+function popWin(t){var c=document.getElementById("fx"); if(!c) return; var e=document.createElement("div"); e.className="winpop"; e.textContent=t; c.appendChild(e); setTimeout(function(){if(e.parentNode) e.parentNode.removeChild(e);},1800);}
+function updChips(){var e=document.querySelector(".chipsb"); if(e&&e.firstChild&&e.firstChild.nodeType===3) e.firstChild.nodeValue="🪙 "+CH.n;}
+var GB={rou:50,bj:100,slot:50};
+function betRow(g,opts){return '<div class="chsel">'+opts.map(function(v,k){return '<button class="chp c'+k+(GB[g]===v?' on':'')+'" data-act="setbet" data-g="'+g+'" data-id="'+v+'">'+v+'</button>';}).join("")+'</div>';}
+function sh(n){return n>=1000?(n/1000).toFixed(n%1000?1:0).replace(".0","")+"k":String(n);}
 function marquee(){var b=CH.n!==lastCH; lastCH=CH.n; return '<div class="wide marq"><div><div class="mt">🎰 Игровой зал</div><div class="meta">Демо-фишки без денежной ценности</div></div><div class="chipsb'+(b?' bump':'')+'">🪙 '+CH.n+'<small>Игр '+ST.g+' · побед '+ST.w+'</small></div><button class="x" data-act="snd" aria-label="Звук">'+(SND.on?"🔊":"🔇")+'</button>'+(CH.n<100?'<button class="gchip on" data-act="chips">Пополнить до 1000</button>':'')+'</div>';}
 function chipBar(){return ''; var _x='<div class="meta" style="margin:4px 0 10px">Демо-фишки: <b>'+CH.n+'</b> · без денежной ценности, вывести и обменять нельзя'+(CH.n<100?' <button class="gchip on" style="min-height:32px;margin-left:6px" data-act="chips">Пополнить до 1000</button>':'')+'</div>';}
 function wager(n){if(CH.n<n) return false; CH.n-=n; ST.g++; ACT.g++; saveAct(); snd("bet"); return true;}
@@ -1226,9 +1323,9 @@ function gcard(t,b){var w=fxWin; fxWin=false; gridEl.innerHTML='<div class="card
 function dis(n){return CH.n<n?' disabled':'';}
 
 var SYM=["🍒","🍋","🔔","⭐","7️⃣","💎"], slot={r:["🍒","🍋","🔔"],msg:"Ставка 50 фишек",spin:false};
-function renderSlots(){gcard("Слоты",'<div class="reels">'+[0,1,2].map(function(i){return '<div class="reel'+(slot.spin?' spin':'')+(slot.hit?' hit':'')+'" id="r'+i+'">'+slot.r[i]+'</div>';}).join("")+'</div><div class="rres">'+esc(slot.msg)+'</div><button class="btn" data-act="slot"'+((slot.spin||CH.n<50)?' disabled':'')+'>Крутить · 50</button><div class="pay"><span>7️⃣7️⃣7️⃣ ×20</span><span>💎💎💎 ×15</span><span>Три одинаковых ×10</span><span>Пара ×2</span></div>');}
+function renderSlots(){var bet=GB.slot; gcard("Слоты",betRow("slot",[10,50,100,250])+'<div class="reels">'+[0,1,2].map(function(i){return '<div class="reel'+(slot.spin?' spin':'')+(slot.hit?' hit':'')+'" id="r'+i+'">'+slot.r[i]+'</div>';}).join("")+'</div><div class="rres">'+esc(slot.msg)+'</div><button class="btn" data-act="slot"'+((slot.spin||CH.n<bet)?' disabled':'')+'>Крутить · '+bet+'</button><div class="pay"><span>7️⃣7️⃣7️⃣ ×20</span><span>💎💎💎 ×15</span><span>Три одинаковых ×10</span><span>Пара ×2</span></div>');}
 function slotSpin(){
-  if(slot.spin||!wager(50)) return; slot.spin=true; slot.hit=false; slot.msg="Крутим…"; renderGames();
+  var bet=GB.slot; if(slot.spin||!wager(bet)) return; slot.spin=true; slot.hit=false; slot.msg="Крутим…"; renderGames();
   var stop=[10,16,22],n=0,fin=[0,0,0].map(function(){return SYM[Math.floor(Math.random()*6)];}),dn=[false,false,false];
   var iv=setInterval(function(){
     n++;
@@ -1238,9 +1335,9 @@ function slotSpin(){
       var b=document.getElementById("r"+i); if(b) b.textContent=slot.r[i];
     }
     if(n>=stop[2]){clearInterval(iv); slot.spin=false; var r=fin,w=0;
-      if(r[0]===r[1]&&r[1]===r[2]) w=r[0]==="7️⃣"?1000:(r[0]==="💎"?750:500);
-      else if(r[0]===r[1]||r[1]===r[2]||r[0]===r[2]) w=100;
-      slot.hit=w>0; win(w,50); slot.msg=w?"Выигрыш: +"+w+" фишек":"Не повезло"; if(cur==="Удача") renderGames();}
+      if(r[0]===r[1]&&r[1]===r[2]) w=bet*(r[0]==="7️⃣"?20:(r[0]==="💎"?15:10));
+      else if(r[0]===r[1]||r[1]===r[2]||r[0]===r[2]) w=bet*2;
+      slot.hit=w>0; win(w,bet); slot.msg=w?"Выигрыш: +"+(w-bet)+" фишек":"Не повезло"; if(cur==="Удача") renderGames();}
   },70);
 }
 
@@ -1253,24 +1350,37 @@ function renderDice(){gcard("Кубики",chipBar()+'<div class="dicebox'+(dice
 function diceRoll(c){if(!wager(50)) return; var a=Math.floor(Math.random()*6),b=Math.floor(Math.random()*6),t=a+b+2; dice.a=a; dice.b=b; dice.fresh=true;
   var w=(c==="lo"&&t<7)?100:(c==="hi"&&t>7)?100:(c==="s"&&t===7)?250:0; win(w,50); dice.msg="Сумма "+t+(w?": +"+(w-50)+" фишек":": не повезло");}
 
-var bj={d:[],p:[],q:[],over:true,msg:"Ставка 100 фишек"};
+var bj={d:[],p:[],q:[],over:true,pend:false,rev:true,fresh:false,sp:0,sd:0,bet:100,msg:"Выберите ставку и раздайте карты"};
 function mkDeck(){var d=[];["♠","♥","♦","♣"].forEach(function(s){["A","2","3","4","5","6","7","8","9","10","J","Q","K"].forEach(function(r){d.push(r+s);});});for(var i=d.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=d[i];d[i]=d[j];d[j]=t;}return d;}
 function cv(h){var s=0,a=0;h.forEach(function(c){var r=c.slice(0,-1);if(r==="A"){a++;s+=11;}else if(r==="J"||r==="Q"||r==="K"||r==="10") s+=10; else s+=+r;});while(s>21&&a>0){s-=10;a--;}return s;}
 function ch(c,hide,nw){return '<span class="pc'+(nw?' new':'')+((c.indexOf("♥")>=0||c.indexOf("♦")>=0)?' red':'')+'">'+(hide?'🂠':c)+'</span>';}
+function pcd(c,hide,delay,flip){var red=(c.indexOf("♥")>=0||c.indexOf("♦")>=0); return '<span class="pcd'+(hide?' back':'')+(red?' red':'')+(delay!==null?' dealt':'')+(flip?' flipin':'')+'"'+(delay!==null?' style="animation-delay:'+delay.toFixed(2)+'s"':'')+'>'+(hide?'':c)+'</span>';}
 function renderBJ(){
-  var live=!bj.over,ph=bj.p.map(function(c,i){return ch(c,false,i===bj.p.length-1);}).join(""),dh=bj.d.map(function(c,i){return ch(c,live&&i===1,i===bj.d.length-1);}).join("");
-  gcard("Блэкджек",chipBar()+(bj.d.length?'<div class="felt"><div class="meta">Дилер'+(live?'':' · '+cv(bj.d))+'</div><div class="cards">'+dh+'</div><div class="meta" style="margin-top:12px">Вы · '+cv(bj.p)+'</div><div class="cards">'+ph+'</div></div>':'')+'<div class="rres">'+esc(bj.msg)+'</div>'+(live?'<div class="row2"><button class="btn" data-act="bjhit">Взять</button><button class="btn alt" data-act="bjstand">Хватит</button></div>':'<button class="btn" data-act="bjstart"'+dis(100)+'>Раздать · 100</button>'));
+  var live=!bj.over, ph="", dh="", flip=bj.over&&!bj.rev;
+  bj.p.forEach(function(c,i){ph+=pcd(c,false,i>=bj.sp?(bj.fresh?i*.32:0):null,false);});
+  bj.d.forEach(function(c,i){var hid=live&&i===1; var nw=i>=bj.sd; var dl=nw?(bj.fresh?i*.32+.16:(flip?.55+(i-1)*.45:0)):null; dh+=pcd(c,hid,(flip&&i===1)?null:dl,flip&&i===1);});
+  var can2=live&&bj.p.length===2&&CH.n>=bj.bet;
+  var head='<div class="meta">Дилер'+(bj.d.length&&!live&&!bj.pend?' <span class="bjt">'+cv(bj.d)+'</span>':'')+'</div>';
+  var body=bj.d.length?'<div class="felt">'+head+'<div class="cards">'+dh+'</div><div class="meta" style="margin-top:14px">Вы <span class="bjt">'+cv(bj.p)+'</span></div><div class="cards">'+ph+'</div></div>':'';
+  var ctl=bj.pend?'<div class="rres">Дилер открывает карты…</div>':(live?'<div class="rres">'+esc(bj.msg)+'</div><div class="row2"><button class="btn" data-act="bjhit">Взять</button><button class="btn alt" data-act="bjstand">Хватит</button>'+(can2?'<button class="btn alt" data-act="bjdbl">×2</button>':'')+'</div>':'<div class="rres">'+esc(bj.msg)+'</div>'+betRow("bj",[50,100,250,500])+'<button class="btn" data-act="bjstart"'+(CH.n<GB.bj?' disabled':'')+'>Раздать · '+GB.bj+'</button>');
+  gcard("Блэкджек",body+ctl+'<div class="note">Блэкджек платит 3:2. Дилер берёт до 17. «×2» удваивает ставку и даёт одну карту.</div>');
+  bj.sp=bj.p.length; bj.sd=bj.d.length; bj.fresh=false; if(bj.over&&!bj.rev) bj.rev=true;
 }
-function bjStart(){if(!wager(100)) return; bj.q=mkDeck(); bj.p=[bj.q.pop(),bj.q.pop()]; bj.d=[bj.q.pop(),bj.q.pop()]; bj.over=false; bj.msg="Ваш ход"; if(cv(bj.p)===21) bjEnd();}
-function bjHit(){if(bj.over) return; bj.p.push(bj.q.pop()); if(cv(bj.p)>=21) bjEnd();}
+function bjStart(){var bet=GB.bj; if(!bj.over||bj.pend||!wager(bet)) return; bj.bet=bet; bj.q=mkDeck(); bj.p=[bj.q.pop(),bj.q.pop()]; bj.d=[bj.q.pop(),bj.q.pop()]; bj.over=false; bj.rev=true; bj.fresh=true; bj.sp=0; bj.sd=0; bj.msg="Ваш ход"; updChips(); if(cv(bj.p)===21) bjEnd();}
+function bjHit(){if(bj.over) return; bj.p.push(bj.q.pop()); snd("tick"); if(cv(bj.p)>=21) bjEnd();}
 function bjStand(){if(!bj.over) bjEnd();}
-function bjEnd(){bj.over=true; var pv=cv(bj.p); if(pv<=21){while(cv(bj.d)<17) bj.d.push(bj.q.pop());} var dv=cv(bj.d),w=0;
-  if(pv>21) bj.msg="Перебор. Проигрыш";
-  else if(pv===21&&bj.p.length===2&&!(dv===21&&bj.d.length===2)){w=250;bj.msg="Блэкджек! +150 фишек";}
-  else if(dv>21||pv>dv){w=200;bj.msg="Победа! +100 фишек";}
-  else if(pv===dv){w=100;bj.msg="Ничья, ставка возвращена";}
-  else bj.msg="Дилер выиграл";
-  win(w,100);}
+function bjDbl(){if(bj.over||bj.p.length!==2||CH.n<bj.bet) return; CH.n-=bj.bet; bj.bet*=2; snd("bet"); updChips(); bj.p.push(bj.q.pop()); bjEnd();}
+function bjEnd(){
+  bj.over=true; bj.rev=false; bj.pend=true;
+  var pv=cv(bj.p), extra=0; if(pv<=21){while(cv(bj.d)<17){bj.d.push(bj.q.pop());extra++;}}
+  var dv=cv(bj.d), w=0, m, bet=bj.bet;
+  if(pv>21) m="Перебор. Ставка проиграна";
+  else if(pv===21&&bj.p.length===2&&!(dv===21&&bj.d.length===2)){w=Math.round(bet*2.5);m="Блэкджек! +"+(w-bet)+" фишек";}
+  else if(dv>21||pv>dv){w=bet*2;m=(dv>21?"У дилера перебор. ":"Победа! ")+"+"+bet+" фишек";}
+  else if(pv===dv){w=bet;m="Ничья, ставка возвращена";}
+  else m="Дилер выиграл";
+  setTimeout(function(){bj.pend=false; bj.msg=m; win(w,bet); if(cur==="Удача"&&luckSub==="Блэкджек") renderGames();},900+extra*450);
+}
 
 var RK=["2","3","4","5","6","7","8","9","10","J","Q","K","A"], hl={c:6,msg:"Следующая карта выше или ниже?"};
 function renderHL(){gcard("Выше или ниже",chipBar()+'<div class="cards" style="justify-content:center;margin:10px 0"><span class="pc" style="font-size:32px;min-width:84px;padding:18px 10px">'+RK[hl.c]+'</span></div><div class="rres">'+esc(hl.msg)+'</div><div class="row2"><button class="btn" data-act="hl" data-id="up"'+dis(50)+'>Выше ×2</button><button class="btn alt" data-act="hl" data-id="dn"'+dis(50)+'>Ниже ×2</button></div><div class="note">Ставка 50 фишек. При равенстве ставка возвращается.</div>');}
@@ -1338,15 +1448,21 @@ function renderMN(){
 }
 var GAMES={"Колесо":renderLuck,"Рулетка":renderRoulette,"Слоты":renderSlots,"Блэкджек":renderBJ,"Кубики":renderDice,"Монетка":renderCoin,"Выше-ниже":renderHL,"Крестики":renderTTT,"Сапёр":renderMines,"Мины":renderMN};
 
-var luckSub="Колесо";
-function gamesMenu(){return '<div class="wide gm">'+Object.keys(GAMES).map(function(n){return '<button class="gchip'+(luckSub===n?' on':'')+'" data-act="sub" data-id="'+n+'">'+n+'</button>';}).join("")+'</div>';}
+var luckSub="";
+function gamesMenu(){return '<div class="wide gback"><button class="gchip" data-act="lobby">‹ Игровой зал</button><b>'+esc((GINFO[luckSub]||["","",""])[1])+'</b></div>';}
+var GINFO={"Рулетка":["🎯","Рулетка","Ставки на числа, цвета и дюжины"],"Блэкджек":["🃏","Блэкджек","Играй против дилера, можно удвоить"],"Слоты":["🎰","Слоты","Три барабана, выигрыш до ×20"],"Колесо":["🎡","Колесо удачи","Крутите бесплатно"],"Кубики":["🎲","Кубики","Угадайте результат"],"Монетка":["🪙","Монетка","Орёл или решка"],"Выше-ниже":["⬆️","Выше или ниже","Угадайте карту"],"Мины":["💎","Мины","Открывайте алмазы"],"Сапёр":["💣","Сапёр","Найдите все мины"],"Крестики":["❌","Крестики-нолики","Против компьютера"]};
+var GORDER=["Рулетка","Блэкджек","Слоты","Колесо","Кубики","Монетка","Выше-ниже","Мины","Сапёр","Крестики"];
+function renderLobby(){
+  gridEl.innerHTML=marquee()+'<div class="lob">'+GORDER.map(function(n,i){var g=GINFO[n]; return '<button class="gtile'+(i<2?' big':'')+'" style="--i:'+i+'" data-act="sub" data-id="'+n+'"><span class="gi">'+g[0]+'</span><span class="gt"><b>'+g[1]+'</b><small>'+g[2]+'</small></span></button>';}).join("")+'</div><div class="note" style="grid-column:1/-1">Игры на демо-фишки без денежной ценности. Вывести и обменять их нельзя.</div>';
+}
 function renderGames(){
-  (GAMES[luckSub]||renderLuck)();
+  if(!luckSub||!GAMES[luckSub]){renderLobby();return;}
+  GAMES[luckSub]();
   gridEl.innerHTML=marquee()+gamesMenu()+gridEl.innerHTML;
 }
 
 var BON={bal:0,pend:0,last:"",welcome:false,use:false};
-function loadBonus(){try{var o=JSON.parse(localStorage.getItem("b888")||"{}");BON.bal=+o.bal||0;BON.last=o.last||"";BON.welcome=!!o.welcome;BON.pend=+o.pend||0;}catch(e){}}
+function loadBonus(){try{var o=JSON.parse(localStorage.getItem("b888")||"{}");BON.bal=0;BON.last=o.last||"";BON.welcome=!!o.welcome;BON.pend=0;}catch(e){}}
 function saveBonus(){try{localStorage.setItem("b888",JSON.stringify({bal:BON.bal,pend:BON.pend,last:BON.last,welcome:BON.welcome}));}catch(e){} try{renderBar();}catch(e){}}
 function today(){return new Date().toISOString().slice(0,10);}
 function bonusDisc(t){return BON.use?Math.min(BON.bal,Math.floor(t.s*0.3)):0;}
@@ -1367,7 +1483,8 @@ function saveReg(){try{localStorage.setItem("r888",JSON.stringify(REG));}catch(e
 loadReg();
 function renderProfile(){
   if(REG.ok){renderCabinet();return;}
-  gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">Регистрация</div><div class="meta" style="margin:4px 0 14px">Зарегистрируйтесь, чтобы получить приветственные +50 бонусов и копить баллы за покупки.</div><div class="fld"><input id="rn" placeholder="Имя" autocomplete="name"></div><div class="fld"><input id="rc" placeholder="Телефон или @username в Telegram" autocomplete="tel"></div><label class="chk"><input type="checkbox" id="rok"><span>Согласен(на) на обработку введённых данных</span></label><button class="btn" data-act="reg">Зарегистрироваться</button><div id="rerr" class="note"></div><div class="note">Данные сохраняются только на вашем телефоне и уходят продавцу, если вы сами отправите сообщение.</div></div>';
+  gridEl.innerHTML='<div class="pf2 wide"><div class="pav"><span>👋</span></div><div class="pin"><div class="pnm2">Добро пожаловать</div><div class="pct">Создайте профиль, чтобы быстрее оформлять заказы</div></div></div>'
+   +'<div class="card wide"><div class="perks"><span>⚡ Быстрее оформляете заказы</span><span>♥ Избранное и история активности</span><span>🔒 Данные хранятся только на вашем телефоне</span></div><div class="fld"><input id="rn" placeholder="Имя" autocomplete="name"></div><div class="fld"><input id="rc" placeholder="Телефон или @username в Telegram" autocomplete="tel"></div><label class="chk"><input type="checkbox" id="rok"><span>Согласен(на) на обработку введённых данных</span></label><button class="btn" data-act="reg">Создать профиль</button><div id="rerr" class="note"></div><div class="note">Данные сохраняются только на вашем телефоне и уходят продавцу, если вы сами отправите сообщение.</div></div>';
 }
 var ageOK=false;
 
@@ -1434,7 +1551,8 @@ var NEWS=[
   {id:"n5",d:"23.10.2026",tag:"Поступления",ic:"🎮",t:"Техника: фото и 3D-карусель",x:"iPhone Pro новых цветов, iPhone 16, PS5 Slim, Garmin и iPad Pro. Смотрите фото упаковки и уточняйте цену и наличие у продавца.",go:"Электроника",gl:"Смотреть технику"},
   {id:"n6",d:"23.10.2026",tag:"События",ic:"🎃",t:"Halloween Party: 30 октября",x:"30.10.2026, 17:00–22:00, secret place на Рочдельской. Dress code: Halloween. Билеты и подробности в разделе «Мероприятия».",go:"Мероприятия",gl:"Подробности и билеты"},
   {id:"n7",d:"23.10.2026",tag:"Поступления",ic:"📱",t:"Красивые номера: 3D-карусель и новые подборки",x:"Эксклюзивные номера, VIP Москва и золото МегаФон. Нажмите на SIM-карту в карусели, чтобы написать продавцу.",go:"Номера",gl:"Открыть номера"},
-  {id:"n8",d:"23.10.2026",tag:"Магазин",ic:"✨",t:"Новое в приложении",x:"Листайте разделы свайпом влево и вправо. На слабых телефонах включите «Лёгкий режим» на главной, чтобы всё работало плавнее."}
+  {id:"n8",d:"23.10.2026",tag:"Магазин",ic:"✨",t:"Новое в приложении",x:"Листайте разделы свайпом влево и вправо. На слабых телефонах включите «Лёгкий режим» на главной, чтобы всё работало плавнее."},
+  {id:"n9",d:"26.10.2026",tag:"Магазин",ic:"🎰",t:"Игровой зал обновлён",x:"Рулетка теперь со ставками на числа, цвета и дюжины, в блэкджеке можно удваивать ставку. Играем на демо-фишки без денежной ценности.",go:"Удача",gl:"Открыть игровой зал"}
 ];
 var NF={t:"Все"}, NFRESH={};
 function unreadNews(){return NEWS.filter(function(n){return !ACT.read[n.id];}).length;}
@@ -1443,24 +1561,29 @@ function renderCabinet(){
   var init=esc((REG.name.charAt(0)||"?").toUpperCase());
   var LBL={"Удача":"Игровой зал"}, hide=["Главная","Новости","Избранное","Профиль","Корзина","Бонусы","Информация","Табак","Алкоголь","Вкусняшки"];
   var it=Object.keys(ACT.v).filter(function(k){return hide.indexOf(k)<0;}).map(function(k){return [k.indexOf("el:")===0?k.slice(3):(LBL[k]||k),ACT.v[k]];}).sort(function(a,b){return b[1]-a[1];}).slice(0,6);
-  var news=NEWS.slice().reverse().map(function(n){var nw=!ACT.read[n.id]; return '<div class="card wide nw"><div class="nh"><span class="tg">'+esc(n.tag)+'</span>'+(nw?'<i class="dotn"></i>':'')+'<small>'+esc(n.d)+'</small></div><div class="name">'+esc(n.t)+'</div><div class="meta">'+esc(n.x)+'</div></div>';}).join("");
+  var news=NEWS.slice().reverse().slice(0,3).map(function(n){var nw=!ACT.read[n.id]; return '<div class="card wide nw"><div class="nh"><span class="tg">'+esc(n.tag)+'</span>'+(nw?'<i class="dotn"></i>':'')+'<small>'+esc(n.d)+'</small></div><div class="name">'+esc(n.t)+'</div><div class="meta">'+esc(n.x)+'</div></div>';}).join("");
   var ev=ACT.ev.slice().reverse().slice(0,8).map(function(e){return '<div class="te">'+esc(e.x)+'<small>'+ago(e.t)+'</small></div>';}).join("")||'<div class="meta">Пока пусто: ваши действия появятся здесь.</div>';
-  gridEl.innerHTML='<div class="card wide pf"><div class="av2">'+init+'</div><div class="pi"><div class="name" style="font-size:18px">'+esc(REG.name)+'</div><div class="meta">'+esc(REG.contact)+'</div></div></div>'
-   +'<div class="sg"><div class="sc"><b data-cnt="'+BON.bal+'">0</b><span class="meta">бонусов'+(BON.pend?' · ожидают '+BON.pend:'')+'</span></div><div class="sc"><b data-cnt="'+totals().n+'">0</b><span class="meta">в корзине</span></div><div class="sc"><b data-cnt="'+ACT.orders+'">0</b><span class="meta">заказов отправлено</span></div><div class="sc"><b data-cnt="'+ACT.g+'">0</b><span class="meta">игр сыграно</span></div></div>'
+  var qa=[["Избранное","♥","Избранное"],["Корзина","🛒","Корзина"],["Удача","🎰","Игровой зал"],["Новости","📰","Новости"]];
+  var stats=[["🛒",totals().n,"в корзине"],["♥",favCount(),"в избранном"],["📦",ACT.orders,"заказов отправлено"],["🎮",ACT.g,"игр сыграно"]];
+  var lite=document.body.classList.contains("lite");
+  gridEl.innerHTML='<div class="pf2 wide"><div class="pav"><span>'+init+'</span></div><div class="pin"><div class="pnm2">'+esc(REG.name)+'</div><div class="pct">'+esc(REG.contact)+'</div><span class="pbd">Участник 888.shop</span></div></div>'
+   +'<div class="pst wide">'+stats.map(function(x){return '<div class="psc"><i>'+x[0]+'</i><b data-cnt="'+x[1]+'">0</b><span>'+x[2]+'</span></div>';}).join("")+'</div>'
+   +'<div class="pqa wide">'+qa.map(function(x){return '<button class="pq" data-act="tab" data-id="'+x[0]+'"><span>'+x[1]+'</span>'+x[2]+'</button>';}).join("")+'</div>'
    +'<h3 class="sec">Ваши интересы</h3><div class="card wide"><div class="vr" style="margin:0">'+(it.length?it.map(function(x){return '<span class="vc on" style="cursor:default">'+esc(x[0])+' · '+x[1]+'</span>';}).join(""):'<span class="meta">Пока пусто: загляните в каталог.</span>')+'</div></div>'
-   +'<h3 class="sec">Новости магазина</h3>'+news
+   +'<h3 class="sec">Последние новости</h3>'+news
    +'<h3 class="sec">Ваша активность</h3><div class="card wide">'+ev+'</div>'
+   +'<h3 class="sec">Настройки</h3><div class="card wide pset"><div class="prw"><span>⚡ Лёгкий режим<small>Меньше анимаций, быстрее на слабых телефонах</small></span><button class="gchip'+(lite?' on':'')+'" data-act="lite">'+(lite?'Вкл':'Выкл')+'</button></div><div class="prw"><span>🔊 Звук в играх<small>Сигналы ставок и выигрышей</small></span><button class="gchip'+(SND.on?' on':'')+'" data-act="snd2">'+(SND.on?'Вкл':'Выкл')+'</button></div></div>'
    +'<button class="btn" style="grid-column:1/-1;margin-top:8px" data-act="msg" data-msg="'+esc("Здравствуйте! Я зарегистрирован в 888.shop. Имя: "+REG.name+", контакт: "+REG.contact)+'">Сообщить продавцу</button><button class="btn alt" style="grid-column:1/-1" data-act="unreg">Выйти и удалить данные</button><div class="note" style="grid-column:1/-1">Данные и активность хранятся только на вашем телефоне.</div>';
   Array.prototype.forEach.call(gridEl.querySelectorAll("[data-cnt]"),function(e){countUp(e,+e.dataset.cnt);});
   NEWS.forEach(function(n){ACT.read[n.id]=1;}); saveAct();
 }
 
-var OFFER=[["1. Общие положения", "Настоящий документ — публичная оферта магазина 888.shop (далее — «Магазин») и адресован неопределённому кругу лиц. Акцептом оферты считается оформление заказа через сайт и чат с продавцом. Продавец: магазин 888.shop, связь через Telegram: @OQOQQOOO."], ["2. Предмет", "Магазин продаёт товары дистанционным способом. Ассортимент размещён на сайте. Разделы «Только 18+» работают как витрина: онлайн-заказ и доставка такой продукции через сайт не осуществляются, а информация в них не является офертой."], ["3. Оформление заказа", "Покупатель выбирает товары, добавляет их в корзину и нажимает «Оплатить»: откроется чат с продавцом с готовым списком заказа. Заказ считается принятым после подтверждения продавцом наличия, цены и срока."], ["4. Цены", "Цены указаны в рублях. Цены на электронику зависят от курса валют и поставки и могут меняться до подтверждения заказа. Цена, подтверждённая продавцом в чате, является окончательной."], ["5. Оплата и доставка", "Способ оплаты, стоимость и срок доставки согласуются в чате. Срок доставки электроники зависит от поставки и уточняется у продавца."], ["6. Возврат и обмен", "Права покупателя определяются законодательством РФ о защите прав потребителей. Обращения по качеству, возврату и обмену направляйте продавцу через чат."], ["7. Бонусы", "Бонусы начисляются за заказы после подтверждения продавцом: 5% от суммы. 1 бонус равен 1 ₽ скидки, списать можно до 30% суммы заказа. Бонусы нельзя обменять на деньги, при злоупотреблении они могут быть аннулированы."], ["8. Игровой зал и розыгрыши", "Игры проходят на демо-фишки без денежной ценности, их нельзя вывести или обменять. Игры не являются азартными. Призы розыгрышей выдаются по условиям конкретного розыгрыша."], ["9. Персональные данные", "Имя и контакт, указанные при регистрации, хранятся на устройстве пользователя. Продавцу они передаются только когда пользователь сам отправляет сообщение, и используются для обработки заказов. Данные можно удалить в профиле."], ["10. Ответственность", "Характеристики товаров приведены по данным поставщиков и могут содержать неточности, уточняйте их перед заказом. Магазин не отвечает за сбои сторонних сервисов, включая Telegram."], ["11. Изменение условий", "Магазин вправе изменять условия оферты, актуальная редакция размещена на сайте. Связь с продавцом осуществляется через чат. Редакция от 15.10.2026."]];
+var OFFER=[["1. Общие положения", "Настоящий документ — публичная оферта магазина 888.shop (далее — «Магазин») и адресован неопределённому кругу лиц. Акцептом оферты считается оформление заказа через сайт и чат с продавцом. Продавец: магазин 888.shop, связь через Telegram: @OQOQQOOO."], ["2. Предмет", "Магазин продаёт товары дистанционным способом. Ассортимент размещён на сайте. Разделы «Только 18+» работают как витрина: онлайн-заказ и доставка такой продукции через сайт не осуществляются, а информация в них не является офертой."], ["3. Оформление заказа", "Покупатель выбирает товары, добавляет их в корзину и нажимает «Оплатить»: откроется чат с продавцом с готовым списком заказа. Заказ считается принятым после подтверждения продавцом наличия, цены и срока."], ["4. Цены", "Цены указаны в рублях. Цены на электронику зависят от курса валют и поставки и могут меняться до подтверждения заказа. Цена, подтверждённая продавцом в чате, является окончательной."], ["5. Оплата и доставка", "Способ оплаты, стоимость и срок доставки согласуются в чате. Срок доставки электроники зависит от поставки и уточняется у продавца."], ["6. Возврат и обмен", "Права покупателя определяются законодательством РФ о защите прав потребителей. Обращения по качеству, возврату и обмену направляйте продавцу через чат."], ["7. Игровой зал и розыгрыши", "Игры проходят на демо-фишки без денежной ценности, их нельзя вывести или обменять. Игры не являются азартными. Призы розыгрышей выдаются по условиям конкретного розыгрыша."], ["8. Персональные данные", "Имя и контакт, указанные при регистрации, хранятся на устройстве пользователя. Продавцу они передаются только когда пользователь сам отправляет сообщение, и используются для обработки заказов. Данные можно удалить в профиле."], ["9. Ответственность", "Характеристики товаров приведены по данным поставщиков и могут содержать неточности, уточняйте их перед заказом. Магазин не отвечает за сбои сторонних сервисов, включая Telegram."], ["10. Изменение условий", "Магазин вправе изменять условия оферты, актуальная редакция размещена на сайте. Связь с продавцом осуществляется через чат. Редакция от 26.10.2026."]];
 function renderInfo(){
-  var F=[["🤝","Проверенные байеры и поставщики","Работаем с проверенными байерами и поставщиками одежды по всей Европе."],["🎁","Розыгрыши и бонусы","Часто проводим розыгрыши, а за покупки начисляем бонусы."],["🎰","Игровой зал","Бесплатные игры на демо-фишки: слоты, блэкджек, мины и другие."],["💆","Услуги","Массаж, бронь в клубах, красивые номера и другое."],["📰","Личный кабинет","Новости магазина, ваши интересы и активность в одном месте."],["🔞","Разделы 18+","Витрина для совершеннолетних, заказ через продавца."]];
-  var Q=[["Как оплатить заказ?","Нажмите «Оплатить» в корзине: откроется чат с продавцом, где вы согласуете способ оплаты и доставку."],["Как работают бонусы?","За заказ начисляется 5% бонусами после подтверждения продавцом. 1 бонус = 1 ₽ скидки, списать можно до 30% суммы."],["Что значит «Только 18+»?","Это витрина для совершеннолетних. Заказ и оплата таких товаров через сайт не принимаются: наличие и цены уточняйте у продавца."],["Почему цена на технику меняется?","Цены на электронику зависят от курса и поставки. Окончательную цену и срок продавец подтверждает в чате."],["Есть ли игры на деньги?","Нет. В игровом зале играют на демо-фишки без денежной ценности."]];
+  var F=[["🤝","Проверенные байеры и поставщики","Работаем с проверенными байерами и поставщиками одежды по всей Европе."],["🎁","Розыгрыши","Новые розыгрыши будут появляться на сайте."],["🎰","Игровой зал","Бесплатные игры на демо-фишки: слоты, блэкджек, мины и другие."],["💆","Услуги","Массаж, бронь в клубах, красивые номера и другое."],["📰","Личный кабинет","Новости магазина, ваши интересы и активность в одном месте."],["🔞","Разделы 18+","Витрина для совершеннолетних, заказ через продавца."]];
+  var Q=[["Как оплатить заказ?","Нажмите «Оплатить» в корзине: откроется чат с продавцом, где вы согласуете способ оплаты и доставку."],["Что значит «Только 18+»?","Это витрина для совершеннолетних. Заказ и оплата таких товаров через сайт не принимаются: наличие и цены уточняйте у продавца."],["Почему цена на технику меняется?","Цены на электронику зависят от курса и поставки. Окончательную цену и срок продавец подтверждает в чате."],["Есть ли игры на деньги?","Нет. В игровом зале играют на демо-фишки без денежной ценности."]];
   gridEl.innerHTML='<div class="ihero"><h2>888.shop</h2><p>Многоцелевой магазин: разные товары и услуги в одном месте. Придуман и основан в 2026 году.</p></div>'
-   +'<div class="stats"><div class="sc"><b data-cnt="'+EL_COUNT+'">0</b><span class="meta">моделей техники</span></div><div class="sc"><b data-cnt="10">0</b><span class="meta">игр в зале</span></div><div class="sc"><b data-cnt="5">0</b><span class="meta">% бонусами</span></div><div class="sc"><b>2026</b><span class="meta">основан</span></div></div>'
+   +'<div class="stats"><div class="sc"><b data-cnt="'+EL_COUNT+'">0</b><span class="meta">моделей техники</span></div><div class="sc"><b data-cnt="10">0</b><span class="meta">игр в зале</span></div><div class="sc"><b data-cnt="10">0</b><span class="meta">игр в зале</span></div><div class="sc"><b>2026</b><span class="meta">основан</span></div></div>'
    +'<h3 class="sec">Почему мы</h3>'+F.map(function(f){return '<div class="card wide feat"><span class="ti">'+f[0]+'</span><div><div class="name">'+f[1]+'</div><div class="meta">'+f[2]+'</div></div></div>';}).join("")
    +'<h3 class="sec">Как заказать</h3><div class="card wide"><div class="steps"><div class="step"><b>1</b><span>Выберите товары и добавьте в корзину</span></div><div class="step"><b>2</b><span>Откройте корзину и нажмите «Оплатить»</span></div><div class="step"><b>3</b><span>Заказ откроется в чате с продавцом: согласуйте оплату и доставку</span></div></div></div>'
    +'<h3 class="sec">Доставка, оплата, гарантия</h3><div class="card wide dlv"><div class="dr"><span class="dri">🚚</span><div><div class="name">Доставка</div><div class="meta">Способ и срок согласуются в чате с продавцом. Срок доставки электроники зависит от поставки.</div></div></div><div class="dr"><span class="dri">💳</span><div><div class="name">Оплата</div><div class="meta">Нажмите «Оплатить» в корзине: откроется чат с продавцом, где вы выберете способ оплаты. На сайте деньги не списываются.</div></div></div><div class="dr"><span class="dri">🛡</span><div><div class="name">Гарантия</div><div class="meta">Условия зависят от товара. Уточняйте у продавца до оплаты.</div></div></div><button class="btn alt" style="margin-top:6px" data-act="msg" data-msg="Здравствуйте! Хочу уточнить условия доставки, оплаты и гарантии.">Уточнить у продавца</button></div>'
@@ -1521,10 +1644,12 @@ function renderNumbers(){
 }
 
 var NIC=[["🚬","Сигареты","Список марок и цен ниже","Здравствуйте! Хочу уточнить наличие сигарет."],["💨","Кальянный табак","Уточнить наличие","Здравствуйте! Хочу уточнить наличие кальянного табака."],["🔥","Кальяны и угли","Уточнить наличие","Здравствуйте! Хочу уточнить наличие кальянов и углей."],["🟫","Сигары и трубочный табак","Уточнить наличие","Здравствуйте! Хочу уточнить наличие сигар и трубочного табака."],["⚡","Электронные сигареты","Уточнить наличие","Здравствуйте! Хочу уточнить наличие электронных сигарет."],["🧪","Жидкости и картриджи","Уточнить наличие","Здравствуйте! Хочу уточнить наличие жидкостей и картриджей."],["🧰","Зажигалки и аксессуары","Уточнить наличие","Здравствуйте! Хочу уточнить наличие аксессуаров."]];
+var STUB={"Массаж":["💆","Массаж","В РАЗРАБОТКЕ","Раздел в разработке. Скоро здесь можно будет записаться к мастеру.","Сообщить о запуске","Здравствуйте! Сообщите, когда в разделе «Массаж» можно будет записаться."],
+  "Клубы":["🥂","Клубы","В РАЗРАБОТКЕ","Раздел в разработке. Скоро здесь появятся бронь столиков и проходы.","Сообщить о запуске","Здравствуйте! Сообщите, когда в разделе «Клубы» можно будет бронировать."],
+  "Розыгрыши":["🎁","Розыгрыши","ПОКА НЕТ","Сейчас активных розыгрышей нет. Как только появится новый, он будет здесь, на сайте.","Открыть новости",""]};
+function renderStub(k){var x=STUB[k]; gridEl.innerHTML='<h3 class="sec">'+x[1]+'</h3><div class="stub"><span class="sbadge">'+x[2]+'</span><span class="sico">'+x[0]+'</span><div class="stt">'+x[1]+'</div><div class="std">'+x[3]+'</div>'+(x[5]?'<button class="btn" data-act="msg" data-msg="'+esc(x[5])+'">'+x[4]+'</button>':'<button class="btn" data-act="tab" data-id="Новости">'+x[4]+'</button>')+'</div>';}
 function renderNicotine(){
-  gridEl.innerHTML='<div class="nhero"><div class="n18">18+</div><div><div class="name" style="font-size:18px">Никотин и курительные</div><div class="meta" style="margin-top:4px;line-height:1.45">Витрина для совершеннолетних. Заказ и оплата через сайт не принимаются: наличие и цены уточняйте у продавца. Курение вредит вашему здоровью.</div></div></div>'
-   +'<div class="gh">Категории</div><div class="grp">'+NIC.map(function(c){return '<button class="tile" data-act="msg" data-msg="'+esc(c[3])+'"><span class="ti">'+c[0]+'</span><span class="tx"><span class="tn">'+esc(c[1])+'</span><span class="td">'+esc(c[2])+'</span></span><span class="chev">›</span></button>';}).join("")+'</div>'
-   +cigList();
+  gridEl.innerHTML='<h3 class="sec">Никотин 18+</h3><div class="nic">'+NIC.map(function(c,i){return '<button class="nic-c" style="--i:'+i+'" data-act="msg" data-msg="'+esc(c[3])+'"><span class="nic-i">'+c[0]+'</span><b>'+esc(c[1])+'</b><small>Уточнить наличие</small></button>';}).join("")+'</div><div class="note" style="grid-column:1/-1">Только 18+. Наличие и цены уточняйте у продавца. Курение вредит вашему здоровью.</div>';
 }
 
 function ripple(b,e){
@@ -1776,14 +1901,14 @@ function renderGate(){
   var t=gateFor==="Алкоголь"?"Здесь представлена алкогольная продукция. Нажимая «Мне есть 18», вы подтверждаете свой возраст. Чрезмерное употребление алкоголя вредит вашему здоровью.":(gateFor==="Вкусняшки"?"Здесь могут быть сладости с алкоголем, например конфеты с коньяком. Нажимая «Мне есть 18», вы подтверждаете свой возраст.":"Здесь представлена табачная и никотиновая продукция. Нажимая «Мне есть 18», вы подтверждаете свой возраст. Курение вредит вашему здоровью.");
   gridEl.innerHTML='<div class="card wide"><div class="name" style="font-size:18px">🔞 Раздел для лиц старше 18 лет</div><div class="meta" style="margin:6px 0 14px;font-size:14px;line-height:1.5">'+t+'</div><button class="btn" data-act="age">Мне есть 18</button><button class="btn alt" style="margin-top:8px" data-act="tab" data-id="Главная">Вернуться</button></div>';
 }
-var HOME=[["Каталог",[["Электроника","📱","Электроника","Телефоны, планшеты, ноутбуки, консоли"],["Одежда","👕","Одежда","Обувь, худи, футболки, аксессуары"],["Косметика","💄","Косметика и парфюм","Духи, уход, макияж"]]],["Только 18+",[["Табак","🔞","Никотин и курительные","Витрина для лиц 18+"],["Алкоголь","🍷","Алкоголь","Витрина для лиц 18+"],["Вкусняшки","🍬","Сладости 18+","Раздел в разработке"]]],["Услуги",[["Массаж","💆","Массаж","Запись к мастеру"],["Клубы","🥂","Клубы","Бронь и проходы"],["Номера","📱","Красивые номера","Подбор мобильных номеров"],["Крипто","🪙","Крипто-обмен","В разработке"],["Баеры","🧳","Баеры","Название и ссылка на баера"],["Работа","💼","Работа","Вакансии"]]],["Развлечения",[["Новости","📰","Новости и акции","Поступления и события"],["Мероприятия","🎃","Мероприятия","Вечеринки и билеты"],["Розыгрыши","🎁","Розыгрыши","Призы от магазина"],["Удача","🎰","Игровой зал","10 игр: слоты, блэкджек, мины"]]],["Мой аккаунт",[["Избранное","♥","Избранное","Что понравилось, можно отправить продавцу"],["Корзина","🛒","Корзина","Ваши покупки"],["Бонусы","⭐","Бонусы","Баллы за покупки"],["Профиль","👤","Профиль","Регистрация и данные"],["Информация","ℹ️","О магазине","Кто мы и как заказать"]]]];
+var HOME=[["Каталог",[["Электроника","📱","Электроника","Телефоны, планшеты, ноутбуки, консоли"],["Одежда","👕","Одежда","Обувь, худи, футболки, аксессуары"],["Косметика","💄","Косметика и парфюм","Духи, уход, макияж"]]],["Только 18+",[["Табак","🔞","Никотин и курительные","Витрина для лиц 18+"],["Алкоголь","🍷","Алкоголь","Витрина для лиц 18+"],["Вкусняшки","🍬","Сладости 18+","Раздел в разработке"]]],["Услуги",[["Массаж","💆","Массаж","В разработке"],["Клубы","🥂","Клубы","В разработке"],["Номера","📱","Красивые номера","Подбор мобильных номеров"],["Крипто","🪙","Крипто-обмен","В разработке"],["Баеры","🧳","Баеры","Название и ссылка на баера"],["Работа","💼","Работа","Вакансии"]]],["Развлечения",[["Новости","📰","Новости и акции","Поступления и события"],["Мероприятия","🎃","Мероприятия","Вечеринки и билеты"],["Розыгрыши","🎁","Розыгрыши","Пока нет розыгрышей"],["Удача","🎰","Игровой зал","Рулетка, блэкджек, слоты и ещё 7 игр"]]],["Мой аккаунт",[["Избранное","♥","Избранное","Что понравилось, можно отправить продавцу"],["Корзина","🛒","Корзина","Ваши покупки"],["Профиль","👤","Профиль","Регистрация и данные"],["Информация","ℹ️","О магазине","Кто мы и как заказать"]]]];
 function sheetOpen(){return !!document.querySelector("#pd.open,#req.open,#chat.open");}
 function updBack(){ try{ if(!tg||!tg.BackButton) return; if((cur&&cur!=="Главная")||sheetOpen()) tg.BackButton.show(); else tg.BackButton.hide(); }catch(e){} }
 function onBack(){
   if(document.querySelector("#pd.open")){closePd();return;}
   if(document.querySelector("#req.open")){closeReq();return;}
   var ch=document.querySelector("#chat.open"); if(ch){ch.classList.remove("open");updBack();return;}
-  go("Главная");
+  if(cur==="Удача"&&luckSub){luckSub="";renderGames();return;} go("Главная");
 }
 document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ if(sheetOpen()) onBack(); } });
 (function(){
@@ -1834,7 +1959,6 @@ var BNL=[
  {to:"Одежда",cls:"",h:function(){return lvTxt('Одежда<br>и обувь','из Европы под заказ<br>Acne · Burberry · AMI · Asics','Смотреть ›')+'<div class="lv-3d"><div class="ph3 fl1" style="left:0;top:22%;width:30%;height:52%"><img style="object-fit:contain" alt="" src="'+CL[5].i[0]+'"></div><div class="ph3 fl3" style="right:0;top:26%;width:30%;height:52%"><img style="object-fit:contain" alt="" src="'+CL[10].i[0]+'"></div><div class="ph3 fl2" style="left:21%;top:6%;width:42%;height:66%"><img style="object-fit:contain" alt="" src="'+CL[19].i[0]+'"></div></div>';}},
  {to:"Косметика",cls:"",h:function(){return lvTxt('Косметика<br>и парфюм','Rhode · Prada · Dior · Fenty<br>D&amp;G · Chris McMillan','Каталог ›')+'<div class="lv-3d"><div class="ph3 fl1" style="left:0;top:22%;width:30%;height:52%"><img alt="" decoding="async" src="'+CL[21].i[0]+'"></div><div class="ph3 fl3" style="right:0;top:26%;width:30%;height:52%"><img alt="" decoding="async" src="'+CL[22].i[0]+'"></div><div class="ph3 fl2" style="left:21%;top:6%;width:42%;height:66%"><img alt="" decoding="async" src="'+CL[20].i[0]+'"></div></div>';}},
  {to:"Номера",cls:"",h:function(){return lvTxt('VIP-номера','Звёзды столицы · Москва<br>МегаФон · повторы · зеркальные','Подбор номера ›')+'<div class="lv-3d vipn"><div class="gl3 pl fl1" style="left:0;top:10%">+7 925 20 88888</div><div class="gl3 pl fl2" style="left:6%;top:40%">+7 926 58 00000</div><div class="gl3 pl fl3" style="left:12%;top:70%">+7 969 82 77777</div></div>';}},
- {to:"Бонусы",cls:"",h:function(){return lvTxt('Бонусы<br>5%','с каждого заказа<br>+50 за регистрацию · +10 каждый день','Мои бонусы ›')+'<div class="lv-3d">'+lvCoin(2,2,22,"⭐",5)+lvCoin(22,20,15,"⭐",4)+lvCoin(0,22,12,"⭐",6)+'</div>';}},
  {to:"Удача",cls:"",h:function(){return lvTxt('Игровой<br>зал','9 игр: слоты, колесо, блэкджек<br>Только демо-фишки, без денег','Играть ›')+'<div class="lv-3d">'+lvRings()+lvCube(["🎰","🎲","🃏","🎡","🪙","💎"])+'</div>';}},
  {to:"Мероприятия",cls:"hw",h:function(){return lvTxt('Halloween<br>Party','30 октября 2026<br>Рочдельская · билеты и столики','Билеты ›')+'<div class="lv-3d"><div class="pump">🎃</div><div class="orbz o1">🦇</div><div class="orbz o2">👻</div></div>';}},
  {to:"Баеры",cls:"",h:function(){return lvTxt('Баеры<br>по Европе','Одежда и обувь под заказ<br>Impluk wear · @Lukav153qq','К баерам ›')+'<div class="lv-3d"><div class="pump" style="font-size:25cqw">🧳</div><div class="orbz o1">✈️</div><div class="orbz o2">📦</div></div>';}}
@@ -1863,14 +1987,14 @@ function eventHtml(){
   var m=d%10, h=d%100, w=(m===1&&h!==11)?"день":((m>=2&&m<=4&&(h<12||h>14))?"дня":"дней");
   return '<button class="evc" data-act="tab" data-id="Мероприятия"><span class="evi">🎃</span><span class="evt"><b>Halloween Party</b><span>30 октября · 17:00–22:00</span></span><span class="evd">'+(d===0?'<b class="tdy">Сегодня</b>':'<b>'+d+'</b><i>'+w+'</i>')+'</span></button>';
 }
-function trustHtml(){ return '<div class="trust">'+[["🤝","Проверенные поставщики"],["💬","Заказ через Telegram"],["⭐","5% бонусами"],["🎁","Розыгрыши"]].map(function(x){return '<span class="tr"><i>'+x[0]+'</i>'+x[1]+'</span>';}).join("")+'</div>'; }
+function trustHtml(){ return '<div class="trust">'+[["🤝","Проверенные поставщики"],["💬","Заказ через Telegram"],["📦","Доставка по договорённости"],["🎁","Розыгрыши"]].map(function(x){return '<span class="tr"><i>'+x[0]+'</i>'+x[1]+'</span>';}).join("")+'</div>'; }
 function newHtml(){
   var L=[]; for(var i=CL.length-1;i>=0&&L.length<10;i--){ if(CL[i].c==="Косметика"&&CL[i].i&&CL[i].i[0]) L.push(i); }
   if(!L.length) return "";
   return '<div class="grp3d"><h3 class="sec">Новинки<span class="cnt">свежие поступления</span></h3><div class="rvrow">'+L.map(rvCard).join("")+'</div></div>';
 }
 function similarHtml(i){ var x=CL[i], L=[]; CL.forEach(function(y,j){ if(j!==i&&(y.g||y.c)===(x.g||x.c)&&(y.b===x.b||y.c===x.c)) L.push(j); }); L.sort(function(a,b){return (CL[a].b===x.b?0:1)-(CL[b].b===x.b?0:1);}); L=L.slice(0,8); if(!L.length) return ""; return '<div class="lbl" style="margin:20px 0 8px">Похожие товары</div><div class="rvrow">'+L.map(rvCard).join("")+'</div>'; }
-function tickerHtml(){ var T=["🔥 VIP-номера Москва","💄 Новинки: Sauvage Elixir, Delina, Initio, Prada Balm","📰 Новости и акции: вкладка «Новости»","👟 Asics GEL-NYC · Valentino · Travis Scott","🎃 Halloween Party 30.10","⭐ Бонусы 5% с каждого заказа","🧳 Баеры по всей Европе","👕 Acne · Burberry · AMI · Chrome Hearts"]; var g=T.map(function(t){return '<span>'+t+'</span>';}).join(""); return '<div class="ticker"><div class="tk-in">'+g+g+'</div></div>'+liteHtml(); }
+function tickerHtml(){ var T=["🔥 VIP-номера Москва","💄 Новинки: Sauvage Elixir, Delina, Initio, Prada Balm","📰 Новости и акции: вкладка «Новости»","👟 Asics GEL-NYC · Valentino · Travis Scott","🎃 Halloween Party 30.10","🧳 Баеры по всей Европе","👕 Acne · Burberry · AMI · Chrome Hearts"]; var g=T.map(function(t){return '<span>'+t+'</span>';}).join(""); return '<div class="ticker"><div class="tk-in">'+g+g+'</div></div>'+liteHtml(); }
 function liteHtml(){var on=document.body.classList.contains("lite"); return '<div class="litebar"><span>⚡ Лёгкий режим: меньше анимаций, быстрее на слабых телефонах</span><button class="gchip'+(on?' on':'')+'" data-act="lite">'+(on?'Вкл':'Выкл')+'</button></div>';}
 var RGS={ring:RG}, DRG={mv:0};
 function menuHtml(){
@@ -1906,8 +2030,7 @@ function ringHtml(){
 }
 var HERO3D='<div class="card wide hero3d"><div class="scene"><div class="cube"><b>📱</b><b>👟</b><b>💄</b><b>🍷</b><b>🎰</b><b>⭐</b></div></div><div class="htx"><div class="name" style="font-size:22px">888.shop</div><div class="meta" style="line-height:1.45">Электроника, одежда, косметика, номера и развлечения в одном месте</div></div></div>';
 function renderHome(){
-  var b='<div class="card wide banner"><div><div class="name" style="font-size:16px">⭐ Бонусы: '+BON.bal+'</div><div class="meta">1 бонус = 1 ₽ скидки в корзине</div></div>'
-   +(BON.last!==today()?'<button class="btn" style="width:auto" data-act="daily">+10 сегодня</button>':'<button class="btn alt" style="width:auto" data-act="tab" data-id="Бонусы">Открыть</button>')+'</div>';
+  var b='';
   var lab={}; HOME.forEach(function(g){g[1].forEach(function(t){lab[t[0]]=t[2];});});
   var skip=["Главная","Профиль","Корзина","Бонусы","Информация","Табак","Алкоголь","Вкусняшки"];
   var rec=Object.keys(ACT.v).filter(function(k){return lab[k]&&skip.indexOf(k)<0;}).sort(function(a,c){return ACT.v[c]-ACT.v[a];}).slice(0,3);
@@ -1921,11 +2044,11 @@ function renderHome(){
 }
 
 function show(k,quiet){
-  if(GAMES[k]){luckSub=k;k="Удача";}
+  if(GAMES[k]){luckSub=k;k="Удача";} else if(k==="Удача"&&cur!=="Удача") luckSub="";
   cur=k; updBack(); if(!quiet&&k==="Электроника") ELS.an=true;
   Array.prototype.forEach.call(tabsEl.children,function(b){b.classList.toggle("active",b.dataset.id===k)});
   Array.prototype.forEach.call(document.querySelectorAll("#bnav button"),function(b){b.classList.toggle("on",b.dataset.id===k);});
-  var NI=["Главная","Удача","Корзина","Бонусы","Профиль"],ni=NI.indexOf(k),bi=document.getElementById("bind"); if(bi){bi.style.opacity=ni<0?0:1; if(ni>=0) bi.style.transform="translateX("+(ni*100)+"%)";}
+  var NI=["Главная","Удача","Корзина","Профиль"],ni=NI.indexOf(k),bi=document.getElementById("bind"); if(bi){bi.style.opacity=ni<0?0:1; if(ni>=0) bi.style.transform="translateX("+(ni*100)+"%)";}
   if(AGE18.indexOf(k)>=0&&!ageOK){gateFor=k;renderGate();}
   else if(k==="Главная") renderHome();
   else if(k==="Электроника") renderElectronics();
@@ -1937,13 +2060,14 @@ function show(k,quiet){
   else if(k==="Избранное") renderFavs();
   else if(k==="Номера") renderNumbers();
   else if(k==="Табак") renderNicotine();
+  else if(STUB[k]) renderStub(k);
   else if(DATA[k]) renderProducts(k);
   else if((k==="Табак"||k==="Алкоголь")&&!ageOK){gateFor=k;renderGate();}
   else if(ACTIONS[k]) renderActions(k);
   else if(k==="Профиль") renderProfile();
   else if(k==="Корзина") renderCartPage();
   else if(k==="Удача") renderGames();
-  else if(k==="Бонусы") renderBonus();
+  else if(k==="Бонусы") show("Главная");
   else renderInfo();
   if(!quiet){
     track(k); gridEl.classList.remove("flip");void gridEl.offsetWidth;gridEl.classList.add("flip");
@@ -2055,7 +2179,15 @@ document.addEventListener("click",function(e){
   else if(a==="mnm"){if(!MN.on){MN.m=+id;} renderGames();}
   else if(a==="mnstart"){mnStart();renderGames();}
   else if(a==="mncash"){mnCash();renderGames();}
-  else if(a==="sub"){luckSub=id;renderGames();}
+  else if(a==="sub"){luckSub=id;renderGames();window.scrollTo(0,0);}
+  else if(a==="lobby"){luckSub="";renderGames();window.scrollTo(0,0);}
+  else if(a==="setbet"){if(rou.spinning||bj.pend) return; GB[t.dataset.g]=+id; snd("tick"); renderGames();}
+  else if(a==="rbet"){if(rou.spinning) return; var add=GB.rou; if(CH.n<rTotal()+add){toast("Недостаточно фишек");return;} rou.bets[id]=(rou.bets[id]||0)+add; rou.ord.push(id); snd("tick"); renderGames();}
+  else if(a==="rundo"){if(rou.spinning||!rou.ord.length) return; var lk=rou.ord.pop(); rou.bets[lk]-=GB.rou>rou.bets[lk]?rou.bets[lk]:GB.rou; if(rou.bets[lk]<=0) delete rou.bets[lk]; renderGames();}
+  else if(a==="rclr"){if(rou.spinning) return; rou.bets={}; rou.ord=[]; renderGames();}
+  else if(a==="rrep"){if(rou.spinning||!rou.last) return; var lt=0,kk; for(kk in rou.last) lt+=rou.last[kk]; if(CH.n<lt){toast("Недостаточно фишек");return;} rou.bets=JSON.parse(JSON.stringify(rou.last)); rou.ord=Object.keys(rou.bets); renderGames();}
+  else if(a==="bjdbl"){bjDbl();renderGames();}
+  else if(a==="snd2"){SND.on=!SND.on; t.classList.toggle("on",SND.on); t.textContent=SND.on?"Вкл":"Выкл"; if(SND.on) snd("tick");}
   else if(a==="usebonus"){BON.use=!BON.use;renderCartPage();}
   else if(a==="welcome"){if(!REG.ok){show("Профиль");return;} if(!BON.welcome){BON.welcome=true;BON.bal+=50;logEv("Приветственный бонус +50");saveBonus();show(cur);}}
   else if(a==="daily"){if(BON.last!==today()){BON.last=today();BON.bal+=10;logEv("Ежедневный бонус +10");saveBonus();show(cur);}}
